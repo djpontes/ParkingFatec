@@ -25,8 +25,9 @@ namespace ParkingFatec.Views
         {
             panelFuncionario.Visible = false;
             panelCadastrarAdmin.Visible = false;
-            panelConsultar.Visible = false;
+            panelConsultarAdmin.Visible = false;
             panelCadastrarFuncio.Visible = false;
+            panelConsultarFunc.Visible = false;
         }
 
         private void btnFuncionario_MouseClick(object sender, MouseEventArgs e)
@@ -78,14 +79,32 @@ namespace ParkingFatec.Views
 
         private void btnConsultar_MouseClick(object sender, MouseEventArgs e)
         {
-            if (panelConsultar.Visible)
+            if (usuarios.NivelAcesso == 0)
             {
-                panelConsultar.Visible = false;
+                if (panelConsultarAdmin.Visible)
+                {
+                    panelConsultarAdmin.Visible = false;
+                }
+                else
+                {
+                    esconderPanel();
+                    panelConsultarAdmin.Visible = true;
+                }
+
+
             }
             else
             {
-                esconderPanel();
-                panelConsultar.Visible = true;
+
+                if (panelConsultarFunc.Visible)
+                {
+                    panelConsultarFunc.Visible = false;
+                }
+                else
+                {
+                    esconderPanel();
+                    panelConsultarFunc.Visible = true;
+                }
             }
         }
 
@@ -104,6 +123,72 @@ namespace ParkingFatec.Views
         private void btnSaidas_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
+        }
+
+        private void lblEstacionamento_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+
+            EstacionamentoView estacionamentoView = new EstacionamentoView();
+            estacionamentoView.TopLevel = false;
+            estacionamentoView.StartPosition = FormStartPosition.Manual;  // Define que a posição será manual
+
+            // Calcula a posição para centralizar o formulário no painel
+            estacionamentoView.Location = new Point(
+                (panelForms.Width - estacionamentoView.Width) / 2,  // Centraliza horizontalmente
+                (panelForms.Height - estacionamentoView.Height) / 2  // Centraliza verticalmente
+            );
+
+            //aq ele ta adicionando o form estacionamento dentro do panel
+            panelForms.Controls.Add(estacionamentoView);
+
+            // Desabilita os controles fora do panel
+            foreach (System.Windows.Forms.Control ctrl in this.Controls)
+            {
+                if (ctrl != panelForms) ctrl.Enabled = false;
+            }
+
+            estacionamentoView.Show();
+
+            // Evento para reativar controles ao fechar
+            estacionamentoView.FormClosed += (s, args) =>
+            {
+                foreach (System.Windows.Forms.Control ctrl in this.Controls)
+                {
+                    if (ctrl != panelForms) ctrl.Enabled = true;
+                }
+            };
+        }
+
+        private void lblPerfil_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+
+            PerfilView perfilView = new PerfilView();
+            perfilView.TopLevel = false;
+            perfilView.StartPosition = FormStartPosition.Manual;
+
+            perfilView.Location = new Point(
+                (panelForms.Width - perfilView.Width) / 2,  // Centraliza horizontalmente
+                (panelForms.Height - perfilView.Height) / 2  // Centraliza verticalmente
+            );
+
+            panelForms.Controls.Add(perfilView);
+
+            foreach (System.Windows.Forms.Control ctrl in this.Controls)
+            {
+                if (ctrl != panelForms) ctrl.Enabled = false;
+            }
+
+            perfilView.Show();
+
+            perfilView.FormClosed += (s, args) =>
+            {
+                foreach (System.Windows.Forms.Control ctrl in this.Controls)
+                {
+                    if (ctrl != panelForms) ctrl.Enabled = true;
+                }
+            };
         }
     }
 }
