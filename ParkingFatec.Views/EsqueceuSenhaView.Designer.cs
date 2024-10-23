@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EsqueceuSenhaView));
             iconFundo = new PictureBox();
             btnRecuperarSenha = new Util.BtnRedondo();
             txtEmail = new TextBox();
@@ -85,6 +86,7 @@
             Controls.Add(btnRecuperarSenha);
             Controls.Add(iconFundo);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "EsqueceuSenhaView";

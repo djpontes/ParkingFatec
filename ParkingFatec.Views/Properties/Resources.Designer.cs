@@ -63,6 +63,66 @@ namespace ParkingFatec.Views.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_EntradaSaida {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro EntradaSaida", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_Funcionario {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro Funcionario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_Funcionario1 {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro Funcionario1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_Pessoa {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro Pessoa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_Veiculo {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro Veiculo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Consultar {
+            get {
+                object obj = ResourceManager.GetObject("Consultar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconAdmin {
             get {
                 object obj = ResourceManager.GetObject("iconAdmin", resourceCulture);
@@ -176,6 +236,26 @@ namespace ParkingFatec.Views.Properties {
         internal static System.Drawing.Bitmap OlhoOff {
             get {
                 object obj = ResourceManager.GetObject("OlhoOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OlhoOffPerfil {
+            get {
+                object obj = ResourceManager.GetObject("OlhoOffPerfil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OlhoPerfil {
+            get {
+                object obj = ResourceManager.GetObject("OlhoPerfil", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

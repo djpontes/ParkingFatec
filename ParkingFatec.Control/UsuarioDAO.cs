@@ -80,10 +80,6 @@ namespace ParkingFatec.Control
             }
         }
 
-        public void EditarUsuario(Usuarios usuarios)
-        {
-
-        }
     }
 }
 

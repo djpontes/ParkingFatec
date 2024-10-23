@@ -29,32 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PerfilView));
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
+            iconFundo = new PictureBox();
             txtNome = new TextBox();
             txtEmail = new TextBox();
             txtSenha = new TextBox();
             btnEditar = new Util.BtnRedondo();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            iconOlho = new PictureBox();
+            iconOlhoOff = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)iconFundo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconOlho).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconOlhoOff).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // iconFundo
             // 
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(600, 531);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.Perfil1;
-            pictureBox2.Location = new Point(0, 0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(600, 531);
-            pictureBox2.TabIndex = 1;
-            pictureBox2.TabStop = false;
+            iconFundo.Image = Properties.Resources.Perfil1;
+            iconFundo.Location = new Point(1, 0);
+            iconFundo.Name = "iconFundo";
+            iconFundo.Size = new Size(600, 531);
+            iconFundo.TabIndex = 1;
+            iconFundo.TabStop = false;
             // 
             // txtNome
             // 
@@ -62,9 +56,10 @@
             txtNome.BorderStyle = BorderStyle.None;
             txtNome.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNome.ForeColor = Color.FromArgb(64, 64, 64);
-            txtNome.Location = new Point(54, 88);
+            txtNome.Location = new Point(60, 88);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(451, 32);
+            txtNome.PlaceholderText = "Digite o seu nome...";
+            txtNome.Size = new Size(440, 32);
             txtNome.TabIndex = 2;
             // 
             // txtEmail
@@ -73,9 +68,10 @@
             txtEmail.BorderStyle = BorderStyle.None;
             txtEmail.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtEmail.ForeColor = Color.FromArgb(64, 64, 64);
-            txtEmail.Location = new Point(54, 205);
+            txtEmail.Location = new Point(63, 205);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(451, 32);
+            txtEmail.PlaceholderText = "Digite o seu e-mail...";
+            txtEmail.Size = new Size(440, 32);
             txtEmail.TabIndex = 3;
             // 
             // txtSenha
@@ -84,10 +80,12 @@
             txtSenha.BorderStyle = BorderStyle.None;
             txtSenha.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtSenha.ForeColor = Color.FromArgb(64, 64, 64);
-            txtSenha.Location = new Point(54, 323);
+            txtSenha.Location = new Point(62, 323);
             txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(451, 32);
+            txtSenha.PlaceholderText = "Digite a sua senha...";
+            txtSenha.Size = new Size(440, 32);
             txtSenha.TabIndex = 4;
+            txtSenha.UseSystemPasswordChar = true;
             // 
             // btnEditar
             // 
@@ -109,37 +107,60 @@
             btnEditar.TextColor = Color.White;
             btnEditar.UseVisualStyleBackColor = false;
             // 
+            // iconOlho
+            // 
+            iconOlho.BackColor = Color.FromArgb(247, 246, 246);
+            iconOlho.Image = Properties.Resources.OlhoPerfil;
+            iconOlho.Location = new Point(529, 322);
+            iconOlho.Name = "iconOlho";
+            iconOlho.Size = new Size(34, 34);
+            iconOlho.TabIndex = 6;
+            iconOlho.TabStop = false;
+            iconOlho.MouseClick += iconOlho_MouseClick;
+            // 
+            // iconOlhoOff
+            // 
+            iconOlhoOff.BackColor = Color.FromArgb(247, 246, 246);
+            iconOlhoOff.Image = Properties.Resources.OlhoOffPerfil;
+            iconOlhoOff.Location = new Point(529, 322);
+            iconOlhoOff.Name = "iconOlhoOff";
+            iconOlhoOff.Size = new Size(34, 34);
+            iconOlhoOff.TabIndex = 7;
+            iconOlhoOff.TabStop = false;
+            iconOlhoOff.MouseClick += iconOlhoOff_MouseClick;
+            // 
             // PerfilView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(600, 531);
+            Controls.Add(iconOlhoOff);
+            Controls.Add(iconOlho);
             Controls.Add(btnEditar);
             Controls.Add(txtSenha);
             Controls.Add(txtEmail);
             Controls.Add(txtNome);
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox1);
-            Cursor = Cursors.Default;
+            Controls.Add(iconFundo);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "PerfilView";
             Text = "Perfil";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconFundo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconOlho).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconOlhoOff).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
+        private PictureBox iconFundo;
         private TextBox txtNome;
         private TextBox txtEmail;
         private TextBox txtSenha;
         private Util.BtnRedondo btnEditar;
+        private PictureBox iconOlho;
+        private PictureBox iconOlhoOff;
     }
 }
