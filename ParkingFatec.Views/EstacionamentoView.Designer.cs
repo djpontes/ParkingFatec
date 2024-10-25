@@ -52,10 +52,12 @@
             txtMoto.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtMoto.ForeColor = Color.FromArgb(64, 64, 64);
             txtMoto.Location = new Point(68, 89);
+            txtMoto.MaxLength = 3;
             txtMoto.Name = "txtMoto";
             txtMoto.PlaceholderText = "Quantidade...";
             txtMoto.Size = new Size(443, 32);
             txtMoto.TabIndex = 1;
+            txtMoto.KeyPress += txtMoto_KeyPress;
             // 
             // txtCarro
             // 
@@ -63,11 +65,13 @@
             txtCarro.BorderStyle = BorderStyle.None;
             txtCarro.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCarro.ForeColor = Color.FromArgb(64, 64, 64);
-            txtCarro.Location = new Point(68, 216);
+            txtCarro.Location = new Point(74, 216);
+            txtCarro.MaxLength = 3;
             txtCarro.Name = "txtCarro";
             txtCarro.PlaceholderText = "Quantidade...";
             txtCarro.Size = new Size(443, 32);
             txtCarro.TabIndex = 2;
+            txtCarro.KeyPress += txtCarro_KeyPress;
             // 
             // btnRegistrar
             // 

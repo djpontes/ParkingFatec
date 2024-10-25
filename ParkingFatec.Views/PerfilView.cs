@@ -31,5 +31,36 @@ namespace ParkingFatec.Views
             iconOlhoOff.Visible = true;
             txtSenha.UseSystemPasswordChar = false;
         }
+
+        private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSymbol(e.KeyChar) || char.IsDigit(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <= 44) || e.KeyChar == 47 || (e.KeyChar >= 58 && e.KeyChar <= 63) ||
+                (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 32 || e.KeyChar == 34 || e.KeyChar == 39 ||
+                (e.KeyChar >= 40 && e.KeyChar <= 41) || e.KeyChar == 44 ||
+                e.KeyChar == 47 || (e.KeyChar >= 58 && e.KeyChar <= 59) ||
+                (e.KeyChar >= 60 && e.KeyChar <= 62) ||
+                (e.KeyChar >= 91 && e.KeyChar <= 93) || e.KeyChar == 92 ||
+                e.KeyChar == 95 || e.KeyChar == 96 ||
+                (e.KeyChar >= 123 && e.KeyChar <= 125) || e.KeyChar == 124)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

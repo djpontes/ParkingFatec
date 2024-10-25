@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarVeiculosView));
             pictureBox1 = new PictureBox();
-            btnRedondo1 = new Util.BtnRedondo();
-            listView1 = new ListView();
+            btnPesquisar = new Util.BtnRedondo();
+            listVeiculo = new ListView();
             colunaID = new ColumnHeader();
             colunaMotorista = new ColumnHeader();
             colunaTipo = new ColumnHeader();
             colunaModelo = new ColumnHeader();
             colunaCor = new ColumnHeader();
-            btnRedondo2 = new Util.BtnRedondo();
-            btnRedondo3 = new Util.BtnRedondo();
-            btnRedondo4 = new Util.BtnRedondo();
-            textBox1 = new TextBox();
+            btnEditar = new Util.BtnRedondo();
+            btnRelatorio = new Util.BtnRedondo();
+            btnExcluir = new Util.BtnRedondo();
+            txtPesquisar = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -53,35 +53,36 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // btnRedondo1
+            // btnPesquisar
             // 
-            btnRedondo1.BackColor = Color.MediumSlateBlue;
-            btnRedondo1.BackgroundColor = Color.MediumSlateBlue;
-            btnRedondo1.BorderColor = Color.White;
-            btnRedondo1.BorderRadius = 0;
-            btnRedondo1.BorderSize = 0;
-            btnRedondo1.FlatAppearance.BorderSize = 0;
-            btnRedondo1.FlatStyle = FlatStyle.Flat;
-            btnRedondo1.ForeColor = Color.White;
-            btnRedondo1.Location = new Point(495, 27);
-            btnRedondo1.Name = "btnRedondo1";
-            btnRedondo1.Size = new Size(150, 40);
-            btnRedondo1.TabIndex = 1;
-            btnRedondo1.Text = "btnRedondo1";
-            btnRedondo1.TextColor = Color.White;
-            btnRedondo1.UseVisualStyleBackColor = false;
+            btnPesquisar.BackColor = Color.FromArgb(73, 92, 102);
+            btnPesquisar.BackgroundColor = Color.FromArgb(73, 92, 102);
+            btnPesquisar.BorderColor = Color.White;
+            btnPesquisar.BorderRadius = 25;
+            btnPesquisar.BorderSize = 3;
+            btnPesquisar.FlatAppearance.BorderSize = 0;
+            btnPesquisar.FlatStyle = FlatStyle.Flat;
+            btnPesquisar.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            btnPesquisar.ForeColor = Color.White;
+            btnPesquisar.Location = new Point(493, 19);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(150, 50);
+            btnPesquisar.TabIndex = 1;
+            btnPesquisar.Text = "Pesquisar";
+            btnPesquisar.TextColor = Color.White;
+            btnPesquisar.UseVisualStyleBackColor = false;
             // 
-            // listView1
+            // listVeiculo
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { colunaID, colunaMotorista, colunaTipo, colunaModelo, colunaCor });
-            listView1.FullRowSelect = true;
-            listView1.Location = new Point(53, 106);
-            listView1.MultiSelect = false;
-            listView1.Name = "listView1";
-            listView1.Size = new Size(595, 394);
-            listView1.TabIndex = 2;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            listVeiculo.Columns.AddRange(new ColumnHeader[] { colunaID, colunaMotorista, colunaTipo, colunaModelo, colunaCor });
+            listVeiculo.FullRowSelect = true;
+            listVeiculo.Location = new Point(53, 106);
+            listVeiculo.MultiSelect = false;
+            listVeiculo.Name = "listVeiculo";
+            listVeiculo.Size = new Size(595, 394);
+            listVeiculo.TabIndex = 2;
+            listVeiculo.UseCompatibleStateImageBehavior = false;
+            listVeiculo.View = View.Details;
             // 
             // colunaID
             // 
@@ -108,78 +109,87 @@
             colunaCor.Text = "Cor";
             colunaCor.Width = 80;
             // 
-            // btnRedondo2
+            // btnEditar
             // 
-            btnRedondo2.BackColor = Color.MediumSlateBlue;
-            btnRedondo2.BackgroundColor = Color.MediumSlateBlue;
-            btnRedondo2.BorderColor = Color.White;
-            btnRedondo2.BorderRadius = 0;
-            btnRedondo2.BorderSize = 0;
-            btnRedondo2.FlatAppearance.BorderSize = 0;
-            btnRedondo2.FlatStyle = FlatStyle.Flat;
-            btnRedondo2.ForeColor = Color.White;
-            btnRedondo2.Location = new Point(495, 536);
-            btnRedondo2.Name = "btnRedondo2";
-            btnRedondo2.Size = new Size(150, 40);
-            btnRedondo2.TabIndex = 3;
-            btnRedondo2.Text = "btnRedondo2";
-            btnRedondo2.TextColor = Color.White;
-            btnRedondo2.UseVisualStyleBackColor = false;
+            btnEditar.BackColor = Color.FromArgb(73, 92, 102);
+            btnEditar.BackgroundColor = Color.FromArgb(73, 92, 102);
+            btnEditar.BorderColor = Color.White;
+            btnEditar.BorderRadius = 30;
+            btnEditar.BorderSize = 3;
+            btnEditar.FlatAppearance.BorderSize = 0;
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            btnEditar.ForeColor = Color.White;
+            btnEditar.Location = new Point(492, 529);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(150, 55);
+            btnEditar.TabIndex = 3;
+            btnEditar.Text = "Editar";
+            btnEditar.TextColor = Color.White;
+            btnEditar.UseVisualStyleBackColor = false;
             // 
-            // btnRedondo3
+            // btnRelatorio
             // 
-            btnRedondo3.BackColor = Color.MediumSlateBlue;
-            btnRedondo3.BackgroundColor = Color.MediumSlateBlue;
-            btnRedondo3.BorderColor = Color.White;
-            btnRedondo3.BorderRadius = 0;
-            btnRedondo3.BorderSize = 0;
-            btnRedondo3.FlatAppearance.BorderSize = 0;
-            btnRedondo3.FlatStyle = FlatStyle.Flat;
-            btnRedondo3.ForeColor = Color.White;
-            btnRedondo3.Location = new Point(285, 536);
-            btnRedondo3.Name = "btnRedondo3";
-            btnRedondo3.Size = new Size(150, 40);
-            btnRedondo3.TabIndex = 4;
-            btnRedondo3.Text = "btnRedondo3";
-            btnRedondo3.TextColor = Color.White;
-            btnRedondo3.UseVisualStyleBackColor = false;
+            btnRelatorio.BackColor = Color.FromArgb(73, 92, 102);
+            btnRelatorio.BackgroundColor = Color.FromArgb(73, 92, 102);
+            btnRelatorio.BorderColor = Color.White;
+            btnRelatorio.BorderRadius = 30;
+            btnRelatorio.BorderSize = 3;
+            btnRelatorio.FlatAppearance.BorderSize = 0;
+            btnRelatorio.FlatStyle = FlatStyle.Flat;
+            btnRelatorio.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            btnRelatorio.ForeColor = Color.White;
+            btnRelatorio.Location = new Point(280, 529);
+            btnRelatorio.Name = "btnRelatorio";
+            btnRelatorio.Size = new Size(150, 55);
+            btnRelatorio.TabIndex = 4;
+            btnRelatorio.Text = "Relatorio";
+            btnRelatorio.TextColor = Color.White;
+            btnRelatorio.UseVisualStyleBackColor = false;
             // 
-            // btnRedondo4
+            // btnExcluir
             // 
-            btnRedondo4.BackColor = Color.MediumSlateBlue;
-            btnRedondo4.BackgroundColor = Color.MediumSlateBlue;
-            btnRedondo4.BorderColor = Color.White;
-            btnRedondo4.BorderRadius = 0;
-            btnRedondo4.BorderSize = 0;
-            btnRedondo4.FlatAppearance.BorderSize = 0;
-            btnRedondo4.FlatStyle = FlatStyle.Flat;
-            btnRedondo4.ForeColor = Color.White;
-            btnRedondo4.Location = new Point(57, 536);
-            btnRedondo4.Name = "btnRedondo4";
-            btnRedondo4.Size = new Size(150, 40);
-            btnRedondo4.TabIndex = 5;
-            btnRedondo4.Text = "btnRedondo4";
-            btnRedondo4.TextColor = Color.White;
-            btnRedondo4.UseVisualStyleBackColor = false;
+            btnExcluir.BackColor = Color.FromArgb(165, 76, 76);
+            btnExcluir.BackgroundColor = Color.FromArgb(165, 76, 76);
+            btnExcluir.BorderColor = Color.White;
+            btnExcluir.BorderRadius = 30;
+            btnExcluir.BorderSize = 3;
+            btnExcluir.FlatAppearance.BorderSize = 0;
+            btnExcluir.FlatStyle = FlatStyle.Flat;
+            btnExcluir.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            btnExcluir.ForeColor = Color.White;
+            btnExcluir.Location = new Point(54, 529);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(150, 55);
+            btnExcluir.TabIndex = 5;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.TextColor = Color.White;
+            btnExcluir.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // txtPesquisar
             // 
-            textBox1.Location = new Point(68, 37);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(386, 23);
-            textBox1.TabIndex = 6;
+            txtPesquisar.BackColor = Color.FromArgb(204, 203, 205);
+            txtPesquisar.BorderStyle = BorderStyle.None;
+            txtPesquisar.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPesquisar.ForeColor = Color.FromArgb(64, 64, 64);
+            txtPesquisar.Location = new Point(69, 30);
+            txtPesquisar.MaxLength = 50;
+            txtPesquisar.Name = "txtPesquisar";
+            txtPesquisar.Size = new Size(386, 32);
+            txtPesquisar.TabIndex = 6;
+            txtPesquisar.KeyPress += txtPesquisar_KeyPress;
             // 
             // ConsultarVeiculosView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 620);
-            Controls.Add(textBox1);
-            Controls.Add(btnRedondo4);
-            Controls.Add(btnRedondo3);
-            Controls.Add(btnRedondo2);
-            Controls.Add(listView1);
-            Controls.Add(btnRedondo1);
+            Controls.Add(txtPesquisar);
+            Controls.Add(btnExcluir);
+            Controls.Add(btnRelatorio);
+            Controls.Add(btnEditar);
+            Controls.Add(listVeiculo);
+            Controls.Add(btnPesquisar);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -195,16 +205,16 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private Util.BtnRedondo btnRedondo1;
-        private ListView listView1;
+        private Util.BtnRedondo btnPesquisar;
+        private ListView listVeiculo;
         private ColumnHeader colunaID;
         private ColumnHeader colunaMotorista;
         private ColumnHeader colunaTipo;
         private ColumnHeader colunaModelo;
         private ColumnHeader colunaCor;
-        private Util.BtnRedondo btnRedondo2;
-        private Util.BtnRedondo btnRedondo3;
-        private Util.BtnRedondo btnRedondo4;
-        private TextBox textBox1;
+        private Util.BtnRedondo btnEditar;
+        private Util.BtnRedondo btnRelatorio;
+        private Util.BtnRedondo btnExcluir;
+        private TextBox txtPesquisar;
     }
 }

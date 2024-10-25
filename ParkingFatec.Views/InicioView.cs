@@ -1,4 +1,5 @@
-﻿using ParkingFatec.Model;
+﻿using ParkingFatec.Control;
+using ParkingFatec.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -118,77 +119,129 @@ namespace ParkingFatec.Views
         private void btnEntradas_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
+            EntradaVeiculosView entradaVeiculosView = new EntradaVeiculosView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, entradaVeiculosView, panelForms);
         }
 
         private void btnSaidas_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
+            SaidaVeiculoView saidaVeiculoView = new SaidaVeiculoView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, saidaVeiculoView, panelForms);
         }
 
         private void lblEstacionamento_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
-
             EstacionamentoView estacionamentoView = new EstacionamentoView();
-            estacionamentoView.TopLevel = false;
-            estacionamentoView.StartPosition = FormStartPosition.Manual;  // Define que a posição será manual
-
-            // Calcula a posição para centralizar o formulário no painel
-            estacionamentoView.Location = new Point(
-                (panelForms.Width - estacionamentoView.Width) / 2,  // Centraliza horizontalmente
-                (panelForms.Height - estacionamentoView.Height) / 2  // Centraliza verticalmente
-            );
-
-            //aq ele ta adicionando o form estacionamento dentro do panel
-            panelForms.Controls.Add(estacionamentoView);
-
-            // Desabilita os controles fora do panel
-            foreach (System.Windows.Forms.Control ctrl in this.Controls)
-            {
-                if (ctrl != panelForms) ctrl.Enabled = false;
-            }
-
-            estacionamentoView.Show();
-
-            // Evento para reativar controles ao fechar
-            estacionamentoView.FormClosed += (s, args) =>
-            {
-                foreach (System.Windows.Forms.Control ctrl in this.Controls)
-                {
-                    if (ctrl != panelForms) ctrl.Enabled = true;
-                }
-            };
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, estacionamentoView, panelForms);
         }
 
         private void lblPerfil_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
-
             PerfilView perfilView = new PerfilView();
-            perfilView.TopLevel = false;
-            perfilView.StartPosition = FormStartPosition.Manual;
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, perfilView, panelForms);
+        }
 
-            perfilView.Location = new Point(
-                (panelForms.Width - perfilView.Width) / 2,  // Centraliza horizontalmente
-                (panelForms.Height - perfilView.Height) / 2  // Centraliza verticalmente
-            );
+        private void lblMotoristaFuncio_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            CadastroMotoristaView cadastroMotoristaView = new CadastroMotoristaView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, cadastroMotoristaView, panelForms);
+        }
 
-            panelForms.Controls.Add(perfilView);
+        private void lblVeiculosFuncio_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            CadastroVeiculoView cadastroVeiculoView = new CadastroVeiculoView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, cadastroVeiculoView, panelForms);
+        }
 
-            foreach (System.Windows.Forms.Control ctrl in this.Controls)
-            {
-                if (ctrl != panelForms) ctrl.Enabled = false;
-            }
+        private void lblFuncionario_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            CadastroFuncionarioView cadastroFuncionarioView = new CadastroFuncionarioView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, cadastroFuncionarioView, panelForms);
+        }
 
-            perfilView.Show();
+        private void lblMotorista_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            CadastroMotoristaView cadastroMotoristaView = new CadastroMotoristaView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, cadastroMotoristaView, panelForms);
+        }
 
-            perfilView.FormClosed += (s, args) =>
-            {
-                foreach (System.Windows.Forms.Control ctrl in this.Controls)
-                {
-                    if (ctrl != panelForms) ctrl.Enabled = true;
-                }
-            };
+        private void lblVeiculos_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            CadastroVeiculoView cadastroVeiculoView = new CadastroVeiculoView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, cadastroVeiculoView, panelForms);
+        }
+
+        private void lblMotoristasFuncio_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            ConsultarMotoristasView consultarMotoristasView = new ConsultarMotoristasView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, consultarMotoristasView, panelForms);
+        }
+
+        private void lblVeiculoFuncio_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            ConsultarVeiculosView consultarVeiculosView = new ConsultarVeiculosView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, consultarVeiculosView, panelForms);
+        }
+
+        private void lblEntraSaiFuncio_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            ConsultarEntradaSaidaView consultarEntradaSaidaView = new ConsultarEntradaSaidaView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, consultarEntradaSaidaView, panelForms);
+        }
+
+        private void lblMotoristaAdmin_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            ConsultarMotoristasView consultarMotoristasView = new ConsultarMotoristasView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, consultarMotoristasView, panelForms);
+        }
+
+        private void lblFuncionarioAdmin_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            ConsultarFuncionarioView consultarFuncionarioView = new ConsultarFuncionarioView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, consultarFuncionarioView, panelForms);
+        }
+
+        private void lblVeiculosAdmin_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            ConsultarVeiculosView consultarVeiculosView = new ConsultarVeiculosView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, consultarVeiculosView, panelForms);
+        }
+
+        private void lblEntraSai_MouseClick(object sender, MouseEventArgs e)
+        {
+            esconderPanel();
+            ConsultarEntradaSaidaView consultarEntradaSaidaView = new ConsultarEntradaSaidaView();
+            AbrirForms abrir = new AbrirForms();
+            abrir.abrirForms(this, consultarEntradaSaidaView, panelForms);
         }
     }
 }

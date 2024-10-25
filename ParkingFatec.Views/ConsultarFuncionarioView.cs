@@ -16,5 +16,13 @@ namespace ParkingFatec.Views
         {
             InitializeComponent();
         }
+
+        private void txtPesquisar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

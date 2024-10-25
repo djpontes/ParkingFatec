@@ -33,7 +33,7 @@
             txtNome = new TextBox();
             txtIdade = new TextBox();
             txtEmail = new TextBox();
-            boxTipo = new Util.RJComboBox();
+            boxTipoMotorista = new Util.RJComboBox();
             txtCPF = new MaskedTextBox();
             txtTelefone = new MaskedTextBox();
             txtCNH = new TextBox();
@@ -57,10 +57,12 @@
             txtNome.Font = new Font("Segoe UI", 18F);
             txtNome.ForeColor = Color.FromArgb(64, 64, 64);
             txtNome.Location = new Point(73, 72);
+            txtNome.MaxLength = 50;
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome...";
             txtNome.Size = new Size(328, 32);
             txtNome.TabIndex = 1;
+            txtNome.KeyPress += txtNome_KeyPress;
             // 
             // txtIdade
             // 
@@ -69,10 +71,12 @@
             txtIdade.Font = new Font("Segoe UI", 18F);
             txtIdade.ForeColor = Color.FromArgb(64, 64, 64);
             txtIdade.Location = new Point(530, 69);
+            txtIdade.MaxLength = 3;
             txtIdade.Name = "txtIdade";
             txtIdade.PlaceholderText = "Idade...";
             txtIdade.Size = new Size(100, 32);
             txtIdade.TabIndex = 2;
+            txtIdade.KeyPress += txtIdade_KeyPress;
             // 
             // txtEmail
             // 
@@ -81,29 +85,31 @@
             txtEmail.Font = new Font("Segoe UI", 18F);
             txtEmail.ForeColor = Color.FromArgb(64, 64, 64);
             txtEmail.Location = new Point(72, 186);
+            txtEmail.MaxLength = 50;
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "@fatec.sp.gov.br";
             txtEmail.Size = new Size(328, 32);
             txtEmail.TabIndex = 3;
+            txtEmail.KeyPress += txtEmail_KeyPress;
             // 
-            // boxTipo
+            // boxTipoMotorista
             // 
-            boxTipo.BackColor = Color.FromArgb(204, 203, 205);
-            boxTipo.BorderColor = Color.FromArgb(204, 203, 205);
-            boxTipo.BorderSize = 0;
-            boxTipo.DropDownStyle = ComboBoxStyle.DropDown;
-            boxTipo.Font = new Font("Segoe UI", 18F);
-            boxTipo.ForeColor = Color.FromArgb(64, 64, 64);
-            boxTipo.IconColor = Color.FromArgb(105, 99, 99);
-            boxTipo.Items.AddRange(new object[] { "Professor", "Aluno", "Visitante" });
-            boxTipo.ListBackColor = Color.FromArgb(204, 203, 205);
-            boxTipo.ListTextColor = Color.FromArgb(64, 64, 64);
-            boxTipo.Location = new Point(481, 188);
-            boxTipo.MinimumSize = new Size(100, 30);
-            boxTipo.Name = "boxTipo";
-            boxTipo.Size = new Size(152, 30);
-            boxTipo.TabIndex = 7;
-            boxTipo.Texts = "Escolha...";
+            boxTipoMotorista.BackColor = Color.FromArgb(204, 203, 205);
+            boxTipoMotorista.BorderColor = Color.FromArgb(204, 203, 205);
+            boxTipoMotorista.BorderSize = 0;
+            boxTipoMotorista.DropDownStyle = ComboBoxStyle.DropDown;
+            boxTipoMotorista.Font = new Font("Segoe UI", 18F);
+            boxTipoMotorista.ForeColor = Color.FromArgb(64, 64, 64);
+            boxTipoMotorista.IconColor = Color.FromArgb(105, 99, 99);
+            boxTipoMotorista.Items.AddRange(new object[] { "Professor", "Aluno", "Visitante" });
+            boxTipoMotorista.ListBackColor = Color.FromArgb(204, 203, 205);
+            boxTipoMotorista.ListTextColor = Color.FromArgb(64, 64, 64);
+            boxTipoMotorista.Location = new Point(481, 188);
+            boxTipoMotorista.MinimumSize = new Size(100, 30);
+            boxTipoMotorista.Name = "boxTipoMotorista";
+            boxTipoMotorista.Size = new Size(152, 30);
+            boxTipoMotorista.TabIndex = 7;
+            boxTipoMotorista.Texts = "Escolha...";
             // 
             // txtCPF
             // 
@@ -116,6 +122,7 @@
             txtCPF.Name = "txtCPF";
             txtCPF.Size = new Size(161, 32);
             txtCPF.TabIndex = 9;
+            txtCPF.KeyPress += txtCPF_KeyPress;
             // 
             // txtTelefone
             // 
@@ -128,6 +135,7 @@
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(270, 32);
             txtTelefone.TabIndex = 10;
+            txtTelefone.KeyPress += txtTelefone_KeyPress;
             // 
             // txtCNH
             // 
@@ -140,6 +148,7 @@
             txtCNH.PlaceholderText = "CNH...";
             txtCNH.Size = new Size(219, 32);
             txtCNH.TabIndex = 11;
+            txtCNH.KeyPress += txtCNH_KeyPress;
             // 
             // btnCadastrar
             // 
@@ -160,7 +169,7 @@
             btnCadastrar.TextColor = Color.White;
             btnCadastrar.UseVisualStyleBackColor = false;
             // 
-            // CadastroPessoaView
+            // CadastroMotoristaView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -169,7 +178,7 @@
             Controls.Add(txtCNH);
             Controls.Add(txtTelefone);
             Controls.Add(txtCPF);
-            Controls.Add(boxTipo);
+            Controls.Add(boxTipoMotorista);
             Controls.Add(txtEmail);
             Controls.Add(txtIdade);
             Controls.Add(txtNome);
@@ -178,8 +187,8 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "CadastroPessoaView";
-            Text = "Cadastrar Pessoas";
+            Name = "CadastroMotoristaView";
+            Text = "Cadastrar motoristas";
             ((System.ComponentModel.ISupportInitialize)iconFundo).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -191,7 +200,7 @@
         private TextBox txtNome;
         private TextBox txtIdade;
         private TextBox txtEmail;
-        private Util.RJComboBox boxTipo;
+        private Util.RJComboBox boxTipoMotorista;
         private MaskedTextBox txtCPF;
         private MaskedTextBox txtTelefone;
         private TextBox txtCNH;

@@ -44,9 +44,9 @@
             panelCadastrarAdmin = new TableLayoutPanel();
             lblFuncionario = new Label();
             panelConsultarAdmin = new TableLayoutPanel();
-            lblFuncio = new Label();
-            lblMotoristaCon = new Label();
-            lblVeiculosCon = new Label();
+            lblFuncionarioAdmin = new Label();
+            lblMotoristaAdmin = new Label();
+            lblVeiculosAdmin = new Label();
             lblEntraSai = new Label();
             panelCadastrarFuncio = new TableLayoutPanel();
             lblMotoristaFuncio = new Label();
@@ -242,6 +242,7 @@
             lblMotorista.Size = new Size(98, 27);
             lblMotorista.TabIndex = 0;
             lblMotorista.Text = "Motorista";
+            lblMotorista.MouseClick += lblMotorista_MouseClick;
             // 
             // lblVeiculos
             // 
@@ -255,6 +256,7 @@
             lblVeiculos.TabIndex = 1;
             lblVeiculos.Text = "Veículos";
             lblVeiculos.TextAlign = ContentAlignment.TopCenter;
+            lblVeiculos.MouseClick += lblVeiculos_MouseClick;
             // 
             // panelCadastrarAdmin
             // 
@@ -288,6 +290,7 @@
             lblFuncionario.TabIndex = 2;
             lblFuncionario.Text = "Funcionario";
             lblFuncionario.TextAlign = ContentAlignment.TopCenter;
+            lblFuncionario.MouseClick += lblFuncionario_MouseClick;
             // 
             // panelConsultarAdmin
             // 
@@ -297,9 +300,9 @@
             panelConsultarAdmin.ColumnCount = 1;
             panelConsultarAdmin.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             panelConsultarAdmin.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            panelConsultarAdmin.Controls.Add(lblFuncio, 0, 3);
-            panelConsultarAdmin.Controls.Add(lblMotoristaCon, 0, 0);
-            panelConsultarAdmin.Controls.Add(lblVeiculosCon, 0, 1);
+            panelConsultarAdmin.Controls.Add(lblFuncionarioAdmin, 0, 3);
+            panelConsultarAdmin.Controls.Add(lblMotoristaAdmin, 0, 0);
+            panelConsultarAdmin.Controls.Add(lblVeiculosAdmin, 0, 1);
             panelConsultarAdmin.Controls.Add(lblEntraSai, 0, 2);
             panelConsultarAdmin.Location = new Point(392, 500);
             panelConsultarAdmin.Name = "panelConsultarAdmin";
@@ -312,44 +315,47 @@
             panelConsultarAdmin.Size = new Size(200, 220);
             panelConsultarAdmin.TabIndex = 10;
             // 
-            // lblFuncio
+            // lblFuncionarioAdmin
             // 
-            lblFuncio.Anchor = AnchorStyles.None;
-            lblFuncio.AutoSize = true;
-            lblFuncio.Cursor = Cursors.Hand;
-            lblFuncio.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblFuncio.Location = new Point(38, 179);
-            lblFuncio.Name = "lblFuncio";
-            lblFuncio.Size = new Size(123, 27);
-            lblFuncio.TabIndex = 3;
-            lblFuncio.Text = "Funcionários";
-            lblFuncio.TextAlign = ContentAlignment.TopCenter;
+            lblFuncionarioAdmin.Anchor = AnchorStyles.None;
+            lblFuncionarioAdmin.AutoSize = true;
+            lblFuncionarioAdmin.Cursor = Cursors.Hand;
+            lblFuncionarioAdmin.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblFuncionarioAdmin.Location = new Point(38, 179);
+            lblFuncionarioAdmin.Name = "lblFuncionarioAdmin";
+            lblFuncionarioAdmin.Size = new Size(123, 27);
+            lblFuncionarioAdmin.TabIndex = 3;
+            lblFuncionarioAdmin.Text = "Funcionários";
+            lblFuncionarioAdmin.TextAlign = ContentAlignment.TopCenter;
+            lblFuncionarioAdmin.MouseClick += lblFuncionarioAdmin_MouseClick;
             // 
-            // lblMotoristaCon
+            // lblMotoristaAdmin
             // 
-            lblMotoristaCon.Anchor = AnchorStyles.None;
-            lblMotoristaCon.AutoSize = true;
-            lblMotoristaCon.Cursor = Cursors.Hand;
-            lblMotoristaCon.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMotoristaCon.Location = new Point(51, 16);
-            lblMotoristaCon.Name = "lblMotoristaCon";
-            lblMotoristaCon.Size = new Size(98, 27);
-            lblMotoristaCon.TabIndex = 0;
-            lblMotoristaCon.Text = "Motorista";
-            lblMotoristaCon.TextAlign = ContentAlignment.TopCenter;
+            lblMotoristaAdmin.Anchor = AnchorStyles.None;
+            lblMotoristaAdmin.AutoSize = true;
+            lblMotoristaAdmin.Cursor = Cursors.Hand;
+            lblMotoristaAdmin.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMotoristaAdmin.Location = new Point(51, 16);
+            lblMotoristaAdmin.Name = "lblMotoristaAdmin";
+            lblMotoristaAdmin.Size = new Size(98, 27);
+            lblMotoristaAdmin.TabIndex = 0;
+            lblMotoristaAdmin.Text = "Motorista";
+            lblMotoristaAdmin.TextAlign = ContentAlignment.TopCenter;
+            lblMotoristaAdmin.MouseClick += lblMotoristaAdmin_MouseClick;
             // 
-            // lblVeiculosCon
+            // lblVeiculosAdmin
             // 
-            lblVeiculosCon.Anchor = AnchorStyles.None;
-            lblVeiculosCon.AutoSize = true;
-            lblVeiculosCon.Cursor = Cursors.Hand;
-            lblVeiculosCon.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblVeiculosCon.Location = new Point(58, 70);
-            lblVeiculosCon.Name = "lblVeiculosCon";
-            lblVeiculosCon.Size = new Size(83, 28);
-            lblVeiculosCon.TabIndex = 1;
-            lblVeiculosCon.Text = "Veículos";
-            lblVeiculosCon.TextAlign = ContentAlignment.TopCenter;
+            lblVeiculosAdmin.Anchor = AnchorStyles.None;
+            lblVeiculosAdmin.AutoSize = true;
+            lblVeiculosAdmin.Cursor = Cursors.Hand;
+            lblVeiculosAdmin.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblVeiculosAdmin.Location = new Point(58, 70);
+            lblVeiculosAdmin.Name = "lblVeiculosAdmin";
+            lblVeiculosAdmin.Size = new Size(83, 28);
+            lblVeiculosAdmin.TabIndex = 1;
+            lblVeiculosAdmin.Text = "Veículos";
+            lblVeiculosAdmin.TextAlign = ContentAlignment.TopCenter;
+            lblVeiculosAdmin.MouseClick += lblVeiculosAdmin_MouseClick;
             // 
             // lblEntraSai
             // 
@@ -363,6 +369,7 @@
             lblEntraSai.TabIndex = 2;
             lblEntraSai.Text = "Entradas e saídas";
             lblEntraSai.TextAlign = ContentAlignment.TopCenter;
+            lblEntraSai.MouseClick += lblEntraSai_MouseClick;
             // 
             // panelCadastrarFuncio
             // 
@@ -393,6 +400,7 @@
             lblMotoristaFuncio.Size = new Size(98, 27);
             lblMotoristaFuncio.TabIndex = 0;
             lblMotoristaFuncio.Text = "Motorista";
+            lblMotoristaFuncio.MouseClick += lblMotoristaFuncio_MouseClick;
             // 
             // lblVeiculosFuncio
             // 
@@ -406,6 +414,7 @@
             lblVeiculosFuncio.TabIndex = 1;
             lblVeiculosFuncio.Text = "Veículos";
             lblVeiculosFuncio.TextAlign = ContentAlignment.TopCenter;
+            lblVeiculosFuncio.MouseClick += lblVeiculosFuncio_MouseClick;
             // 
             // panelConsultarFunc
             // 
@@ -440,6 +449,7 @@
             lblMotoristasFuncio.TabIndex = 0;
             lblMotoristasFuncio.Text = "Motorista";
             lblMotoristasFuncio.TextAlign = ContentAlignment.TopCenter;
+            lblMotoristasFuncio.MouseClick += lblMotoristasFuncio_MouseClick;
             // 
             // lblVeiculoFuncio
             // 
@@ -453,6 +463,7 @@
             lblVeiculoFuncio.TabIndex = 1;
             lblVeiculoFuncio.Text = "Veículos";
             lblVeiculoFuncio.TextAlign = ContentAlignment.TopCenter;
+            lblVeiculoFuncio.MouseClick += lblVeiculoFuncio_MouseClick;
             // 
             // lblEntraSaiFuncio
             // 
@@ -466,6 +477,7 @@
             lblEntraSaiFuncio.TabIndex = 2;
             lblEntraSaiFuncio.Text = "Entradas e saídas";
             lblEntraSaiFuncio.TextAlign = ContentAlignment.TopCenter;
+            lblEntraSaiFuncio.MouseClick += lblEntraSaiFuncio_MouseClick;
             // 
             // panelForms
             // 
@@ -530,13 +542,13 @@
         private TableLayoutPanel panelCadastrarAdmin;
         private Label lblFuncionario;
         private TableLayoutPanel panelConsultarAdmin;
-        private Label lblMotoristaCon;
-        private Label lblVeiculosCon;
+        private Label lblMotoristaAdmin;
+        private Label lblVeiculosAdmin;
         private Label lblEntraSai;
         private TableLayoutPanel panelCadastrarFuncio;
         private Label lblMotoristaFuncio;
         private Label lblVeiculosFuncio;
-        private Label lblFuncio;
+        private Label lblFuncionarioAdmin;
         private TableLayoutPanel panelConsultarFunc;
         private Label lblMotoristasFuncio;
         private Label lblVeiculoFuncio;

@@ -34,7 +34,7 @@
             txtModelo = new TextBox();
             txtMotorista = new TextBox();
             txtCor = new TextBox();
-            boxTipo = new Util.RJComboBox();
+            boxTipoVeiculo = new Util.RJComboBox();
             btnCadastrar = new Util.BtnRedondo();
             ((System.ComponentModel.ISupportInitialize)iconFundo).BeginInit();
             SuspendLayout();
@@ -55,9 +55,11 @@
             txtPlaca.Font = new Font("Segoe UI", 18F);
             txtPlaca.ForeColor = Color.FromArgb(64, 64, 64);
             txtPlaca.Location = new Point(73, 75);
+            txtPlaca.MaxLength = 8;
             txtPlaca.Name = "txtPlaca";
             txtPlaca.Size = new Size(220, 32);
             txtPlaca.TabIndex = 1;
+            txtPlaca.KeyPress += txtPlaca_KeyPress;
             // 
             // txtModelo
             // 
@@ -66,9 +68,11 @@
             txtModelo.Font = new Font("Segoe UI", 18F);
             txtModelo.ForeColor = Color.FromArgb(64, 64, 64);
             txtModelo.Location = new Point(74, 188);
+            txtModelo.MaxLength = 30;
             txtModelo.Name = "txtModelo";
             txtModelo.Size = new Size(257, 32);
             txtModelo.TabIndex = 2;
+            txtModelo.KeyPress += txtModelo_KeyPress;
             // 
             // txtMotorista
             // 
@@ -77,9 +81,11 @@
             txtMotorista.Font = new Font("Segoe UI", 18F);
             txtMotorista.ForeColor = Color.FromArgb(64, 64, 64);
             txtMotorista.Location = new Point(75, 303);
+            txtMotorista.MaxLength = 50;
             txtMotorista.Name = "txtMotorista";
             txtMotorista.Size = new Size(275, 32);
             txtMotorista.TabIndex = 3;
+            txtMotorista.KeyPress += txtMotorista_KeyPress;
             // 
             // txtCor
             // 
@@ -88,27 +94,29 @@
             txtCor.Font = new Font("Segoe UI", 18F);
             txtCor.ForeColor = Color.FromArgb(64, 64, 64);
             txtCor.Location = new Point(439, 187);
+            txtCor.MaxLength = 15;
             txtCor.Name = "txtCor";
             txtCor.Size = new Size(187, 32);
             txtCor.TabIndex = 4;
+            txtCor.KeyPress += txtCor_KeyPress;
             // 
-            // boxTipo
+            // boxTipoVeiculo
             // 
-            boxTipo.BackColor = Color.FromArgb(204, 203, 205);
-            boxTipo.BorderColor = Color.MediumSlateBlue;
-            boxTipo.BorderSize = 0;
-            boxTipo.DropDownStyle = ComboBoxStyle.DropDown;
-            boxTipo.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            boxTipo.ForeColor = Color.FromArgb(64, 64, 64);
-            boxTipo.IconColor = Color.FromArgb(105, 99, 99);
-            boxTipo.ListBackColor = Color.FromArgb(230, 228, 245);
-            boxTipo.ListTextColor = Color.FromArgb(64, 64, 64);
-            boxTipo.Location = new Point(436, 70);
-            boxTipo.MinimumSize = new Size(200, 30);
-            boxTipo.Name = "boxTipo";
-            boxTipo.Size = new Size(200, 30);
-            boxTipo.TabIndex = 5;
-            boxTipo.Texts = "Selecione...";
+            boxTipoVeiculo.BackColor = Color.FromArgb(204, 203, 205);
+            boxTipoVeiculo.BorderColor = Color.MediumSlateBlue;
+            boxTipoVeiculo.BorderSize = 0;
+            boxTipoVeiculo.DropDownStyle = ComboBoxStyle.DropDown;
+            boxTipoVeiculo.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            boxTipoVeiculo.ForeColor = Color.FromArgb(64, 64, 64);
+            boxTipoVeiculo.IconColor = Color.FromArgb(105, 99, 99);
+            boxTipoVeiculo.ListBackColor = Color.FromArgb(230, 228, 245);
+            boxTipoVeiculo.ListTextColor = Color.FromArgb(64, 64, 64);
+            boxTipoVeiculo.Location = new Point(436, 70);
+            boxTipoVeiculo.MinimumSize = new Size(200, 30);
+            boxTipoVeiculo.Name = "boxTipoVeiculo";
+            boxTipoVeiculo.Size = new Size(200, 30);
+            boxTipoVeiculo.TabIndex = 5;
+            boxTipoVeiculo.Texts = "Selecione...";
             // 
             // btnCadastrar
             // 
@@ -135,7 +143,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 484);
             Controls.Add(btnCadastrar);
-            Controls.Add(boxTipo);
+            Controls.Add(boxTipoVeiculo);
             Controls.Add(txtCor);
             Controls.Add(txtMotorista);
             Controls.Add(txtModelo);
@@ -159,7 +167,7 @@
         private TextBox txtModelo;
         private TextBox txtMotorista;
         private TextBox txtCor;
-        private Util.RJComboBox boxTipo;
+        private Util.RJComboBox boxTipoVeiculo;
         private Util.BtnRedondo btnCadastrar;
     }
 }

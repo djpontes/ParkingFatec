@@ -72,6 +72,7 @@
             txtEmail.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtEmail.ForeColor = Color.FromArgb(64, 64, 64);
             txtEmail.Location = new Point(46, 122);
+            txtEmail.MaxLength = 50;
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(308, 28);
             txtEmail.TabIndex = 2;

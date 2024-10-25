@@ -57,10 +57,12 @@
             txtNome.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNome.ForeColor = Color.FromArgb(64, 64, 64);
             txtNome.Location = new Point(60, 88);
+            txtNome.MaxLength = 50;
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Digite o seu nome...";
             txtNome.Size = new Size(440, 32);
             txtNome.TabIndex = 2;
+            txtNome.KeyPress += txtNome_KeyPress;
             // 
             // txtEmail
             // 
@@ -68,11 +70,13 @@
             txtEmail.BorderStyle = BorderStyle.None;
             txtEmail.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtEmail.ForeColor = Color.FromArgb(64, 64, 64);
-            txtEmail.Location = new Point(63, 205);
+            txtEmail.Location = new Point(64, 205);
+            txtEmail.MaxLength = 50;
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Digite o seu e-mail...";
             txtEmail.Size = new Size(440, 32);
             txtEmail.TabIndex = 3;
+            txtEmail.KeyPress += txtEmail_KeyPress;
             // 
             // txtSenha
             // 
@@ -80,12 +84,14 @@
             txtSenha.BorderStyle = BorderStyle.None;
             txtSenha.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtSenha.ForeColor = Color.FromArgb(64, 64, 64);
-            txtSenha.Location = new Point(62, 323);
+            txtSenha.Location = new Point(64, 322);
+            txtSenha.MaxLength = 16;
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "Digite a sua senha...";
             txtSenha.Size = new Size(440, 32);
             txtSenha.TabIndex = 4;
             txtSenha.UseSystemPasswordChar = true;
+            txtSenha.KeyPress += txtSenha_KeyPress;
             // 
             // btnEditar
             // 
@@ -110,6 +116,7 @@
             // iconOlho
             // 
             iconOlho.BackColor = Color.FromArgb(247, 246, 246);
+            iconOlho.Cursor = Cursors.Hand;
             iconOlho.Image = Properties.Resources.OlhoPerfil;
             iconOlho.Location = new Point(529, 322);
             iconOlho.Name = "iconOlho";
@@ -121,6 +128,7 @@
             // iconOlhoOff
             // 
             iconOlhoOff.BackColor = Color.FromArgb(247, 246, 246);
+            iconOlhoOff.Cursor = Cursors.Hand;
             iconOlhoOff.Image = Properties.Resources.OlhoOffPerfil;
             iconOlhoOff.Location = new Point(529, 322);
             iconOlhoOff.Name = "iconOlhoOff";

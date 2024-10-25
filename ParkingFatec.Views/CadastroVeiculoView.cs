@@ -16,5 +16,37 @@ namespace ParkingFatec.Views
         {
             InitializeComponent();
         }
+
+        private void txtPlaca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSymbol(e.KeyChar) || (char.IsPunctuation(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtModelo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar) || char.IsDigit (e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMotorista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSymbol(e.KeyChar) || char.IsDigit(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

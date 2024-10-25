@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ParkingFatec.Views
 {
-    public partial class EntradaSaidaView : Form
+    public partial class EntradaVeiculosView : Form
     {
-        public EntradaSaidaView()
+        public EntradaVeiculosView()
         {
             InitializeComponent();
         }

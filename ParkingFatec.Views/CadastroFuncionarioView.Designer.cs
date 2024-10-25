@@ -29,146 +29,163 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroFuncionarioView));
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            btnRedondo1 = new Util.BtnRedondo();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            iconFundo = new PictureBox();
+            iconOlho = new PictureBox();
+            iconOlhoOff = new PictureBox();
+            txtNome = new TextBox();
+            txtEmail = new TextBox();
+            txtSenha = new TextBox();
+            btnCadastrar = new Util.BtnRedondo();
+            boxNivelAcesso = new Util.RJComboBox();
+            ((System.ComponentModel.ISupportInitialize)iconFundo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconOlho).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconOlhoOff).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // iconFundo
             // 
-            pictureBox1.Image = Properties.Resources.Cadastro_Funcionario1;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(572, 600);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            iconFundo.Image = Properties.Resources.Cadastro_Funcionario1;
+            iconFundo.Location = new Point(0, 0);
+            iconFundo.Name = "iconFundo";
+            iconFundo.Size = new Size(572, 600);
+            iconFundo.TabIndex = 0;
+            iconFundo.TabStop = false;
             // 
-            // pictureBox2
+            // iconOlho
             // 
-            pictureBox2.BackColor = Color.FromArgb(247, 246, 246);
-            pictureBox2.Image = Properties.Resources.OlhoPerfil;
-            pictureBox2.Location = new Point(522, 317);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(34, 34);
-            pictureBox2.TabIndex = 1;
-            pictureBox2.TabStop = false;
+            iconOlho.BackColor = Color.FromArgb(247, 246, 246);
+            iconOlho.Image = Properties.Resources.OlhoPerfil;
+            iconOlho.Location = new Point(522, 317);
+            iconOlho.Name = "iconOlho";
+            iconOlho.Size = new Size(34, 34);
+            iconOlho.TabIndex = 1;
+            iconOlho.TabStop = false;
+            iconOlho.MouseClick += iconOlho_MouseClick;
             // 
-            // pictureBox3
+            // iconOlhoOff
             // 
-            pictureBox3.BackColor = Color.FromArgb(247, 246, 246);
-            pictureBox3.Image = Properties.Resources.OlhoOffPerfil;
-            pictureBox3.Location = new Point(522, 317);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(34, 34);
-            pictureBox3.TabIndex = 2;
-            pictureBox3.TabStop = false;
+            iconOlhoOff.BackColor = Color.FromArgb(247, 246, 246);
+            iconOlhoOff.Image = Properties.Resources.OlhoOffPerfil;
+            iconOlhoOff.Location = new Point(522, 317);
+            iconOlhoOff.Name = "iconOlhoOff";
+            iconOlhoOff.Size = new Size(34, 34);
+            iconOlhoOff.TabIndex = 2;
+            iconOlhoOff.TabStop = false;
+            iconOlhoOff.MouseClick += iconOlhoOff_MouseClick;
             // 
-            // textBox1
+            // txtNome
             // 
-            textBox1.BackColor = Color.FromArgb(204, 203, 205);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 18F);
-            textBox1.ForeColor = Color.FromArgb(64, 64, 64);
-            textBox1.Location = new Point(61, 84);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(436, 32);
-            textBox1.TabIndex = 3;
+            txtNome.BackColor = Color.FromArgb(204, 203, 205);
+            txtNome.BorderStyle = BorderStyle.None;
+            txtNome.Font = new Font("Segoe UI", 18F);
+            txtNome.ForeColor = Color.FromArgb(64, 64, 64);
+            txtNome.Location = new Point(61, 84);
+            txtNome.MaxLength = 50;
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(436, 32);
+            txtNome.TabIndex = 3;
+            txtNome.KeyPress += txtNome_KeyPress;
             // 
-            // textBox2
+            // txtEmail
             // 
-            textBox2.BackColor = Color.FromArgb(204, 203, 205);
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI", 18F);
-            textBox2.ForeColor = Color.FromArgb(64, 64, 64);
-            textBox2.Location = new Point(61, 202);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(436, 32);
-            textBox2.TabIndex = 4;
+            txtEmail.BackColor = Color.FromArgb(204, 203, 205);
+            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.Font = new Font("Segoe UI", 18F);
+            txtEmail.ForeColor = Color.FromArgb(64, 64, 64);
+            txtEmail.Location = new Point(61, 202);
+            txtEmail.MaxLength = 50;
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(436, 32);
+            txtEmail.TabIndex = 4;
+            txtEmail.KeyPress += txtEmail_KeyPress;
             // 
-            // textBox3
+            // txtSenha
             // 
-            textBox3.BackColor = Color.FromArgb(204, 203, 205);
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Font = new Font("Segoe UI", 18F);
-            textBox3.ForeColor = Color.FromArgb(64, 64, 64);
-            textBox3.Location = new Point(61, 320);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(436, 32);
-            textBox3.TabIndex = 5;
+            txtSenha.BackColor = Color.FromArgb(204, 203, 205);
+            txtSenha.BorderStyle = BorderStyle.None;
+            txtSenha.Font = new Font("Segoe UI", 18F);
+            txtSenha.ForeColor = Color.FromArgb(64, 64, 64);
+            txtSenha.Location = new Point(61, 320);
+            txtSenha.MaxLength = 16;
+            txtSenha.Name = "txtSenha";
+            txtSenha.Size = new Size(436, 32);
+            txtSenha.TabIndex = 5;
+            txtSenha.UseSystemPasswordChar = true;
+            txtSenha.KeyPress += txtSenha_KeyPress;
             // 
-            // textBox4
+            // btnCadastrar
             // 
-            textBox4.BackColor = Color.FromArgb(204, 203, 205);
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Font = new Font("Segoe UI", 18F);
-            textBox4.ForeColor = Color.FromArgb(64, 64, 64);
-            textBox4.Location = new Point(61, 438);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(436, 32);
-            textBox4.TabIndex = 6;
+            btnCadastrar.BackColor = Color.FromArgb(73, 92, 102);
+            btnCadastrar.BackgroundColor = Color.FromArgb(73, 92, 102);
+            btnCadastrar.BorderColor = Color.White;
+            btnCadastrar.BorderRadius = 30;
+            btnCadastrar.BorderSize = 3;
+            btnCadastrar.FlatAppearance.BorderSize = 0;
+            btnCadastrar.FlatStyle = FlatStyle.Flat;
+            btnCadastrar.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCadastrar.ForeColor = Color.White;
+            btnCadastrar.Location = new Point(208, 508);
+            btnCadastrar.Name = "btnCadastrar";
+            btnCadastrar.Size = new Size(150, 60);
+            btnCadastrar.TabIndex = 7;
+            btnCadastrar.Text = "Cadastrar";
+            btnCadastrar.TextColor = Color.White;
+            btnCadastrar.UseVisualStyleBackColor = false;
             // 
-            // btnRedondo1
+            // boxNivelAcesso
             // 
-            btnRedondo1.BackColor = Color.FromArgb(73, 92, 102);
-            btnRedondo1.BackgroundColor = Color.FromArgb(73, 92, 102);
-            btnRedondo1.BorderColor = Color.White;
-            btnRedondo1.BorderRadius = 30;
-            btnRedondo1.BorderSize = 3;
-            btnRedondo1.FlatAppearance.BorderSize = 0;
-            btnRedondo1.FlatStyle = FlatStyle.Flat;
-            btnRedondo1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRedondo1.ForeColor = Color.White;
-            btnRedondo1.Location = new Point(208, 508);
-            btnRedondo1.Name = "btnRedondo1";
-            btnRedondo1.Size = new Size(150, 60);
-            btnRedondo1.TabIndex = 7;
-            btnRedondo1.Text = "Cadastrar";
-            btnRedondo1.TextColor = Color.White;
-            btnRedondo1.UseVisualStyleBackColor = false;
+            boxNivelAcesso.BackColor = Color.FromArgb(204, 203, 205);
+            boxNivelAcesso.BorderColor = Color.MediumSlateBlue;
+            boxNivelAcesso.BorderSize = 0;
+            boxNivelAcesso.DropDownStyle = ComboBoxStyle.DropDown;
+            boxNivelAcesso.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            boxNivelAcesso.ForeColor = Color.FromArgb(64, 64, 64);
+            boxNivelAcesso.IconColor = Color.FromArgb(105, 99, 99);
+            boxNivelAcesso.ListBackColor = Color.FromArgb(204, 203, 205);
+            boxNivelAcesso.ListTextColor = Color.FromArgb(64, 64, 64);
+            boxNivelAcesso.Location = new Point(61, 438);
+            boxNivelAcesso.MinimumSize = new Size(200, 30);
+            boxNivelAcesso.Name = "boxNivelAcesso";
+            boxNivelAcesso.Size = new Size(436, 30);
+            boxNivelAcesso.TabIndex = 8;
+            boxNivelAcesso.Texts = "Selecione...";
             // 
             // CadastroFuncionarioView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(572, 600);
-            Controls.Add(btnRedondo1);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(pictureBox3);
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox1);
+            Controls.Add(boxNivelAcesso);
+            Controls.Add(btnCadastrar);
+            Controls.Add(txtSenha);
+            Controls.Add(txtEmail);
+            Controls.Add(txtNome);
+            Controls.Add(iconOlhoOff);
+            Controls.Add(iconOlho);
+            Controls.Add(iconFundo);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "CadastroFuncionarioView";
             Text = "Cadastrar Funcionários";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconFundo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconOlho).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconOlhoOff).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private PictureBox iconFundo;
+        private PictureBox iconOlho;
+        private PictureBox iconOlhoOff;
+        private TextBox txtNome;
+        private TextBox txtEmail;
+        private TextBox txtSenha;
         private TextBox textBox4;
-        private Util.BtnRedondo btnRedondo1;
+        private Util.BtnRedondo btnCadastrar;
+        private Util.RJComboBox boxNivelAcesso;
     }
 }
