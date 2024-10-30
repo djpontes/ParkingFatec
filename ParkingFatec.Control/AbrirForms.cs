@@ -1,48 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ParkingFatec.Control
+﻿public class AbrirForms
 {
-    public class AbrirForms
+    public void abrirForms(Form mainForm, Form form, Panel panel)
     {
-        public void abrirForms(Form mainForm, Form form, Panel panel)
+        // Limpa o painel antes de adicionar o novo formulário
+        panel.Controls.Clear();
+
+        // Configura o formulário para que ele não seja uma janela de nível superior
+        form.TopLevel = false;
+
+        // Define a posição inicial do formulário no painel
+        form.StartPosition = FormStartPosition.Manual;
+
+        // Centraliza o formulário no painel
+        form.Location = new Point(
+            (panel.Width - form.Width) / 2,
+            (panel.Height - form.Height) / 2
+        );
+
+        // Adiciona o formulário ao painel
+        panel.Controls.Add(form);
+        form.BringToFront();
+
+        // Desativa os controles fora do painel, exceto o próprio painel
+        foreach (Control ctrl in mainForm.Controls)
         {
-            // ta definindo que o formulário não será uma janela de nível superior 
-            form.TopLevel = false;
+            if (ctrl != panel) ctrl.Enabled = false;
+        }
 
-            // ta falando que a posição será feita manualmento
-            form.StartPosition = FormStartPosition.Manual;
+        // Exibe o formulário dentro do painel
+        form.Show();
 
-            // ta centralizando o form
-            form.Location = new Point(
-                (panel.Width - form.Width) / 2,  
-                (panel.Height - form.Height) / 2  
-            );
-
-            // ta adicionando o form dentro do painel
-            panel.Controls.Add(form);
-
-            // ta desabilitando os botoes fora do painel
-            foreach (System.Windows.Forms.Control ctrl in mainForm.Controls)
+        // Reabilita os controles quando o formulário é fechado
+        form.FormClosed += (s, args) =>
+        {
+            foreach (Control ctrl in mainForm.Controls)
             {
-                if (ctrl != panel) ctrl.Enabled = false;
+                if (ctrl != panel) ctrl.Enabled = true;
             }
 
-            form.Show();
-
-            // reativando os botoes ao fechar o formulário
-            form.FormClosed += (s, args) =>
-            {
-                foreach (System.Windows.Forms.Control ctrl in mainForm.Controls)
-                {
-                    if (ctrl != panel) ctrl.Enabled = true;
-                }
-
-                panel.Controls.Remove(form);
-            };
-        }
+            // Remove o formulário do painel após o fechamento
+            panel.Controls.Remove(form);
+        };
     }
 }

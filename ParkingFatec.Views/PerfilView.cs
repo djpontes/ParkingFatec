@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using Org.BouncyCastle.Ocsp;
+using ParkingFatec.Control;
+using ParkingFatec.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +16,22 @@ namespace ParkingFatec.Views
 {
     public partial class PerfilView : Form
     {
-        public PerfilView()
+        private Usuarios usuarios;
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        private InicioView inicioView;
+
+        public PerfilView(Usuarios usuarios, InicioView inicioView)
         {
             InitializeComponent();
             iconOlhoOff.Visible = false;
+            this.usuarios = usuarios;
+            this.inicioView = inicioView;
+
+            txtEmail.Text = usuarios.Email;
+            txtNome.Text = usuarios.Nome;
+            txtSenha.Text = usuarios.Senha;
+
+
         }
 
         private void iconOlhoOff_MouseClick(object sender, MouseEventArgs e)
@@ -60,6 +76,44 @@ namespace ParkingFatec.Views
                 (e.KeyChar >= 123 && e.KeyChar <= 125) || e.KeyChar == 124)
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnEditar_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtSenha.Text) || string.IsNullOrWhiteSpace(txtNome.Text))
+            {
+                MessageBox.Show("Ops, há campo(s) vazio(s). Por favor, preencha-os e tente novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (ValidarEmail.validarEmail(txtEmail.Text))
+            {
+                string email = txtEmail.Text;
+                string nome = txtNome.Text;
+                int idUser = usuarios.Id; 
+                string senha = txtSenha.Text;
+
+                DialogResult opcao = MessageBox.Show("Deseja alterar o(s) dado(s) do administrador?", "Alteração", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (opcao == DialogResult.Yes)
+                {
+                    
+                    usuarios.Nome = nome;
+                    usuarios.Senha = senha;
+                    usuarios.Email = email;
+                    usuarios.Id = idUser;
+
+                    usuarioDAO.alterarUsuario(usuarios);
+
+                    inicioView.Close();
+                    new LoginView(usuarios).Show(); 
+                    this.Close();
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("E-mail inválido: por favor, cadastre seu e-mail institucional.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

@@ -92,6 +92,7 @@
             btnRegistrar.Text = "Registrar";
             btnRegistrar.TextColor = Color.White;
             btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.MouseClick += btnRegistrar_MouseClick;
             // 
             // EstacionamentoView
             // 

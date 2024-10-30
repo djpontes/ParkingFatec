@@ -1,4 +1,5 @@
-﻿namespace ParkingFatec.Model
+﻿
+namespace ParkingFatec.Model
 {
     public class Usuarios
     {
@@ -13,5 +14,10 @@
         public string Email { get => email; set => email = value; }
         public string Senha { get => senha; set => senha = value; }
         public int NivelAcesso { get => nivelAcesso; set => nivelAcesso = value; }
+
+        public object getEmail()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

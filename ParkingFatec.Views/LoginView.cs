@@ -16,11 +16,12 @@ namespace ParkingFatec.Views
     {
         Usuarios usuarios = new Usuarios();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        public LoginView()
+        public LoginView(Usuarios usuarios)
         {
             InitializeComponent();
             iconOlhoOff.Visible = false;
             primeiroAcesso();
+            this.usuarios = usuarios;
         }
 
         private void primeiroAcesso()
@@ -63,7 +64,11 @@ namespace ParkingFatec.Views
 
                 if (usuarioDAO.AutenticarUsuario(usuarios))
                 {
-                    InicioView inicioView = new InicioView();
+                    //buscando os dados do usuario
+                    usuarios = usuarioDAO.ObterDadosUsuario(usuarios.Email);
+
+                    //passando o objeto usuario com os dados de qm ta logando
+                    InicioView inicioView = new InicioView(usuarios);
                     inicioView.Show();
                     this.Hide();
                 }

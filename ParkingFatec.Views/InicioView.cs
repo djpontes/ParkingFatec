@@ -14,12 +14,12 @@ namespace ParkingFatec.Views
 {
     public partial class InicioView : Form
     {
-        Usuarios usuarios = new Usuarios();
-        public InicioView()
+        private Usuarios usuarios;
+        public InicioView(Usuarios usuarios)
         {
             InitializeComponent();
             esconderPanel();
-
+            this.usuarios = usuarios;
         }
 
         private void esconderPanel()
@@ -111,7 +111,7 @@ namespace ParkingFatec.Views
 
         private void btnSair_MouseClick(object sender, MouseEventArgs e)
         {
-            LoginView loginView = new LoginView();
+            LoginView loginView = new LoginView(usuarios);
             loginView.Show();
             this.Close();
         }
@@ -143,7 +143,7 @@ namespace ParkingFatec.Views
         private void lblPerfil_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
-            PerfilView perfilView = new PerfilView();
+            PerfilView perfilView = new PerfilView(usuarios, this);
             AbrirForms abrir = new AbrirForms();
             abrir.abrirForms(this, perfilView, panelForms);
         }

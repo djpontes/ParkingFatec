@@ -112,6 +112,7 @@
             btnEditar.Text = "Editar";
             btnEditar.TextColor = Color.White;
             btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.MouseClick += btnEditar_MouseClick;
             // 
             // iconOlho
             // 

@@ -26,7 +26,7 @@ namespace ParkingFatec.Views
 
         private void btnVoltar_MouseClick(object sender, MouseEventArgs e)
         {
-            LoginView loginView = new LoginView();
+            LoginView loginView = new LoginView(usuarios);
             loginView.Show();
             this.Close();
         }
@@ -92,7 +92,7 @@ namespace ParkingFatec.Views
                 usuarioDAO.InserirUsuario(usuarios);
 
                 MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoginView loginView = new LoginView();
+                LoginView loginView = new LoginView(usuarios);
                 loginView.Show();
                 this.Close();
             } else
