@@ -1,3 +1,5 @@
+using ParkingFatec.Model;
+
 namespace ParkingFatec.Views
 {
     internal static class Program
@@ -11,7 +13,8 @@ namespace ParkingFatec.Views
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginView());
+            Usuarios usuarios = new Usuarios();
+            Application.Run(new LoginView(usuarios));
         }
     }
 }

@@ -43,18 +43,25 @@
             lblVeiculos = new Label();
             panelCadastrarAdmin = new TableLayoutPanel();
             lblFuncionario = new Label();
-            panelConsultar = new TableLayoutPanel();
-            lblMotoristaCon = new Label();
-            lblVeiculosCon = new Label();
+            panelConsultarAdmin = new TableLayoutPanel();
+            lblFuncionarioAdmin = new Label();
+            lblMotoristaAdmin = new Label();
+            lblVeiculosAdmin = new Label();
             lblEntraSai = new Label();
             panelCadastrarFuncio = new TableLayoutPanel();
-            label1 = new Label();
-            label2 = new Label();
+            lblMotoristaFuncio = new Label();
+            lblVeiculosFuncio = new Label();
+            panelConsultarFunc = new TableLayoutPanel();
+            lblMotoristasFuncio = new Label();
+            lblVeiculoFuncio = new Label();
+            lblEntraSaiFuncio = new Label();
+            panelForms = new Panel();
             ((System.ComponentModel.ISupportInitialize)iconFundo).BeginInit();
             panelFuncionario.SuspendLayout();
             panelCadastrarAdmin.SuspendLayout();
-            panelConsultar.SuspendLayout();
+            panelConsultarAdmin.SuspendLayout();
             panelCadastrarFuncio.SuspendLayout();
+            panelConsultarFunc.SuspendLayout();
             SuspendLayout();
             // 
             // iconFundo
@@ -191,6 +198,7 @@
             lblEstacionamento.Size = new Size(151, 27);
             lblEstacionamento.TabIndex = 0;
             lblEstacionamento.Text = "Estacionamento";
+            lblEstacionamento.MouseClick += lblEstacionamento_MouseClick;
             // 
             // lblPerfil
             // 
@@ -203,6 +211,7 @@
             lblPerfil.Size = new Size(56, 27);
             lblPerfil.TabIndex = 1;
             lblPerfil.Text = "Perfil";
+            lblPerfil.MouseClick += lblPerfil_MouseClick;
             // 
             // panelFuncionario
             // 
@@ -233,6 +242,7 @@
             lblMotorista.Size = new Size(98, 27);
             lblMotorista.TabIndex = 0;
             lblMotorista.Text = "Motorista";
+            lblMotorista.MouseClick += lblMotorista_MouseClick;
             // 
             // lblVeiculos
             // 
@@ -246,6 +256,7 @@
             lblVeiculos.TabIndex = 1;
             lblVeiculos.Text = "Veículos";
             lblVeiculos.TextAlign = ContentAlignment.TopCenter;
+            lblVeiculos.MouseClick += lblVeiculos_MouseClick;
             // 
             // panelCadastrarAdmin
             // 
@@ -279,52 +290,72 @@
             lblFuncionario.TabIndex = 2;
             lblFuncionario.Text = "Funcionario";
             lblFuncionario.TextAlign = ContentAlignment.TopCenter;
+            lblFuncionario.MouseClick += lblFuncionario_MouseClick;
             // 
-            // panelConsultar
+            // panelConsultarAdmin
             // 
-            panelConsultar.Anchor = AnchorStyles.None;
-            panelConsultar.BackColor = Color.White;
-            panelConsultar.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            panelConsultar.ColumnCount = 1;
-            panelConsultar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            panelConsultar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            panelConsultar.Controls.Add(lblMotoristaCon, 0, 0);
-            panelConsultar.Controls.Add(lblVeiculosCon, 0, 1);
-            panelConsultar.Controls.Add(lblEntraSai, 0, 2);
-            panelConsultar.Location = new Point(392, 578);
-            panelConsultar.Name = "panelConsultar";
-            panelConsultar.RowCount = 3;
-            panelConsultar.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            panelConsultar.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            panelConsultar.RowStyles.Add(new RowStyle(SizeType.Absolute, 47F));
-            panelConsultar.Size = new Size(200, 142);
-            panelConsultar.TabIndex = 10;
+            panelConsultarAdmin.Anchor = AnchorStyles.None;
+            panelConsultarAdmin.BackColor = Color.White;
+            panelConsultarAdmin.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            panelConsultarAdmin.ColumnCount = 1;
+            panelConsultarAdmin.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            panelConsultarAdmin.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            panelConsultarAdmin.Controls.Add(lblFuncionarioAdmin, 0, 3);
+            panelConsultarAdmin.Controls.Add(lblMotoristaAdmin, 0, 0);
+            panelConsultarAdmin.Controls.Add(lblVeiculosAdmin, 0, 1);
+            panelConsultarAdmin.Controls.Add(lblEntraSai, 0, 2);
+            panelConsultarAdmin.Location = new Point(392, 500);
+            panelConsultarAdmin.Name = "panelConsultarAdmin";
+            panelConsultarAdmin.RowCount = 4;
+            panelConsultarAdmin.RowStyles.Add(new RowStyle(SizeType.Percent, 53.5087738F));
+            panelConsultarAdmin.RowStyles.Add(new RowStyle(SizeType.Percent, 46.4912262F));
+            panelConsultarAdmin.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
+            panelConsultarAdmin.RowStyles.Add(new RowStyle(SizeType.Absolute, 51F));
+            panelConsultarAdmin.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            panelConsultarAdmin.Size = new Size(200, 220);
+            panelConsultarAdmin.TabIndex = 10;
             // 
-            // lblMotoristaCon
+            // lblFuncionarioAdmin
             // 
-            lblMotoristaCon.Anchor = AnchorStyles.None;
-            lblMotoristaCon.AutoSize = true;
-            lblMotoristaCon.Cursor = Cursors.Hand;
-            lblMotoristaCon.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMotoristaCon.Location = new Point(51, 10);
-            lblMotoristaCon.Name = "lblMotoristaCon";
-            lblMotoristaCon.Size = new Size(98, 27);
-            lblMotoristaCon.TabIndex = 0;
-            lblMotoristaCon.Text = "Motorista";
-            lblMotoristaCon.TextAlign = ContentAlignment.TopCenter;
+            lblFuncionarioAdmin.Anchor = AnchorStyles.None;
+            lblFuncionarioAdmin.AutoSize = true;
+            lblFuncionarioAdmin.Cursor = Cursors.Hand;
+            lblFuncionarioAdmin.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblFuncionarioAdmin.Location = new Point(38, 179);
+            lblFuncionarioAdmin.Name = "lblFuncionarioAdmin";
+            lblFuncionarioAdmin.Size = new Size(123, 27);
+            lblFuncionarioAdmin.TabIndex = 3;
+            lblFuncionarioAdmin.Text = "Funcionários";
+            lblFuncionarioAdmin.TextAlign = ContentAlignment.TopCenter;
+            lblFuncionarioAdmin.MouseClick += lblFuncionarioAdmin_MouseClick;
             // 
-            // lblVeiculosCon
+            // lblMotoristaAdmin
             // 
-            lblVeiculosCon.Anchor = AnchorStyles.None;
-            lblVeiculosCon.AutoSize = true;
-            lblVeiculosCon.Cursor = Cursors.Hand;
-            lblVeiculosCon.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblVeiculosCon.Location = new Point(58, 55);
-            lblVeiculosCon.Name = "lblVeiculosCon";
-            lblVeiculosCon.Size = new Size(83, 28);
-            lblVeiculosCon.TabIndex = 1;
-            lblVeiculosCon.Text = "Veículos";
-            lblVeiculosCon.TextAlign = ContentAlignment.TopCenter;
+            lblMotoristaAdmin.Anchor = AnchorStyles.None;
+            lblMotoristaAdmin.AutoSize = true;
+            lblMotoristaAdmin.Cursor = Cursors.Hand;
+            lblMotoristaAdmin.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMotoristaAdmin.Location = new Point(51, 16);
+            lblMotoristaAdmin.Name = "lblMotoristaAdmin";
+            lblMotoristaAdmin.Size = new Size(98, 27);
+            lblMotoristaAdmin.TabIndex = 0;
+            lblMotoristaAdmin.Text = "Motorista";
+            lblMotoristaAdmin.TextAlign = ContentAlignment.TopCenter;
+            lblMotoristaAdmin.MouseClick += lblMotoristaAdmin_MouseClick;
+            // 
+            // lblVeiculosAdmin
+            // 
+            lblVeiculosAdmin.Anchor = AnchorStyles.None;
+            lblVeiculosAdmin.AutoSize = true;
+            lblVeiculosAdmin.Cursor = Cursors.Hand;
+            lblVeiculosAdmin.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblVeiculosAdmin.Location = new Point(58, 70);
+            lblVeiculosAdmin.Name = "lblVeiculosAdmin";
+            lblVeiculosAdmin.Size = new Size(83, 28);
+            lblVeiculosAdmin.TabIndex = 1;
+            lblVeiculosAdmin.Text = "Veículos";
+            lblVeiculosAdmin.TextAlign = ContentAlignment.TopCenter;
+            lblVeiculosAdmin.MouseClick += lblVeiculosAdmin_MouseClick;
             // 
             // lblEntraSai
             // 
@@ -332,12 +363,13 @@
             lblEntraSai.AutoSize = true;
             lblEntraSai.Cursor = Cursors.Hand;
             lblEntraSai.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblEntraSai.Location = new Point(20, 103);
+            lblEntraSai.Location = new Point(20, 124);
             lblEntraSai.Name = "lblEntraSai";
             lblEntraSai.Size = new Size(160, 27);
             lblEntraSai.TabIndex = 2;
             lblEntraSai.Text = "Entradas e saídas";
             lblEntraSai.TextAlign = ContentAlignment.TopCenter;
+            lblEntraSai.MouseClick += lblEntraSai_MouseClick;
             // 
             // panelCadastrarFuncio
             // 
@@ -347,8 +379,8 @@
             panelCadastrarFuncio.ColumnCount = 1;
             panelCadastrarFuncio.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             panelCadastrarFuncio.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            panelCadastrarFuncio.Controls.Add(label1, 0, 0);
-            panelCadastrarFuncio.Controls.Add(label2, 0, 1);
+            panelCadastrarFuncio.Controls.Add(lblMotoristaFuncio, 0, 0);
+            panelCadastrarFuncio.Controls.Add(lblVeiculosFuncio, 0, 1);
             panelCadastrarFuncio.Location = new Point(393, 303);
             panelCadastrarFuncio.Name = "panelCadastrarFuncio";
             panelCadastrarFuncio.RowCount = 2;
@@ -357,38 +389,112 @@
             panelCadastrarFuncio.Size = new Size(200, 120);
             panelCadastrarFuncio.TabIndex = 11;
             // 
-            // label1
+            // lblMotoristaFuncio
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Cursor = Cursors.Hand;
-            label1.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(51, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 27);
-            label1.TabIndex = 0;
-            label1.Text = "Motorista";
+            lblMotoristaFuncio.Anchor = AnchorStyles.None;
+            lblMotoristaFuncio.AutoSize = true;
+            lblMotoristaFuncio.Cursor = Cursors.Hand;
+            lblMotoristaFuncio.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMotoristaFuncio.Location = new Point(51, 16);
+            lblMotoristaFuncio.Name = "lblMotoristaFuncio";
+            lblMotoristaFuncio.Size = new Size(98, 27);
+            lblMotoristaFuncio.TabIndex = 0;
+            lblMotoristaFuncio.Text = "Motorista";
+            lblMotoristaFuncio.MouseClick += lblMotoristaFuncio_MouseClick;
             // 
-            // label2
+            // lblVeiculosFuncio
             // 
-            label2.Anchor = AnchorStyles.None;
-            label2.AutoSize = true;
-            label2.Cursor = Cursors.Hand;
-            label2.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(58, 76);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 27);
-            label2.TabIndex = 1;
-            label2.Text = "Veículos";
-            label2.TextAlign = ContentAlignment.TopCenter;
+            lblVeiculosFuncio.Anchor = AnchorStyles.None;
+            lblVeiculosFuncio.AutoSize = true;
+            lblVeiculosFuncio.Cursor = Cursors.Hand;
+            lblVeiculosFuncio.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblVeiculosFuncio.Location = new Point(58, 76);
+            lblVeiculosFuncio.Name = "lblVeiculosFuncio";
+            lblVeiculosFuncio.Size = new Size(84, 27);
+            lblVeiculosFuncio.TabIndex = 1;
+            lblVeiculosFuncio.Text = "Veículos";
+            lblVeiculosFuncio.TextAlign = ContentAlignment.TopCenter;
+            lblVeiculosFuncio.MouseClick += lblVeiculosFuncio_MouseClick;
+            // 
+            // panelConsultarFunc
+            // 
+            panelConsultarFunc.Anchor = AnchorStyles.None;
+            panelConsultarFunc.BackColor = Color.White;
+            panelConsultarFunc.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            panelConsultarFunc.ColumnCount = 1;
+            panelConsultarFunc.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            panelConsultarFunc.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            panelConsultarFunc.Controls.Add(lblMotoristasFuncio, 0, 0);
+            panelConsultarFunc.Controls.Add(lblVeiculoFuncio, 0, 1);
+            panelConsultarFunc.Controls.Add(lblEntraSaiFuncio, 0, 2);
+            panelConsultarFunc.Location = new Point(392, 550);
+            panelConsultarFunc.Name = "panelConsultarFunc";
+            panelConsultarFunc.RowCount = 3;
+            panelConsultarFunc.RowStyles.Add(new RowStyle(SizeType.Percent, 48.6486473F));
+            panelConsultarFunc.RowStyles.Add(new RowStyle(SizeType.Percent, 51.3513527F));
+            panelConsultarFunc.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
+            panelConsultarFunc.RowStyles.Add(new RowStyle(SizeType.Absolute, 51F));
+            panelConsultarFunc.Size = new Size(200, 170);
+            panelConsultarFunc.TabIndex = 12;
+            // 
+            // lblMotoristasFuncio
+            // 
+            lblMotoristasFuncio.Anchor = AnchorStyles.None;
+            lblMotoristasFuncio.AutoSize = true;
+            lblMotoristasFuncio.Cursor = Cursors.Hand;
+            lblMotoristasFuncio.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMotoristasFuncio.Location = new Point(51, 14);
+            lblMotoristasFuncio.Name = "lblMotoristasFuncio";
+            lblMotoristasFuncio.Size = new Size(98, 27);
+            lblMotoristasFuncio.TabIndex = 0;
+            lblMotoristasFuncio.Text = "Motorista";
+            lblMotoristasFuncio.TextAlign = ContentAlignment.TopCenter;
+            lblMotoristasFuncio.MouseClick += lblMotoristasFuncio_MouseClick;
+            // 
+            // lblVeiculoFuncio
+            // 
+            lblVeiculoFuncio.Anchor = AnchorStyles.None;
+            lblVeiculoFuncio.AutoSize = true;
+            lblVeiculoFuncio.Cursor = Cursors.Hand;
+            lblVeiculoFuncio.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblVeiculoFuncio.Location = new Point(58, 69);
+            lblVeiculoFuncio.Name = "lblVeiculoFuncio";
+            lblVeiculoFuncio.Size = new Size(83, 28);
+            lblVeiculoFuncio.TabIndex = 1;
+            lblVeiculoFuncio.Text = "Veículos";
+            lblVeiculoFuncio.TextAlign = ContentAlignment.TopCenter;
+            lblVeiculoFuncio.MouseClick += lblVeiculoFuncio_MouseClick;
+            // 
+            // lblEntraSaiFuncio
+            // 
+            lblEntraSaiFuncio.Anchor = AnchorStyles.None;
+            lblEntraSaiFuncio.AutoSize = true;
+            lblEntraSaiFuncio.Cursor = Cursors.Hand;
+            lblEntraSaiFuncio.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblEntraSaiFuncio.Location = new Point(20, 127);
+            lblEntraSaiFuncio.Name = "lblEntraSaiFuncio";
+            lblEntraSaiFuncio.Size = new Size(160, 27);
+            lblEntraSaiFuncio.TabIndex = 2;
+            lblEntraSaiFuncio.Text = "Entradas e saídas";
+            lblEntraSaiFuncio.TextAlign = ContentAlignment.TopCenter;
+            lblEntraSaiFuncio.MouseClick += lblEntraSaiFuncio_MouseClick;
+            // 
+            // panelForms
+            // 
+            panelForms.BackColor = Color.FromArgb(73, 92, 102);
+            panelForms.Location = new Point(392, 60);
+            panelForms.Name = "panelForms";
+            panelForms.Size = new Size(888, 660);
+            panelForms.TabIndex = 13;
             // 
             // InicioView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1280, 720);
+            Controls.Add(panelConsultarFunc);
             Controls.Add(panelCadastrarFuncio);
-            Controls.Add(panelConsultar);
+            Controls.Add(panelConsultarAdmin);
             Controls.Add(panelCadastrarAdmin);
             Controls.Add(panelFuncionario);
             Controls.Add(btnSair);
@@ -397,6 +503,7 @@
             Controls.Add(btnEntradas);
             Controls.Add(btnCadastros);
             Controls.Add(btnFuncionario);
+            Controls.Add(panelForms);
             Controls.Add(iconFundo);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -409,10 +516,12 @@
             panelFuncionario.PerformLayout();
             panelCadastrarAdmin.ResumeLayout(false);
             panelCadastrarAdmin.PerformLayout();
-            panelConsultar.ResumeLayout(false);
-            panelConsultar.PerformLayout();
+            panelConsultarAdmin.ResumeLayout(false);
+            panelConsultarAdmin.PerformLayout();
             panelCadastrarFuncio.ResumeLayout(false);
             panelCadastrarFuncio.PerformLayout();
+            panelConsultarFunc.ResumeLayout(false);
+            panelConsultarFunc.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -432,12 +541,18 @@
         private Label lblVeiculos;
         private TableLayoutPanel panelCadastrarAdmin;
         private Label lblFuncionario;
-        private TableLayoutPanel panelConsultar;
-        private Label lblMotoristaCon;
-        private Label lblVeiculosCon;
+        private TableLayoutPanel panelConsultarAdmin;
+        private Label lblMotoristaAdmin;
+        private Label lblVeiculosAdmin;
         private Label lblEntraSai;
         private TableLayoutPanel panelCadastrarFuncio;
-        private Label label1;
-        private Label label2;
+        private Label lblMotoristaFuncio;
+        private Label lblVeiculosFuncio;
+        private Label lblFuncionarioAdmin;
+        private TableLayoutPanel panelConsultarFunc;
+        private Label lblMotoristasFuncio;
+        private Label lblVeiculoFuncio;
+        private Label lblEntraSaiFuncio;
+        private Panel panelForms;
     }
 }

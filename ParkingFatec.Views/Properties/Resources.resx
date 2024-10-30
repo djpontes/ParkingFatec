@@ -118,23 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="iconSaida" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconSaida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconEntrada" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconEntrada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconCadastrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconCadastrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Primeiro Acesso2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Primeiro Acesso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconAdmin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconAdmin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Olho" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Olho.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Primeiro Acesso3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Primeiro Acesso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,31 +127,79 @@
   <data name="Inicio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Inicio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="OlhoOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OlhoOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconLogOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconLogOut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Recuperar conta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Recuperar conta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Olho" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Olho.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconConsultar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconConsultar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Login1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Primeiro Acesso" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Primeiro Acesso2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Primeiro Acesso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cadastro Pessoa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cadastro Pessoa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Primeiro Acesso1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Primeiro Acesso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Cadastro Funcionario1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cadastro Funcionario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cadastro EntradaSaida" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cadastro EntradaSaida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconConsultar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconConsultar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cadastro Funcionario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cadastro Funcionario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OlhoPerfil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OlhoPerfil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Recuperar conta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Recuperar conta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconSaida" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconSaida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Perfil1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Perfil1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Perfil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Perfil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OlhoOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OlhoOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconCadastrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconCadastrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Primeiro Acesso" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Primeiro Acesso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconEntrada" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconEntrada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OlhoOffPerfil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OlhoOffPerfil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Parking Fatec" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Parking Fatec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconAdmin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconAdmin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Login1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconLogOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconLogOut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cadastro Veiculo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cadastro Veiculo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Login2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consultar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consultar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
