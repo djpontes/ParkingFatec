@@ -32,11 +32,11 @@
             btnRegistrar = new Util.BtnRedondo();
             txtVagasMoto = new TextBox();
             txtVagasCarro = new TextBox();
-            txtHoraEntrada = new MaskedTextBox();
-            txtDataEntrada = new MaskedTextBox();
             txtVeiculo = new TextBox();
             txtPlaca = new TextBox();
             iconFundo = new PictureBox();
+            txtData = new TextBox();
+            txtHora = new TextBox();
             ((System.ComponentModel.ISupportInitialize)iconFundo).BeginInit();
             SuspendLayout();
             // 
@@ -81,28 +81,6 @@
             txtVagasCarro.Size = new Size(64, 26);
             txtVagasCarro.TabIndex = 21;
             // 
-            // txtHoraEntrada
-            // 
-            txtHoraEntrada.BackColor = Color.FromArgb(204, 203, 205);
-            txtHoraEntrada.BorderStyle = BorderStyle.None;
-            txtHoraEntrada.Font = new Font("Segoe UI", 18F);
-            txtHoraEntrada.ForeColor = Color.FromArgb(64, 64, 64);
-            txtHoraEntrada.Location = new Point(340, 323);
-            txtHoraEntrada.Name = "txtHoraEntrada";
-            txtHoraEntrada.Size = new Size(174, 32);
-            txtHoraEntrada.TabIndex = 20;
-            // 
-            // txtDataEntrada
-            // 
-            txtDataEntrada.BackColor = Color.FromArgb(204, 203, 205);
-            txtDataEntrada.BorderStyle = BorderStyle.None;
-            txtDataEntrada.Font = new Font("Segoe UI", 18F);
-            txtDataEntrada.ForeColor = Color.FromArgb(64, 64, 64);
-            txtDataEntrada.Location = new Point(65, 323);
-            txtDataEntrada.Name = "txtDataEntrada";
-            txtDataEntrada.Size = new Size(184, 32);
-            txtDataEntrada.TabIndex = 19;
-            // 
             // txtVeiculo
             // 
             txtVeiculo.BackColor = Color.FromArgb(204, 203, 205);
@@ -136,16 +114,40 @@
             iconFundo.TabIndex = 16;
             iconFundo.TabStop = false;
             // 
+            // txtData
+            // 
+            txtData.BackColor = Color.FromArgb(204, 203, 205);
+            txtData.BorderStyle = BorderStyle.None;
+            txtData.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtData.Location = new Point(76, 323);
+            txtData.MaxLength = 10;
+            txtData.Name = "txtData";
+            txtData.Size = new Size(163, 32);
+            txtData.TabIndex = 24;
+            txtData.KeyPress += txtData_KeyPress;
+            // 
+            // txtHora
+            // 
+            txtHora.BackColor = Color.FromArgb(204, 203, 205);
+            txtHora.BorderStyle = BorderStyle.None;
+            txtHora.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtHora.Location = new Point(347, 322);
+            txtHora.MaxLength = 5;
+            txtHora.Name = "txtHora";
+            txtHora.Size = new Size(163, 32);
+            txtHora.TabIndex = 25;
+            txtHora.KeyPress += txtHora_KeyPress;
+            // 
             // EntradaVeiculosView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(573, 548);
+            Controls.Add(txtHora);
+            Controls.Add(txtData);
             Controls.Add(btnRegistrar);
             Controls.Add(txtVagasMoto);
             Controls.Add(txtVagasCarro);
-            Controls.Add(txtHoraEntrada);
-            Controls.Add(txtDataEntrada);
             Controls.Add(txtVeiculo);
             Controls.Add(txtPlaca);
             Controls.Add(iconFundo);
@@ -165,10 +167,10 @@
         private Util.BtnRedondo btnRegistrar;
         private TextBox txtVagasMoto;
         private TextBox txtVagasCarro;
-        private MaskedTextBox txtHoraEntrada;
-        private MaskedTextBox txtDataEntrada;
         private TextBox txtVeiculo;
         private TextBox txtPlaca;
         private PictureBox iconFundo;
+        private TextBox txtData;
+        private TextBox txtHora;
     }
 }

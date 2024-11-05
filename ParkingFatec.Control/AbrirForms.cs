@@ -1,45 +1,34 @@
-﻿public class AbrirForms
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+public class AbrirForms
 {
     public void abrirForms(Form mainForm, Form form, Panel panel)
     {
-        // Limpa o painel antes de adicionar o novo formulário
-        panel.Controls.Clear();
-
-        // Configura o formulário para que ele não seja uma janela de nível superior
-        form.TopLevel = false;
-
-        // Define a posição inicial do formulário no painel
+        form.TopLevel = true;
+        form.FormBorderStyle = FormBorderStyle.FixedSingle;
         form.StartPosition = FormStartPosition.Manual;
 
-        // Centraliza o formulário no painel
+        // baixa mais a janela
+        int offsetY = 35; 
+
+        // centraliza a janela 
         form.Location = new Point(
-            (panel.Width - form.Width) / 2,
-            (panel.Height - form.Height) / 2
+            mainForm.Location.X + panel.Location.X + (panel.Width - form.Width) / 2,
+            mainForm.Location.Y + panel.Location.Y + (panel.Height - form.Height) / 2 + offsetY
         );
 
-        // Adiciona o formulário ao painel
-        panel.Controls.Add(form);
-        form.BringToFront();
+        // a janela fica em cima
+        form.Show(mainForm);
 
-        // Desativa os controles fora do painel, exceto o próprio painel
-        foreach (Control ctrl in mainForm.Controls)
-        {
-            if (ctrl != panel) ctrl.Enabled = false;
-        }
+        // bloqueia os controles da janela principal enquanto a nova janela está aberto
+        mainForm.Enabled = false;
 
-        // Exibe o formulário dentro do painel
-        form.Show();
-
-        // Reabilita os controles quando o formulário é fechado
+        // volta os controles quando o formulário é fechado
         form.FormClosed += (s, args) =>
         {
-            foreach (Control ctrl in mainForm.Controls)
-            {
-                if (ctrl != panel) ctrl.Enabled = true;
-            }
-
-            // Remove o formulário do painel após o fechamento
-            panel.Controls.Remove(form);
+            mainForm.Enabled = true;
+            mainForm.BringToFront();
         };
     }
 }

@@ -27,7 +27,7 @@ namespace ParkingFatec.Views
 
         private void txtIdade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsLetter(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar) || e.KeyChar == 32)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
@@ -44,7 +44,7 @@ namespace ParkingFatec.Views
 
         private void txtCNH_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsLetter(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar) || e.KeyChar == 32)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
@@ -52,17 +52,58 @@ namespace ParkingFatec.Views
 
         private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsLetter(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar) || e.KeyChar == 32)
+            // Permitir apenas números e Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
+                return;
+            }
+
+            // Lógica para aplicar a máscara conforme a quantidade de caracteres
+            if (e.KeyChar != (char)Keys.Back) // Ignora quando é o Backspace
+            {
+                switch (txtCPF.TextLength)
+                {
+                    case 3:
+                        txtCPF.Text = txtCPF.Text + ".";
+                        txtCPF.SelectionStart = txtCPF.Text.Length;
+                        break;
+                    case 7:
+                        txtCPF.Text = txtCPF.Text + ".";
+                        txtCPF.SelectionStart = txtCPF.Text.Length;
+                        break;
+                    case 11:
+                        txtCPF.Text = txtCPF.Text + "-";
+                        txtCPF.SelectionStart = txtCPF.Text.Length;
+                        break;
+                }
             }
         }
 
         private void txtTelefone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsLetter(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar) || e.KeyChar == 32)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
+                return;
+            }
+            if (e.KeyChar != (char)Keys.Back) // Ignora quando é o Backspace
+            {
+                switch (txtTelefone.TextLength)
+                {
+                    case 1:
+                        txtTelefone.Text = "(" + txtTelefone.Text;
+                        txtTelefone.SelectionStart = txtTelefone.Text.Length;
+                        break;
+                    case 3:
+                        txtTelefone.Text = txtTelefone.Text + ")";
+                        txtTelefone.SelectionStart = txtTelefone.Text.Length;
+                        break;
+                    case 9:
+                        txtTelefone.Text = txtTelefone.Text + "-";
+                        txtTelefone.SelectionStart = txtTelefone.Text.Length;
+                        break;
+                }
             }
         }
     }

@@ -32,11 +32,11 @@
             btnRegistrar = new Util.BtnRedondo();
             txtVagasMoto = new TextBox();
             txtVagasCarro = new TextBox();
-            txtHoraSaida = new MaskedTextBox();
-            txtDataSaida = new MaskedTextBox();
             txtVeiculo = new TextBox();
             txtPlaca = new TextBox();
             iconFundo = new PictureBox();
+            txtData = new TextBox();
+            txtHora = new TextBox();
             ((System.ComponentModel.ISupportInitialize)iconFundo).BeginInit();
             SuspendLayout();
             // 
@@ -79,32 +79,6 @@
             txtVagasCarro.Size = new Size(64, 26);
             txtVagasCarro.TabIndex = 13;
             // 
-            // txtHoraSaida
-            // 
-            txtHoraSaida.BackColor = Color.FromArgb(204, 203, 205);
-            txtHoraSaida.BorderStyle = BorderStyle.None;
-            txtHoraSaida.Font = new Font("Segoe UI", 18F);
-            txtHoraSaida.ForeColor = Color.FromArgb(64, 64, 64);
-            txtHoraSaida.Location = new Point(340, 323);
-            txtHoraSaida.Mask = "00:00";
-            txtHoraSaida.Name = "txtHoraSaida";
-            txtHoraSaida.Size = new Size(174, 32);
-            txtHoraSaida.TabIndex = 12;
-            txtHoraSaida.ValidatingType = typeof(DateTime);
-            // 
-            // txtDataSaida
-            // 
-            txtDataSaida.BackColor = Color.FromArgb(204, 203, 205);
-            txtDataSaida.BorderStyle = BorderStyle.None;
-            txtDataSaida.Font = new Font("Segoe UI", 18F);
-            txtDataSaida.ForeColor = Color.FromArgb(64, 64, 64);
-            txtDataSaida.Location = new Point(65, 323);
-            txtDataSaida.Mask = "00/00/0000";
-            txtDataSaida.Name = "txtDataSaida";
-            txtDataSaida.Size = new Size(184, 32);
-            txtDataSaida.TabIndex = 11;
-            txtDataSaida.ValidatingType = typeof(DateTime);
-            // 
             // txtVeiculo
             // 
             txtVeiculo.BackColor = Color.FromArgb(204, 203, 205);
@@ -136,16 +110,40 @@
             iconFundo.TabIndex = 8;
             iconFundo.TabStop = false;
             // 
+            // txtData
+            // 
+            txtData.BackColor = Color.FromArgb(204, 203, 205);
+            txtData.BorderStyle = BorderStyle.None;
+            txtData.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtData.Location = new Point(78, 323);
+            txtData.MaxLength = 10;
+            txtData.Name = "txtData";
+            txtData.Size = new Size(161, 32);
+            txtData.TabIndex = 16;
+            txtData.KeyPress += txtData_KeyPress;
+            // 
+            // txtHora
+            // 
+            txtHora.BackColor = Color.FromArgb(204, 203, 205);
+            txtHora.BorderStyle = BorderStyle.None;
+            txtHora.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtHora.Location = new Point(347, 322);
+            txtHora.MaxLength = 5;
+            txtHora.Name = "txtHora";
+            txtHora.Size = new Size(161, 32);
+            txtHora.TabIndex = 17;
+            txtHora.KeyPress += txtHora_KeyPress;
+            // 
             // SaidaVeiculoView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(573, 548);
+            Controls.Add(txtHora);
+            Controls.Add(txtData);
             Controls.Add(btnRegistrar);
             Controls.Add(txtVagasMoto);
             Controls.Add(txtVagasCarro);
-            Controls.Add(txtHoraSaida);
-            Controls.Add(txtDataSaida);
             Controls.Add(txtVeiculo);
             Controls.Add(txtPlaca);
             Controls.Add(iconFundo);
@@ -165,10 +163,10 @@
         private Util.BtnRedondo btnRegistrar;
         private TextBox txtVagasMoto;
         private TextBox txtVagasCarro;
-        private MaskedTextBox txtHoraSaida;
-        private MaskedTextBox txtDataSaida;
         private TextBox txtVeiculo;
         private TextBox txtPlaca;
         private PictureBox iconFundo;
+        private TextBox txtData;
+        private TextBox txtHora;
     }
 }

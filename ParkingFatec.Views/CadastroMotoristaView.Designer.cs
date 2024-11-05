@@ -34,10 +34,10 @@
             txtIdade = new TextBox();
             txtEmail = new TextBox();
             boxTipoMotorista = new Util.RJComboBox();
-            txtCPF = new MaskedTextBox();
-            txtTelefone = new MaskedTextBox();
             txtCNH = new TextBox();
             btnCadastrar = new Util.BtnRedondo();
+            txtCPF = new TextBox();
+            txtTelefone = new TextBox();
             ((System.ComponentModel.ISupportInitialize)iconFundo).BeginInit();
             SuspendLayout();
             // 
@@ -87,7 +87,7 @@
             txtEmail.Location = new Point(72, 186);
             txtEmail.MaxLength = 50;
             txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderText = "@fatec.sp.gov.br";
+            txtEmail.PlaceholderText = "E-mail...";
             txtEmail.Size = new Size(328, 32);
             txtEmail.TabIndex = 3;
             txtEmail.KeyPress += txtEmail_KeyPress;
@@ -111,32 +111,6 @@
             boxTipoMotorista.TabIndex = 7;
             boxTipoMotorista.Texts = "Escolha...";
             // 
-            // txtCPF
-            // 
-            txtCPF.BackColor = Color.FromArgb(204, 203, 205);
-            txtCPF.BorderStyle = BorderStyle.None;
-            txtCPF.Font = new Font("Segoe UI", 18F);
-            txtCPF.ForeColor = Color.FromArgb(64, 64, 64);
-            txtCPF.Location = new Point(396, 302);
-            txtCPF.Mask = "000.000.999-99";
-            txtCPF.Name = "txtCPF";
-            txtCPF.Size = new Size(161, 32);
-            txtCPF.TabIndex = 9;
-            txtCPF.KeyPress += txtCPF_KeyPress;
-            // 
-            // txtTelefone
-            // 
-            txtTelefone.BackColor = Color.FromArgb(204, 203, 205);
-            txtTelefone.BorderStyle = BorderStyle.None;
-            txtTelefone.Font = new Font("Segoe UI", 18F);
-            txtTelefone.ForeColor = Color.FromArgb(64, 64, 64);
-            txtTelefone.Location = new Point(77, 416);
-            txtTelefone.Mask = "(99) 00000-0000";
-            txtTelefone.Name = "txtTelefone";
-            txtTelefone.Size = new Size(270, 32);
-            txtTelefone.TabIndex = 10;
-            txtTelefone.KeyPress += txtTelefone_KeyPress;
-            // 
             // txtCNH
             // 
             txtCNH.BackColor = Color.FromArgb(204, 203, 205);
@@ -144,6 +118,7 @@
             txtCNH.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCNH.ForeColor = Color.FromArgb(64, 64, 64);
             txtCNH.Location = new Point(73, 301);
+            txtCNH.MaxLength = 11;
             txtCNH.Name = "txtCNH";
             txtCNH.PlaceholderText = "CNH...";
             txtCNH.Size = new Size(219, 32);
@@ -169,15 +144,41 @@
             btnCadastrar.TextColor = Color.White;
             btnCadastrar.UseVisualStyleBackColor = false;
             // 
+            // txtCPF
+            // 
+            txtCPF.BackColor = Color.FromArgb(204, 203, 205);
+            txtCPF.BorderStyle = BorderStyle.None;
+            txtCPF.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtCPF.Location = new Point(391, 302);
+            txtCPF.MaxLength = 14;
+            txtCPF.Name = "txtCPF";
+            txtCPF.PlaceholderText = "CPF...";
+            txtCPF.Size = new Size(237, 32);
+            txtCPF.TabIndex = 17;
+            txtCPF.KeyPress += txtCPF_KeyPress;
+            // 
+            // txtTelefone
+            // 
+            txtTelefone.BackColor = Color.FromArgb(204, 203, 205);
+            txtTelefone.BorderStyle = BorderStyle.None;
+            txtTelefone.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTelefone.Location = new Point(78, 416);
+            txtTelefone.MaxLength = 14;
+            txtTelefone.Name = "txtTelefone";
+            txtTelefone.PlaceholderText = "Telefone...";
+            txtTelefone.Size = new Size(272, 32);
+            txtTelefone.TabIndex = 18;
+            txtTelefone.KeyPress += txtTelefone_KeyPress;
+            // 
             // CadastroMotoristaView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 590);
-            Controls.Add(btnCadastrar);
-            Controls.Add(txtCNH);
             Controls.Add(txtTelefone);
             Controls.Add(txtCPF);
+            Controls.Add(btnCadastrar);
+            Controls.Add(txtCNH);
             Controls.Add(boxTipoMotorista);
             Controls.Add(txtEmail);
             Controls.Add(txtIdade);
@@ -201,9 +202,9 @@
         private TextBox txtIdade;
         private TextBox txtEmail;
         private Util.RJComboBox boxTipoMotorista;
-        private MaskedTextBox txtCPF;
-        private MaskedTextBox txtTelefone;
         private TextBox txtCNH;
         private Util.BtnRedondo btnCadastrar;
+        private TextBox txtCPF;
+        private TextBox txtTelefone;
     }
 }
