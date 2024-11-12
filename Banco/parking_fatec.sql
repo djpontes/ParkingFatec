@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/10/2024 às 23:49
+-- Tempo de geração: 12/11/2024 às 23:38
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -36,20 +36,31 @@ CREATE TABLE `estacionamento` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pessoas`
+-- Estrutura para tabela `motoristas`
 --
 
-CREATE TABLE `pessoas` (
+CREATE TABLE `motoristas` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
-  `idade` varchar(3) NOT NULL,
   `email` varchar(50) NOT NULL,
   `cnh` varchar(11) NOT NULL,
-  `cpf` varchar(14) NOT NULL,
+  `ra_rm` varchar(14) DEFAULT NULL,
   `telefone` varchar(14) NOT NULL,
   `tipo` varchar(12) NOT NULL,
   `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `motoristas`
+--
+
+INSERT INTO `motoristas` (`id`, `nome`, `email`, `cnh`, `ra_rm`, `telefone`, `tipo`, `usuarios_id`) VALUES
+(1, 'Milk', 'milk@gmail.com', '11111111111', '1111111111111', '(11)11111-1111', '1', 1),
+(2, 'Love', 'love@gmail.com', '22222222222', '', '(22)22222-2222', '2', 1),
+(3, 'Film', 'film@gmail.com', '33333333333', '3333333333333', '(33)33333-3333', '0', 1),
+(4, 'Fay', 'fay@fatec.sp.gov.br', '55555555555', '5555555555555', '(55)55555-5555', '0', 1),
+(5, 'May', 'may@fatec.sp.gov.br', '66666666666', '6666666666666', '(66)66666-6666', '1', 1),
+(6, 'Orm', 'orm@gmail.com', '77777777777', '6666666666666', '(77)77777-7777', '2', 1);
 
 -- --------------------------------------------------------
 
@@ -85,7 +96,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `nivel_acesso`) VALUES
-(1, 'Eduarda Pontes', 'eduarda.pontes@fatec.sp.gov.br', 'ShNLFee7', 0);
+(1, 'Eduarda Pontes', 'eduarda.pontes@fatec.sp.gov.br', '1234', 0);
 
 -- --------------------------------------------------------
 
@@ -110,11 +121,17 @@ CREATE TABLE `veiculos` (
   `placa` varchar(8) NOT NULL,
   `tipo` varchar(6) NOT NULL,
   `modelo` varchar(30) NOT NULL,
-  `marca` varchar(30) NOT NULL,
   `cor` varchar(15) NOT NULL,
-  `pessoas_id` int(11) NOT NULL,
+  `motoristas_id` int(11) NOT NULL,
   `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `veiculos`
+--
+
+INSERT INTO `veiculos` (`id`, `placa`, `tipo`, `modelo`, `cor`, `motoristas_id`, `usuarios_id`) VALUES
+(1, '11111111', 'Moto', 'Honda 150', 'Preta', 1, 1);
 
 --
 -- Índices para tabelas despejadas
@@ -127,12 +144,11 @@ ALTER TABLE `estacionamento`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `pessoas`
+-- Índices de tabela `motoristas`
 --
-ALTER TABLE `pessoas`
+ALTER TABLE `motoristas`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `cnh` (`cnh`),
-  ADD UNIQUE KEY `cpf` (`cpf`),
   ADD KEY `usuarios_id` (`usuarios_id`);
 
 --
@@ -163,7 +179,7 @@ ALTER TABLE `usuarios_registros`
 ALTER TABLE `veiculos`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `placa` (`placa`),
-  ADD KEY `pessoas_id` (`pessoas_id`),
+  ADD KEY `motoristas_id` (`motoristas_id`),
   ADD KEY `usuarios_id` (`usuarios_id`);
 
 --
@@ -177,10 +193,10 @@ ALTER TABLE `estacionamento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `pessoas`
+-- AUTO_INCREMENT de tabela `motoristas`
 --
-ALTER TABLE `pessoas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `motoristas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `registros`
@@ -204,17 +220,17 @@ ALTER TABLE `usuarios_registros`
 -- AUTO_INCREMENT de tabela `veiculos`
 --
 ALTER TABLE `veiculos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para tabelas despejadas
 --
 
 --
--- Restrições para tabelas `pessoas`
+-- Restrições para tabelas `motoristas`
 --
-ALTER TABLE `pessoas`
-  ADD CONSTRAINT `pessoas_ibfk_1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`);
+ALTER TABLE `motoristas`
+  ADD CONSTRAINT `motoristas_ibfk_1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`);
 
 --
 -- Restrições para tabelas `registros`
@@ -233,7 +249,7 @@ ALTER TABLE `usuarios_registros`
 -- Restrições para tabelas `veiculos`
 --
 ALTER TABLE `veiculos`
-  ADD CONSTRAINT `veiculos_ibfk_1` FOREIGN KEY (`pessoas_id`) REFERENCES `pessoas` (`id`),
+  ADD CONSTRAINT `veiculos_ibfk_1` FOREIGN KEY (`motoristas_id`) REFERENCES `motoristas` (`id`),
   ADD CONSTRAINT `veiculos_ibfk_2` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
