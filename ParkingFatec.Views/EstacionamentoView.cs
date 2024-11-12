@@ -20,13 +20,11 @@ namespace ParkingFatec.Views
         public EstacionamentoView()
         {
             InitializeComponent();
-            estacionamento = estacionamentoDAO.ObterDadosRegistro(1); // Atribui o resultado à variável
+            estacionamento = estacionamentoDAO.obterDadosEstacionamento(1);
             txtMoto.Text = estacionamento.VagaMoto.ToString();
             txtCarro.Text = estacionamento.VagaCarro.ToString();
         
         }
-    
-
 
         private void txtMoto_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -51,19 +49,18 @@ namespace ParkingFatec.Views
                 MessageBox.Show("Ops, há campo(s) vazio(s). Por favor, preencha-os e tente novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             } 
 
-            //converter para inteiro
             estacionamento.VagaMoto = int.Parse(txtMoto.Text);
             estacionamento.VagaCarro = int.Parse(txtCarro.Text);
 
 
-            if (!estacionamentoDAO.ExisteRegistro())
+            if (!estacionamentoDAO.existeEstacionamento())
             {
-                estacionamentoDAO.InserirRegistro(estacionamento);
+                estacionamentoDAO.inserirEstacionamento(estacionamento);
                 MessageBox.Show("Vagas registradas com sucesso", "Vagas Disponiveis", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                estacionamentoDAO.alterarRegistro(estacionamento);
+                estacionamentoDAO.alterarEstacionamento(estacionamento);
                 MessageBox.Show("Vagas registradas com sucesso", "Vagas Disponiveis", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

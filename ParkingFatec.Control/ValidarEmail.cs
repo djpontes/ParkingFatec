@@ -1,16 +1,25 @@
-﻿namespace ParkingFatec.Control
+﻿using System;
+using System.Linq;
+
+namespace ParkingFatec.Control
 {
     public static class ValidarEmail
     {
+        private static readonly string[] DominiosPermitidos =
+        {
+            "@gmail.com", "@outlook.com", "@hotmail.com", "@yahoo.com", "@fatec.sp.gov.br"
+        };
+
         public static bool validarEmail(string email)
         {
             try
             {
-                // Verifica o formato geral do email
+                // ve o formato do email
                 var enderecoEmail = new System.Net.Mail.MailAddress(email);
 
-                // Adiciona verificação extra para garantir que o domínio seja '@gmail.com'
-                return enderecoEmail.Address == email && email.EndsWith("@fatec.sp.gov.br");
+                // ve se o dominio termina com algum dos permitidos
+                return enderecoEmail.Address == email &&
+                       DominiosPermitidos.Any(dominio => email.EndsWith(dominio, StringComparison.OrdinalIgnoreCase));
             }
             catch
             {

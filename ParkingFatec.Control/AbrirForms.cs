@@ -12,7 +12,7 @@ public class AbrirForms
         // baixa mais a janela
         int offsetY = 35; 
 
-        // centraliza a janela 
+        // centraliza a janela manualmente
         form.Location = new Point(
             mainForm.Location.X + panel.Location.X + (panel.Width - form.Width) / 2,
             mainForm.Location.Y + panel.Location.Y + (panel.Height - form.Height) / 2 + offsetY

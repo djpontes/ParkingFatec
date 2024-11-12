@@ -20,6 +20,7 @@ namespace ParkingFatec.Views
             InitializeComponent();
             esconderPanel();
             this.usuarios = usuarios;
+           
         }
 
         private void esconderPanel()
@@ -151,7 +152,7 @@ namespace ParkingFatec.Views
         private void lblMotoristaFuncio_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
-            CadastroMotoristaView cadastroMotoristaView = new CadastroMotoristaView();
+            CadastroMotoristaView cadastroMotoristaView = new CadastroMotoristaView(usuarios, this);
             AbrirForms abrir = new AbrirForms();
             abrir.abrirForms(this, cadastroMotoristaView, panelForms);
         }
@@ -159,7 +160,7 @@ namespace ParkingFatec.Views
         private void lblVeiculosFuncio_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
-            CadastroVeiculoView cadastroVeiculoView = new CadastroVeiculoView();
+            CadastroVeiculoView cadastroVeiculoView = new CadastroVeiculoView(usuarios, this);
             AbrirForms abrir = new AbrirForms();
             abrir.abrirForms(this, cadastroVeiculoView, panelForms);
         }
@@ -175,7 +176,7 @@ namespace ParkingFatec.Views
         private void lblMotorista_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
-            CadastroMotoristaView cadastroMotoristaView = new CadastroMotoristaView();
+            CadastroMotoristaView cadastroMotoristaView = new CadastroMotoristaView(usuarios, this);
             AbrirForms abrir = new AbrirForms();
             abrir.abrirForms(this, cadastroMotoristaView, panelForms);
         }
@@ -183,7 +184,7 @@ namespace ParkingFatec.Views
         private void lblVeiculos_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
-            CadastroVeiculoView cadastroVeiculoView = new CadastroVeiculoView();
+            CadastroVeiculoView cadastroVeiculoView = new CadastroVeiculoView(usuarios, this);
             AbrirForms abrir = new AbrirForms();
             abrir.abrirForms(this, cadastroVeiculoView, panelForms);
         }

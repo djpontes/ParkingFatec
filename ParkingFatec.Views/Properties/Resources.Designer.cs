@@ -93,6 +93,16 @@ namespace ParkingFatec.Views.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_Motorista {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro Motorista", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cadastro_Pessoa {
             get {
                 object obj = ResourceManager.GetObject("Cadastro Pessoa", resourceCulture);
@@ -106,6 +116,36 @@ namespace ParkingFatec.Views.Properties {
         internal static System.Drawing.Bitmap Cadastro_Veiculo {
             get {
                 object obj = ResourceManager.GetObject("Cadastro Veiculo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_Veiculo1 {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro Veiculo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_Veiculo2 {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro Veiculo2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_Veiculo3 {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro Veiculo3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

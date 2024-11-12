@@ -26,7 +26,7 @@ namespace ParkingFatec.Views
 
         private void primeiroAcesso()
         {
-            if (!usuarioDAO.ExisteUsuario())
+            if (!usuarioDAO.existeUsuario())
             {
                 lblPrimeiroAcesso.Visible = true;
                 btnCadastrarAdmin.Visible = true;
@@ -62,12 +62,10 @@ namespace ParkingFatec.Views
                 usuarios.Email = txtEmail.Text;
                 usuarios.Senha = txtSenha.Text;
 
-                if (usuarioDAO.AutenticarUsuario(usuarios))
+                if (usuarioDAO.autenticarUsuario(usuarios))
                 {
-                    //buscando os dados do usuario
-                    usuarios = usuarioDAO.ObterDadosUsuario(usuarios.Email);
+                    usuarios = usuarioDAO.obterDadosUsuario(usuarios.Email);
 
-                    //passando o objeto usuario com os dados de qm ta logando
                     InicioView inicioView = new InicioView(usuarios);
                     inicioView.Show();
                     this.Hide();

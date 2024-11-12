@@ -219,6 +219,8 @@ namespace ParkingFatec.Views.Util
             set { cmbList.ValueMember = value; }
         }
 
+        public EventHandler SelectedIndexChanged { get; internal set; }
+
         //Events
         public event EventHandler OnSelectedIndexChanged;//Default event
 

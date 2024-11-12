@@ -85,7 +85,7 @@ namespace ParkingFatec.Views
             {
                 MessageBox.Show("Ops, há campo(s) vazio(s). Por favor, preencha-os e tente novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (ValidarEmail.validarEmail(txtEmail.Text))
+            else if (ValidarEmailFatec.validarEmailFatec(txtEmail.Text))
             {
                 string email = txtEmail.Text;
                 string nome = txtNome.Text;

@@ -11,21 +11,21 @@ namespace ParkingFatec.Control
     {
         ConexaoDAO conn = new ConexaoDAO();
 
-        public void EnviarNovaSenha(string email, Form EsqueceuSenhaForm)
+        public void enviarNovaSenha(string email, Form EsqueceuSenhaForm)
         { 
-            if (!EmailExiste(email))
+            if (!emailExiste(email))
             {
                 MessageBox.Show("E-mail não encontrado. Por favor, verifique se você digitou corretamente.");
                 return;
             }
 
-            string novaSenha = GerarSenhaAleatoria(8); 
+            string novaSenha = gerarSenhaAleatoria(8); 
 
-            bool senhaAtualizada = AtualizarSenha(email, novaSenha);
+            bool senhaAtualizada = atualizarSenha(email, novaSenha);
 
             if (senhaAtualizada)
             {
-                EnviarEmail(email, novaSenha);
+                enviarEmail(email, novaSenha);
                 MessageBox.Show("A nova senha foi enviada para o seu e-mail, não se esqueça de chegar seu spam e lixeira.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 EsqueceuSenhaForm.Close();
             }
@@ -35,7 +35,7 @@ namespace ParkingFatec.Control
             }
         }
 
-        private bool EmailExiste(string email)
+        private bool emailExiste(string email)
         {
             using (MySqlConnection conexao = conn.GetConnection())
             {
@@ -49,7 +49,7 @@ namespace ParkingFatec.Control
             }
         }
 
-        private string GerarSenhaAleatoria(int tamanho)
+        private string gerarSenhaAleatoria(int tamanho)
         {
             const string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             StringBuilder senha = new StringBuilder();
@@ -63,7 +63,7 @@ namespace ParkingFatec.Control
             return senha.ToString();
         }
 
-        private bool AtualizarSenha(string email, string novaSenha)
+        private bool atualizarSenha(string email, string novaSenha)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace ParkingFatec.Control
             }
         }
 
-        private void EnviarEmail(string email, string novaSenha)
+        private void enviarEmail(string email, string novaSenha)
         {
             MailMessage mail = new MailMessage("parkingfatec@gmail.com", email)
             {

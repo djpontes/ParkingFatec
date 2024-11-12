@@ -78,18 +78,17 @@ namespace ParkingFatec.Views
 
         private void btnCadastrar_MouseClick(object sender, MouseEventArgs e)
         {
-            // Verifica se os campos obrigatórios estão preenchidos
             if (string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtSenha.Text) || string.IsNullOrWhiteSpace(txtNome.Text) || boxNivelAcesso.SelectedIndex == -1)
             {
                 MessageBox.Show("Ops, há campo(s) vazio(s). Por favor, preencha-os e tente novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            } else if (ValidarEmail.validarEmail(txtEmail.Text)){
+            } else if (ValidarEmailFatec.validarEmailFatec(txtEmail.Text)){
     
                 usuarios.Nome = txtNome.Text;
                 usuarios.Email = txtEmail.Text;
                 usuarios.Senha = txtSenha.Text;
                 usuarios.NivelAcesso = boxNivelAcesso.SelectedIndex;
 
-                usuarioDAO.InserirUsuario(usuarios);
+                usuarioDAO.inserirUsuario(usuarios);
 
                 MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoginView loginView = new LoginView(usuarios);

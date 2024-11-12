@@ -131,6 +131,7 @@
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.TextColor = Color.White;
             btnCadastrar.UseVisualStyleBackColor = false;
+            btnCadastrar.MouseClick += btnCadastrar_MouseClick;
             // 
             // boxNivelAcesso
             // 
@@ -141,6 +142,7 @@
             boxNivelAcesso.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxNivelAcesso.ForeColor = Color.FromArgb(64, 64, 64);
             boxNivelAcesso.IconColor = Color.FromArgb(105, 99, 99);
+            boxNivelAcesso.Items.AddRange(new object[] { "Administrador", "Funcionario" });
             boxNivelAcesso.ListBackColor = Color.FromArgb(204, 203, 205);
             boxNivelAcesso.ListTextColor = Color.FromArgb(64, 64, 64);
             boxNivelAcesso.Location = new Point(61, 438);
