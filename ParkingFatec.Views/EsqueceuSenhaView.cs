@@ -29,7 +29,7 @@ namespace ParkingFatec.Views
             } else {
                  usuarios.Email = txtEmail.Text;
 
-                email.EnviarNovaSenha(txtEmail.Text, this);
+                email.enviarNovaSenha(txtEmail.Text, this);
             }
         }
 
@@ -38,7 +38,7 @@ namespace ParkingFatec.Views
             if ((e.KeyChar >= 32 && e.KeyChar <= 44) || e.KeyChar == 47 || (e.KeyChar >= 58 && e.KeyChar <= 63) ||
                 (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
             {
-                e.Handled = true; // bloquea o caractere
+                e.Handled = true;
             }
         }
     }

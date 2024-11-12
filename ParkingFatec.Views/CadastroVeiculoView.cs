@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ParkingFatec.Control;
+using ParkingFatec.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,29 @@ namespace ParkingFatec.Views
 {
     public partial class CadastroVeiculoView : Form
     {
-        public CadastroVeiculoView()
+        Motoristas motoristas = new Motoristas();
+        MotoristasDAO motoristasDAO = new MotoristasDAO();
+        Usuarios usuarios = new Usuarios();
+        Veiculo veiculo = new Veiculo();
+        VeiculoDAO veiculoDAO = new VeiculoDAO();
+        private InicioView inicioView;
+
+
+        public CadastroVeiculoView(Usuarios usuarios, InicioView inicioView)
         {
             InitializeComponent();
+            this.inicioView = inicioView;
+            this.usuarios = usuarios;
+            this.veiculo = veiculo;
+        }
+
+        private void LimparCampos()
+        {
+            txtCNH.Clear();
+            txtCor.Clear();
+            txtModelo.Clear();
+            boxTipoVeiculo.SelectedIndex = -1;
+            txtPlaca.Clear();
         }
 
         private void txtPlaca_KeyPress(object sender, KeyPressEventArgs e)
@@ -35,18 +57,58 @@ namespace ParkingFatec.Views
 
         private void txtCor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar) || char.IsDigit (e.KeyChar))
+            if (char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar) || char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
         }
 
-        private void txtMotorista_KeyPress(object sender, KeyPressEventArgs e)
+
+        private void btnCadastrar_MouseClick(object sender, MouseEventArgs e)
         {
-            if (char.IsSymbol(e.KeyChar) || char.IsDigit(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            if (string.IsNullOrEmpty(txtPlaca.Text) || string.IsNullOrEmpty(txtModelo.Text) || string.IsNullOrEmpty(txtCor.Text) ||
+                string.IsNullOrEmpty(txtCNH.Text) || boxTipoVeiculo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Ops, há campo(s) vazio(s). Por favor, preencha-os e tente novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                // Define os dados do veículo
+                veiculo.Placa = txtPlaca.Text;
+                veiculo.Modelo = txtModelo.Text;
+                veiculo.Cor = txtCor.Text;
+                veiculo.Tipo = boxTipoVeiculo.SelectedItem.ToString();
+
+                // Busca o objeto Motorista com base no nome digitado
+                Motoristas motorista = motoristasDAO.obterDadosMotorista(txtCNH.Text);
+
+                if (motorista == null)
+                {
+                    MessageBox.Show("Motorista não encontrado. Verifique o nome e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                veiculo.Motoristas_id = motorista.Id;
+
+                veiculo.Usuarios_id = usuarios.Id;
+
+
+                veiculoDAO.inserirVeiculo(veiculo);
+
+                MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LimparCampos();
+            }
+        }
+
+        private void txtCNH_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSymbol(e.KeyChar) || char.IsLetter(e.KeyChar) || char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = true;
             }
         }
     }
 }
+

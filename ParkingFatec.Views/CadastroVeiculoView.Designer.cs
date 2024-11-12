@@ -29,24 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroVeiculoView));
-            iconFundo = new PictureBox();
             txtPlaca = new TextBox();
             txtModelo = new TextBox();
-            txtMotorista = new TextBox();
+            txtCNH = new TextBox();
             txtCor = new TextBox();
             boxTipoVeiculo = new Util.RJComboBox();
             btnCadastrar = new Util.BtnRedondo();
+            iconFundo = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)iconFundo).BeginInit();
             SuspendLayout();
-            // 
-            // iconFundo
-            // 
-            iconFundo.Image = Properties.Resources.Cadastro_Veiculo;
-            iconFundo.Location = new Point(0, 0);
-            iconFundo.Name = "iconFundo";
-            iconFundo.Size = new Size(700, 484);
-            iconFundo.TabIndex = 0;
-            iconFundo.TabStop = false;
             // 
             // txtPlaca
             // 
@@ -74,18 +65,18 @@
             txtModelo.TabIndex = 2;
             txtModelo.KeyPress += txtModelo_KeyPress;
             // 
-            // txtMotorista
+            // txtCNH
             // 
-            txtMotorista.BackColor = Color.FromArgb(204, 203, 205);
-            txtMotorista.BorderStyle = BorderStyle.None;
-            txtMotorista.Font = new Font("Segoe UI", 18F);
-            txtMotorista.ForeColor = Color.FromArgb(64, 64, 64);
-            txtMotorista.Location = new Point(75, 303);
-            txtMotorista.MaxLength = 50;
-            txtMotorista.Name = "txtMotorista";
-            txtMotorista.Size = new Size(275, 32);
-            txtMotorista.TabIndex = 3;
-            txtMotorista.KeyPress += txtMotorista_KeyPress;
+            txtCNH.BackColor = Color.FromArgb(204, 203, 205);
+            txtCNH.BorderStyle = BorderStyle.None;
+            txtCNH.Font = new Font("Segoe UI", 18F);
+            txtCNH.ForeColor = Color.FromArgb(64, 64, 64);
+            txtCNH.Location = new Point(75, 303);
+            txtCNH.MaxLength = 11;
+            txtCNH.Name = "txtCNH";
+            txtCNH.Size = new Size(275, 32);
+            txtCNH.TabIndex = 3;
+            txtCNH.KeyPress += txtCNH_KeyPress;
             // 
             // txtCor
             // 
@@ -109,6 +100,7 @@
             boxTipoVeiculo.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxTipoVeiculo.ForeColor = Color.FromArgb(64, 64, 64);
             boxTipoVeiculo.IconColor = Color.FromArgb(105, 99, 99);
+            boxTipoVeiculo.Items.AddRange(new object[] { "Moto", "Carro" });
             boxTipoVeiculo.ListBackColor = Color.FromArgb(230, 228, 245);
             boxTipoVeiculo.ListTextColor = Color.FromArgb(64, 64, 64);
             boxTipoVeiculo.Location = new Point(436, 70);
@@ -136,6 +128,16 @@
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.TextColor = Color.White;
             btnCadastrar.UseVisualStyleBackColor = false;
+            btnCadastrar.MouseClick += btnCadastrar_MouseClick;
+            // 
+            // iconFundo
+            // 
+            iconFundo.Image = Properties.Resources.Cadastro_Veiculo3;
+            iconFundo.Location = new Point(0, 0);
+            iconFundo.Name = "iconFundo";
+            iconFundo.Size = new Size(700, 484);
+            iconFundo.TabIndex = 0;
+            iconFundo.TabStop = false;
             // 
             // CadastroVeiculoView
             // 
@@ -145,7 +147,7 @@
             Controls.Add(btnCadastrar);
             Controls.Add(boxTipoVeiculo);
             Controls.Add(txtCor);
-            Controls.Add(txtMotorista);
+            Controls.Add(txtCNH);
             Controls.Add(txtModelo);
             Controls.Add(txtPlaca);
             Controls.Add(iconFundo);
@@ -161,13 +163,12 @@
         }
 
         #endregion
-
-        private PictureBox iconFundo;
         private TextBox txtPlaca;
         private TextBox txtModelo;
-        private TextBox txtMotorista;
+        private TextBox txtCNH;
         private TextBox txtCor;
         private Util.RJComboBox boxTipoVeiculo;
         private Util.BtnRedondo btnCadastrar;
+        private PictureBox iconFundo;
     }
 }

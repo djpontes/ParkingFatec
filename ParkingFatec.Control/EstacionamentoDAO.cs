@@ -13,7 +13,7 @@ namespace ParkingFatec.Control
         ConexaoDAO conn = new ConexaoDAO();
         Estacionamento estacionamento = new Estacionamento();
 
-        public void InserirRegistro(Estacionamento estacionamento)
+        public void inserirEstacionamento(Estacionamento estacionamento)
         {
             string sql = "INSERT INTO estacionamento (qntd_vagas_moto, qntd_vagas_carro) VALUES (@vagaMoto, @vagaCarro)";
             try
@@ -35,7 +35,7 @@ namespace ParkingFatec.Control
             }
         }
 
-        public void alterarRegistro(Estacionamento estacionamento)
+        public void alterarEstacionamento(Estacionamento estacionamento)
         {
             string sql = "UPDATE estacionamento SET qntd_vagas_moto = @vagaMoto, qntd_vagas_carro = @vagaCarro";
             try
@@ -58,7 +58,7 @@ namespace ParkingFatec.Control
 
         }
 
-        public bool ExisteRegistro()
+        public bool existeEstacionamento()
         {
             string sql = "SELECT COUNT(*) FROM estacionamento"; // Conta o número total de registros na tabela
             try
@@ -78,7 +78,7 @@ namespace ParkingFatec.Control
             }
         }
 
-        public Estacionamento ObterDadosRegistro(int id)
+        public Estacionamento obterDadosEstacionamento(int id)
         {
             Estacionamento estacionamento = new Estacionamento();
             string sql = "SELECT id, qntd_vagas_moto, qntd_vagas_carro FROM estacionamento WHERE id = @Id";

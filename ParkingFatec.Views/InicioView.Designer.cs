@@ -178,7 +178,7 @@
             btnSair.ForeColor = Color.FromArgb(64, 64, 64);
             btnSair.Image = (Image)resources.GetObject("btnSair.Image");
             btnSair.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSair.Location = new Point(1115, 0);
+            btnSair.Location = new Point(1115, -1);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(96, 61);
             btnSair.TabIndex = 7;

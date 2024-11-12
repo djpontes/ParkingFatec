@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using ParkingFatec.Model;
 
 namespace ParkingFatec.Control
@@ -12,7 +7,7 @@ namespace ParkingFatec.Control
     {
         ConexaoDAO conn = new ConexaoDAO();
         Usuarios usuarios = new Usuarios();
-        public void InserirUsuario(Usuarios usuarios)
+        public void inserirUsuario(Usuarios usuarios)
         {
             string sql = "INSERT INTO usuarios (nome, email, senha, nivel_acesso) VALUES (@nome, @email, @senha, @nivelAcesso)";
             try
@@ -61,7 +56,7 @@ namespace ParkingFatec.Control
 
         }
 
-        public bool AutenticarUsuario(Usuarios usuarios)
+        public bool autenticarUsuario(Usuarios usuarios)
         {
             string sql = "SELECT * FROM usuarios WHERE email = @email AND senha = @senha";
             try
@@ -85,7 +80,7 @@ namespace ParkingFatec.Control
             }
         }
 
-        public bool ExisteUsuario()
+        public bool existeUsuario()
         {
             string sql = "SELECT COUNT(*) FROM usuarios"; // Conta o número total de registros na tabela
             try
@@ -105,7 +100,7 @@ namespace ParkingFatec.Control
             }
         }
 
-        public Usuarios ObterDadosUsuario(string email)
+        public Usuarios obterDadosUsuario(string email)
         {
             Usuarios usuario = new Usuarios();
             string sql = "SELECT id, nome, email, senha, nivel_acesso FROM usuarios WHERE email = @Email";
