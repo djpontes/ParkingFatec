@@ -38,5 +38,45 @@ namespace ParkingFatec.Control
                 MessageBox.Show("Erro ao cadastrar: " + ex.Message + "\n" + ex.InnerException?.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        public Motoristas obterDadosVeiculos(string placa)
+        {
+            Motoristas motorista = null;
+            string sql = "SELECT id, placa, tipo, modelo, cor, motoristas_id, usuarios_id FROM veiculos WHERE placa = @placa";
+
+            try
+            {
+                using (MySqlConnection conexao = conn.GetConnection())
+                {
+                    MySqlCommand cmd = new MySqlCommand(sql, conexao);
+                    cmd.Parameters.AddWithValue("@placa", placa);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            motorista = new Motoristas
+                            {
+                                Id = reader.GetInt32("id"),
+                                Nome = reader.GetString("nome"),
+                                Email = reader.GetString("email"),
+                                Cnh = reader.GetString("cnh"),
+                                Ra_rm = reader.GetString("ra_rm"),
+                                Telefone = reader.GetString("telefone"),
+                                Tipo = reader.GetInt32("tipo"),
+                                Usuarios_id = reader.GetInt32("usuarios_id")
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter dados do usuário: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return motorista;
+        }
     }
 }

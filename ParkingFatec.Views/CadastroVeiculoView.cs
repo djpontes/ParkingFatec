@@ -27,7 +27,6 @@ namespace ParkingFatec.Views
             InitializeComponent();
             this.inicioView = inicioView;
             this.usuarios = usuarios;
-            this.veiculo = veiculo;
         }
 
         private void LimparCampos()

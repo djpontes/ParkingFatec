@@ -73,6 +73,26 @@ namespace ParkingFatec.Views.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_EntradaSaida1 {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro EntradaSaida1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cadastro_EntradaSaida2 {
+            get {
+                object obj = ResourceManager.GetObject("Cadastro EntradaSaida2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cadastro_Funcionario {
             get {
                 object obj = ResourceManager.GetObject("Cadastro Funcionario", resourceCulture);

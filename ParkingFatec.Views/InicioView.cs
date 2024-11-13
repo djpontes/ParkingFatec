@@ -120,7 +120,7 @@ namespace ParkingFatec.Views
         private void btnEntradas_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
-            EntradaVeiculosView entradaVeiculosView = new EntradaVeiculosView();
+            EntradaVeiculosView entradaVeiculosView = new EntradaVeiculosView(usuarios, this);
             AbrirForms abrir = new AbrirForms();
             abrir.abrirForms(this, entradaVeiculosView, panelForms);
         }
