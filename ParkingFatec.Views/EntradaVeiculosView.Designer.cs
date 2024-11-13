@@ -106,6 +106,7 @@
             txtPlaca.Name = "txtPlaca";
             txtPlaca.Size = new Size(449, 32);
             txtPlaca.TabIndex = 17;
+            txtPlaca.TextChanged += txtPlaca_TextChanged;
             txtPlaca.KeyPress += txtPlaca_KeyPress;
             // 
             // iconFundo

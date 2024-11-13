@@ -40,9 +40,9 @@ namespace ParkingFatec.Control
         }
 
 
-        public Motoristas obterDadosVeiculos(string placa)
+        public Veiculo obterDadosVeiculos(string placa)
         {
-            Motoristas motorista = null;
+            Veiculo veiculo = null;
             string sql = "SELECT id, placa, tipo, modelo, cor, motoristas_id, usuarios_id FROM veiculos WHERE placa = @placa";
 
             try
@@ -56,15 +56,14 @@ namespace ParkingFatec.Control
                     {
                         if (reader.Read())
                         {
-                            motorista = new Motoristas
+                            veiculo = new Veiculo
                             {
                                 Id = reader.GetInt32("id"),
-                                Nome = reader.GetString("nome"),
-                                Email = reader.GetString("email"),
-                                Cnh = reader.GetString("cnh"),
-                                Ra_rm = reader.GetString("ra_rm"),
-                                Telefone = reader.GetString("telefone"),
-                                Tipo = reader.GetInt32("tipo"),
+                                Placa = reader.GetString("placa"),
+                                Tipo = reader.GetString("tipo"),
+                                Modelo = reader.GetString("modelo"),
+                                Cor = reader.GetString("cor"),
+                                Motoristas_id = reader.GetInt32("motoristas_id"),
                                 Usuarios_id = reader.GetInt32("usuarios_id")
                             };
                         }
@@ -73,10 +72,12 @@ namespace ParkingFatec.Control
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao obter dados do usuário: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao obter dados do veiculo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return motorista;
+            return veiculo;
         }
     }
+
+
 }
