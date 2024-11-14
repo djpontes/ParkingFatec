@@ -84,7 +84,7 @@ namespace ParkingFatec.Views
 
                 if (motorista == null)
                 {
-                    MessageBox.Show("Motorista não encontrado. Verifique o nome e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Motorista não encontrado. Verifique a cnh e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

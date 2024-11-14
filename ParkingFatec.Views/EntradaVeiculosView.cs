@@ -29,11 +29,18 @@ namespace ParkingFatec.Views
             this.usuarios = usuarios;
             this.inicioView = inicioView;
 
-            // Atribuição direta do estacionamento existente no banco
             this.estacionamento = estacionamentoDAO.obterDadosEstacionamento(1);
 
             txtVagasMoto.Text = estacionamento.VagaMoto.ToString();
             txtVagasCarro.Text = estacionamento.VagaCarro.ToString();
+        }
+
+        private void limparCampos()
+        {
+            txtPlaca.Clear();
+            txtVeiculo.Clear();
+            txtData.Clear();
+            txtHora.Clear();
         }
 
 
@@ -153,6 +160,8 @@ namespace ParkingFatec.Views
                 entradasDAO.inserirEntradas(entradas);
 
                 MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                limparCampos();
 
                 txtVagasMoto.Text = estacionamento.VagaMoto.ToString();
                 txtVagasCarro.Text = estacionamento.VagaCarro.ToString();
