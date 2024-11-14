@@ -58,13 +58,14 @@
             btnRegistrar.Text = "Registrar";
             btnRegistrar.TextColor = Color.White;
             btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.MouseClick += btnRegistrar_MouseClick;
             // 
             // txtVagasMoto
             // 
             txtVagasMoto.BackColor = Color.FromArgb(247, 246, 246);
             txtVagasMoto.BorderStyle = BorderStyle.None;
             txtVagasMoto.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtVagasMoto.Location = new Point(459, 371);
+            txtVagasMoto.Location = new Point(460, 372);
             txtVagasMoto.MaxLength = 3;
             txtVagasMoto.Name = "txtVagasMoto";
             txtVagasMoto.Size = new Size(56, 26);
@@ -75,7 +76,7 @@
             txtVagasCarro.BackColor = Color.FromArgb(247, 246, 246);
             txtVagasCarro.BorderStyle = BorderStyle.None;
             txtVagasCarro.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtVagasCarro.Location = new Point(186, 371);
+            txtVagasCarro.Location = new Point(187, 372);
             txtVagasCarro.MaxLength = 3;
             txtVagasCarro.Name = "txtVagasCarro";
             txtVagasCarro.Size = new Size(64, 26);
@@ -92,6 +93,7 @@
             txtVeiculo.Name = "txtVeiculo";
             txtVeiculo.Size = new Size(449, 32);
             txtVeiculo.TabIndex = 18;
+            txtVeiculo.KeyPress += txtVeiculo_KeyPress;
             // 
             // txtPlaca
             // 
@@ -104,10 +106,12 @@
             txtPlaca.Name = "txtPlaca";
             txtPlaca.Size = new Size(449, 32);
             txtPlaca.TabIndex = 17;
+            txtPlaca.TextChanged += txtPlaca_TextChanged;
+            txtPlaca.KeyPress += txtPlaca_KeyPress;
             // 
             // iconFundo
             // 
-            iconFundo.Image = Properties.Resources.Cadastro_EntradaSaida;
+            iconFundo.Image = Properties.Resources.Cadastro_EntradaSaida1;
             iconFundo.Location = new Point(0, 0);
             iconFundo.Name = "iconFundo";
             iconFundo.Size = new Size(573, 548);

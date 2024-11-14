@@ -43,6 +43,7 @@ namespace ParkingFatec.Control
                 using (MySqlConnection conexao = conn.GetConnection())
                 {
                     MySqlCommand cmd = new MySqlCommand(sql, conexao);
+                    cmd.Parameters.AddWithValue("@id", estacionamento.Id);
                     cmd.Parameters.AddWithValue("@vagaMoto", estacionamento.VagaMoto);
                     cmd.Parameters.AddWithValue("@vagaCarro", estacionamento.VagaCarro);
 
@@ -109,5 +110,8 @@ namespace ParkingFatec.Control
 
             return estacionamento;
         }
+
+        }
+
     }
-}
+

@@ -103,7 +103,7 @@
             // 
             // iconFundo
             // 
-            iconFundo.Image = Properties.Resources.Cadastro_EntradaSaida;
+            iconFundo.Image = Properties.Resources.Cadastro_EntradaSaida2;
             iconFundo.Location = new Point(0, 0);
             iconFundo.Name = "iconFundo";
             iconFundo.Size = new Size(573, 548);

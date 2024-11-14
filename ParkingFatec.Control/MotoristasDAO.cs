@@ -50,17 +50,23 @@ namespace ParkingFatec.Control
                     {
                         if (reader.Read())
                         {
+                            int tipo = reader.IsDBNull(reader.GetOrdinal("tipo")) ? 0 : reader.GetInt32("tipo");
+
                             motorista = new Motoristas
                             {
-                                Id = reader.GetInt32("id"),
-                                Nome = reader.GetString("nome"),
-                                Email = reader.GetString("email"),
-                                Cnh = reader.GetString("cnh"),
-                                Ra_rm = reader.GetString("ra_rm"),
-                                Telefone = reader.GetString("telefone"),
-                                Tipo = reader.GetInt32("tipo"),
-                                Usuarios_id = reader.GetInt32("usuarios_id")
+                                Id = reader.IsDBNull(reader.GetOrdinal("id")) ? 0 : reader.GetInt32("id"),
+                                Nome = reader.IsDBNull(reader.GetOrdinal("nome")) ? string.Empty : reader.GetString("nome"),
+                                Email = reader.IsDBNull(reader.GetOrdinal("email")) ? string.Empty : reader.GetString("email"),
+                                Cnh = reader.IsDBNull(reader.GetOrdinal("cnh")) ? string.Empty : reader.GetString("cnh"),
+                                Telefone = reader.IsDBNull(reader.GetOrdinal("telefone")) ? string.Empty : reader.GetString("telefone"),
+                                Tipo = tipo,
+                                Usuarios_id = reader.IsDBNull(reader.GetOrdinal("usuarios_id")) ? 0 : reader.GetInt32("usuarios_id"),
+                                Ra_rm = (tipo == 2) ? string.Empty : reader.IsDBNull(reader.GetOrdinal("ra_rm")) ? string.Empty : reader.GetString("ra_rm") 
                             };
+                        }
+                        else
+                        {
+                            MessageBox.Show("Motorista não encontrado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -72,6 +78,7 @@ namespace ParkingFatec.Control
 
             return motorista;
         }
+
 
 
 
