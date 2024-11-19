@@ -193,6 +193,7 @@ namespace ParkingFatec.Views
 
                 txtData.Text = dataHoraAtual.ToString("dd/MM/yyyy");
                 txtHora.Text = dataHoraAtual.ToString("HH:mm");
+
             }
         }
     }
