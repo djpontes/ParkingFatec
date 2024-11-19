@@ -18,6 +18,7 @@ namespace ParkingFatec.Views
         {
             InitializeComponent();
 
+
             listVeiculo.View = View.Details;
             listVeiculo.LabelEdit = true;
             listVeiculo.AllowColumnReorder = true;
