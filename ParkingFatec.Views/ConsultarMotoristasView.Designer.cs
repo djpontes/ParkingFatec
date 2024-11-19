@@ -32,12 +32,6 @@
             pictureBox1 = new PictureBox();
             btnPesquisar = new Util.BtnRedondo();
             listMotorista = new ListView();
-            colunaID = new ColumnHeader();
-            colunaNome = new ColumnHeader();
-            colunaEmail = new ColumnHeader();
-            colunaCNH = new ColumnHeader();
-            colunaCPF = new ColumnHeader();
-            colunaTelefone = new ColumnHeader();
             btnEditar = new Util.BtnRedondo();
             btnRelatorio = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
@@ -72,46 +66,16 @@
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.TextColor = Color.White;
             btnPesquisar.UseVisualStyleBackColor = false;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // listMotorista
             // 
-            listMotorista.Columns.AddRange(new ColumnHeader[] { colunaID, colunaNome, colunaEmail, colunaCNH, colunaCPF, colunaTelefone });
             listMotorista.Location = new Point(32, 103);
             listMotorista.Name = "listMotorista";
             listMotorista.Size = new Size(634, 405);
             listMotorista.TabIndex = 2;
             listMotorista.UseCompatibleStateImageBehavior = false;
             listMotorista.View = View.Details;
-            // 
-            // colunaID
-            // 
-            colunaID.Text = "ID";
-            colunaID.Width = 30;
-            // 
-            // colunaNome
-            // 
-            colunaNome.Text = "Nome";
-            colunaNome.Width = 150;
-            // 
-            // colunaEmail
-            // 
-            colunaEmail.Text = "E-mail";
-            colunaEmail.Width = 150;
-            // 
-            // colunaCNH
-            // 
-            colunaCNH.Text = "CNH";
-            colunaCNH.Width = 100;
-            // 
-            // colunaCPF
-            // 
-            colunaCPF.Text = "CPF";
-            colunaCPF.Width = 100;
-            // 
-            // colunaTelefone
-            // 
-            colunaTelefone.Text = "Telefone";
-            colunaTelefone.Width = 100;
             // 
             // btnEditar
             // 
@@ -169,6 +133,7 @@
             btnExcluir.Text = "Excluir";
             btnExcluir.TextColor = Color.White;
             btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // txtPesquisar
             // 
@@ -211,12 +176,6 @@
         private PictureBox pictureBox1;
         private Util.BtnRedondo btnPesquisar;
         private ListView listMotorista;
-        private ColumnHeader colunaID;
-        private ColumnHeader colunaNome;
-        private ColumnHeader colunaEmail;
-        private ColumnHeader colunaCNH;
-        private ColumnHeader colunaCPF;
-        private ColumnHeader colunaTelefone;
         private Util.BtnRedondo btnEditar;
         private Util.BtnRedondo btnRelatorio;
         private Util.BtnRedondo btnExcluir;

@@ -32,11 +32,6 @@
             pictureBox1 = new PictureBox();
             btnPesquisar = new Util.BtnRedondo();
             listVeiculo = new ListView();
-            colunaID = new ColumnHeader();
-            colunaMotorista = new ColumnHeader();
-            colunaTipo = new ColumnHeader();
-            colunaModelo = new ColumnHeader();
-            colunaCor = new ColumnHeader();
             btnEditar = new Util.BtnRedondo();
             btnRelatorio = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
@@ -71,10 +66,10 @@
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.TextColor = Color.White;
             btnPesquisar.UseVisualStyleBackColor = false;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // listVeiculo
             // 
-            listVeiculo.Columns.AddRange(new ColumnHeader[] { colunaID, colunaMotorista, colunaTipo, colunaModelo, colunaCor });
             listVeiculo.FullRowSelect = true;
             listVeiculo.Location = new Point(53, 106);
             listVeiculo.MultiSelect = false;
@@ -83,31 +78,6 @@
             listVeiculo.TabIndex = 2;
             listVeiculo.UseCompatibleStateImageBehavior = false;
             listVeiculo.View = View.Details;
-            // 
-            // colunaID
-            // 
-            colunaID.Text = "ID";
-            colunaID.Width = 40;
-            // 
-            // colunaMotorista
-            // 
-            colunaMotorista.Text = "Motorista";
-            colunaMotorista.Width = 250;
-            // 
-            // colunaTipo
-            // 
-            colunaTipo.Text = "Tipo";
-            colunaTipo.Width = 80;
-            // 
-            // colunaModelo
-            // 
-            colunaModelo.Text = "Modelo";
-            colunaModelo.Width = 140;
-            // 
-            // colunaCor
-            // 
-            colunaCor.Text = "Cor";
-            colunaCor.Width = 80;
             // 
             // btnEditar
             // 
@@ -165,6 +135,7 @@
             btnExcluir.Text = "Excluir";
             btnExcluir.TextColor = Color.White;
             btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // txtPesquisar
             // 
@@ -207,11 +178,6 @@
         private PictureBox pictureBox1;
         private Util.BtnRedondo btnPesquisar;
         private ListView listVeiculo;
-        private ColumnHeader colunaID;
-        private ColumnHeader colunaMotorista;
-        private ColumnHeader colunaTipo;
-        private ColumnHeader colunaModelo;
-        private ColumnHeader colunaCor;
         private Util.BtnRedondo btnEditar;
         private Util.BtnRedondo btnRelatorio;
         private Util.BtnRedondo btnExcluir;

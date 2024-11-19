@@ -32,9 +32,6 @@
             pictureBox1 = new PictureBox();
             btnPesquisar = new Util.BtnRedondo();
             listFuncionario = new ListView();
-            colunaID = new ColumnHeader();
-            colunaNome = new ColumnHeader();
-            colunaEmail = new ColumnHeader();
             btnEditar = new Util.BtnRedondo();
             btnRelatorio = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
@@ -69,10 +66,10 @@
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.TextColor = Color.White;
             btnPesquisar.UseVisualStyleBackColor = false;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // listFuncionario
             // 
-            listFuncionario.Columns.AddRange(new ColumnHeader[] { colunaID, colunaNome, colunaEmail });
             listFuncionario.FullRowSelect = true;
             listFuncionario.Location = new Point(62, 107);
             listFuncionario.MultiSelect = false;
@@ -81,20 +78,6 @@
             listFuncionario.TabIndex = 2;
             listFuncionario.UseCompatibleStateImageBehavior = false;
             listFuncionario.View = View.Details;
-            // 
-            // colunaID
-            // 
-            colunaID.Text = "ID";
-            // 
-            // colunaNome
-            // 
-            colunaNome.Text = "Nome";
-            colunaNome.Width = 250;
-            // 
-            // colunaEmail
-            // 
-            colunaEmail.Text = "E-mail";
-            colunaEmail.Width = 250;
             // 
             // btnEditar
             // 
@@ -152,6 +135,7 @@
             btnExcluir.Text = "Excluir";
             btnExcluir.TextColor = Color.White;
             btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // txtPesquisar
             // 
@@ -194,9 +178,6 @@
         private PictureBox pictureBox1;
         private Util.BtnRedondo btnPesquisar;
         private ListView listFuncionario;
-        private ColumnHeader colunaID;
-        private ColumnHeader colunaNome;
-        private ColumnHeader colunaEmail;
         private Util.BtnRedondo btnEditar;
         private Util.BtnRedondo btnRelatorio;
         private Util.BtnRedondo btnExcluir;
