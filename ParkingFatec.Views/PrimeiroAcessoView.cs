@@ -86,7 +86,7 @@ namespace ParkingFatec.Views
                 usuarios.Nome = txtNome.Text;
                 usuarios.Email = txtEmail.Text;
                 usuarios.Senha = txtSenha.Text;
-                usuarios.NivelAcesso = boxNivelAcesso.SelectedIndex;
+                usuarios.NivelAcesso = boxNivelAcesso.SelectedItem.ToString();
 
                 usuarioDAO.inserirUsuario(usuarios);
 

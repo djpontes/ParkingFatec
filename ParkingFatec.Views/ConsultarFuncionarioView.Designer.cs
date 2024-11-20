@@ -71,6 +71,7 @@
             // listFuncionario
             // 
             listFuncionario.FullRowSelect = true;
+            listFuncionario.LabelEdit = true;
             listFuncionario.Location = new Point(62, 107);
             listFuncionario.MultiSelect = false;
             listFuncionario.Name = "listFuncionario";

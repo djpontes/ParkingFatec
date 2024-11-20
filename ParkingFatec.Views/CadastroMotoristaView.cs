@@ -14,7 +14,6 @@ namespace ParkingFatec.Views
 {
     public partial class CadastroMotoristaView : Form
     {
-        Motoristas motoristas = new Motoristas();
         Usuarios usuarios = new Usuarios();
         MotoristasDAO motoristasDAO = new MotoristasDAO();
         private InicioView inicioView;
@@ -111,6 +110,7 @@ namespace ParkingFatec.Views
 
         private void btnCadastrar_MouseClick(object sender, MouseEventArgs e)
         {
+            Motoristas motoristas = new Motoristas();
             if (boxTipoMotorista.SelectedIndex == -1)
             {
                 MessageBox.Show("Selecione um tipo de motorista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -136,9 +136,9 @@ namespace ParkingFatec.Views
                 motoristas.Nome = txtNome.Text;
                 motoristas.Email = txtEmail.Text;
                 motoristas.Cnh = txtCNH.Text;
-                motoristas.Ra_rm = txtRa_rm.Text;
+                motoristas.Ra_rm = string.IsNullOrEmpty(txtRa_rm.Text) ? null : txtRa_rm.Text; // Ajuste para tratar o valor como null
                 motoristas.Telefone = txtTelefone.Text;
-                motoristas.Tipo = boxTipoMotorista.SelectedIndex;
+                motoristas.Tipo = boxTipoMotorista.SelectedItem.ToString();
 
                 int usuario = usuarios.Id;
                 motoristas.Usuarios_id = usuario;
@@ -166,7 +166,7 @@ namespace ParkingFatec.Views
                 motoristas.Email = txtEmail.Text;
                 motoristas.Cnh = txtCNH.Text;
                 motoristas.Telefone = txtTelefone.Text;
-                motoristas.Tipo = boxTipoMotorista.SelectedIndex;
+                motoristas.Tipo = boxTipoMotorista.SelectedItem.ToString();
 
                 int usuario = usuarios.Id;
                 motoristas.Usuarios_id = usuario;

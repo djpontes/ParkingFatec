@@ -120,7 +120,7 @@ namespace ParkingFatec.Control
                             usuario.Nome = reader.GetString("nome");
                             usuario.Email = reader.GetString("email");
                             usuario.Senha = reader.GetString("senha");
-                            usuario.NivelAcesso = reader.GetInt32("nivel_acesso");
+                            usuario.NivelAcesso = reader.GetString("nivel_acesso");
                         }
                     }
                 }

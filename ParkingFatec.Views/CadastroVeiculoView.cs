@@ -73,7 +73,6 @@ namespace ParkingFatec.Views
             }
             else
             {
-                // Define os dados do veículo
                 veiculo.Placa = txtPlaca.Text;
                 veiculo.Modelo = txtModelo.Text;
                 veiculo.Cor = txtCor.Text;

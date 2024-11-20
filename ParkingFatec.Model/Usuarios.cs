@@ -7,13 +7,13 @@ namespace ParkingFatec.Model
         private string nome;
         private string email;
         private string senha;
-        private int nivelAcesso;
+        private string nivelAcesso;
 
         public int Id { get => id; set => id = value; }
         public string Nome { get => nome; set => nome = value; }
         public string Email { get => email; set => email = value; }
         public string Senha { get => senha; set => senha = value; }
-        public int NivelAcesso { get => nivelAcesso; set => nivelAcesso = value; }
+        public string NivelAcesso { get => nivelAcesso; set => nivelAcesso = value; }
 
         public object getEmail()
         {

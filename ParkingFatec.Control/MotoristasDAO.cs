@@ -19,7 +19,7 @@ namespace ParkingFatec.Control
                     cmd.Parameters.AddWithValue("@nome", motoristas.Nome);
                     cmd.Parameters.AddWithValue("@email", motoristas.Email);
                     cmd.Parameters.AddWithValue("@cnh", motoristas.Cnh);
-                    cmd.Parameters.AddWithValue("@ra_rm", motoristas.Ra_rm);
+                    cmd.Parameters.AddWithValue("@ra_rm", motoristas.Ra_rm ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@telefone", motoristas.Telefone);
                     cmd.Parameters.AddWithValue("@tipo", motoristas.Tipo);
                     cmd.Parameters.AddWithValue("@usuarios_id", motoristas.Usuarios_id);
@@ -50,7 +50,7 @@ namespace ParkingFatec.Control
                     {
                         if (reader.Read())
                         {
-                            int tipo = reader.IsDBNull(reader.GetOrdinal("tipo")) ? 0 : reader.GetInt32("tipo");
+                            string tipo = reader.IsDBNull(reader.GetOrdinal("tipo")) ? string.Empty : reader.GetString("tipo");
 
                             motorista = new Motoristas
                             {
@@ -61,7 +61,7 @@ namespace ParkingFatec.Control
                                 Telefone = reader.IsDBNull(reader.GetOrdinal("telefone")) ? string.Empty : reader.GetString("telefone"),
                                 Tipo = tipo,
                                 Usuarios_id = reader.IsDBNull(reader.GetOrdinal("usuarios_id")) ? 0 : reader.GetInt32("usuarios_id"),
-                                Ra_rm = (tipo == 2) ? string.Empty : reader.IsDBNull(reader.GetOrdinal("ra_rm")) ? string.Empty : reader.GetString("ra_rm") 
+                                Ra_rm = (tipo == "Visitante") ? string.Empty : reader.IsDBNull(reader.GetOrdinal("ra_rm")) ? string.Empty : reader.GetString("ra_rm") 
                             };
                         }
                         else

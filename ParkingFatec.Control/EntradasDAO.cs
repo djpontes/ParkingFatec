@@ -15,7 +15,7 @@ namespace ParkingFatec.Control
 
         public void inserirEntradas(Entradas entradas)
         {
-            string sql = "INSERT INTO registros_entradas (data_entrada, horario_entrada, veiculos_id, usuarios_id) VALUES (@data_entrada, @horario_entrada, " +
+            string sql = "INSERT INTO registros (data_entrada, horario_entrada, veiculos_id, usuarios_id) VALUES (@data_entrada, @horario_entrada, " +
                 "@veiculos_id, @usuarios_id)";
             try
             {

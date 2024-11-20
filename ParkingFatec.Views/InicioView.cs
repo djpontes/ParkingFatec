@@ -50,7 +50,7 @@ namespace ParkingFatec.Views
 
         private void btnCadastros_MouseClick(object sender, MouseEventArgs e)
         {
-            if (usuarios.NivelAcesso == 0)
+            if (usuarios.NivelAcesso == "Administrador")
             {
                 if (panelCadastrarAdmin.Visible)
                 {
@@ -81,7 +81,7 @@ namespace ParkingFatec.Views
 
         private void btnConsultar_MouseClick(object sender, MouseEventArgs e)
         {
-            if (usuarios.NivelAcesso == 0)
+            if (usuarios.NivelAcesso == "Administrador")
             {
                 if (panelConsultarAdmin.Visible)
                 {
