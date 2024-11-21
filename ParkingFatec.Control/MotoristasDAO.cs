@@ -79,7 +79,29 @@ namespace ParkingFatec.Control
             return motorista;
         }
 
+        public void alterarMotorista(Motoristas motoristas)
+        {
+            string sql = "UPDATE motoristas SET nome = @nome, email = @email, cnh = @cnh, ra_rm = @ra_rm, telefone = @telefone WHERE id = @id";
+            try
+            {
+                using (MySqlConnection conexao = conn.GetConnection())
+                {
+                    MySqlCommand cmd = new MySqlCommand(sql, conexao);
+                    cmd.Parameters.AddWithValue("@id", motoristas.Id);
+                    cmd.Parameters.AddWithValue("@nome", motoristas.Nome);
+                    cmd.Parameters.AddWithValue("@email", motoristas.Email);
+                    cmd.Parameters.AddWithValue("@cnh", motoristas.Cnh);
+                    cmd.Parameters.AddWithValue("@ra_rm", motoristas.Ra_rm);
+                    cmd.Parameters.AddWithValue("@telefone", motoristas.Telefone);
 
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao alterar usuário: " + ex.Message);
+            }
+        }
 
 
     }

@@ -77,7 +77,29 @@ namespace ParkingFatec.Control
 
             return veiculo;
         }
+
+        public void alterarVeiculo(Veiculo veiculo)
+        {
+            string sql = "UPDATE veiculos SET placa = @placa, modelo = @modelo, cor = @cor WHERE id = @id";
+            try
+            {
+                using (MySqlConnection conexao = conn.GetConnection())
+                {
+                    MySqlCommand cmd = new MySqlCommand(sql, conexao);
+                    cmd.Parameters.AddWithValue("@id", veiculo.Id);
+                    cmd.Parameters.AddWithValue("@placa", veiculo.Placa);
+                    cmd.Parameters.AddWithValue("@modelo", veiculo.Modelo);
+                    cmd.Parameters.AddWithValue("@cor", veiculo.Cor);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao alterar usuário: " + ex.Message);
+            }
+        }
     }
 
-
+   
 }

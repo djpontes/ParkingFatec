@@ -15,6 +15,7 @@ namespace ParkingFatec.Views
 {
     public partial class ConsultarFuncionarioView : Form
     {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
         public ConsultarFuncionarioView()
         {
             InitializeComponent();
@@ -46,10 +47,10 @@ namespace ParkingFatec.Views
 
             try
             {
-                
+
                 conexao = conn.GetConnection();
 
-                string query = "SELECT id, nome, email FROM usuarios WHERE nome LIKE @termo OR email LIKE @termo";
+                string query = "SELECT id, nome, email, nivel_acesso FROM usuarios WHERE nome LIKE @termo OR email LIKE @termo OR nivel_acesso LIKE @termo";
                 MySqlCommand cmd = new MySqlCommand(query, conexao);
                 cmd.Parameters.AddWithValue("@termo", "%" + termoBusca + "%");
 
@@ -62,7 +63,8 @@ namespace ParkingFatec.Views
                     gridFuncionario.Rows.Add(
                         reader.GetInt32(0),
                         reader.GetString(1),
-                        reader.GetString(2)
+                        reader.GetString(2),
+                        reader.GetString(3)
                     );
 
                 }
@@ -73,8 +75,10 @@ namespace ParkingFatec.Views
             }
             finally
             {
-                conexao?.Close(); 
+                conexao?.Close();
             }
+
+
         }
 
         private void CarregarTodos()
@@ -86,7 +90,7 @@ namespace ParkingFatec.Views
                 ConexaoDAO conn = new ConexaoDAO();
                 conexao = conn.GetConnection();
 
-                string query = "SELECT id, nome, email FROM usuarios ORDER BY id ASC";
+                string query = "SELECT id, nome, email, nivel_acesso FROM usuarios ORDER BY id ASC";
                 MySqlCommand cmd = new MySqlCommand(query, conexao);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -95,11 +99,12 @@ namespace ParkingFatec.Views
 
                 while (reader.Read())
                 {
-                    
+
                     gridFuncionario.Rows.Add(
                         reader.GetInt32(0),
                         reader.GetString(1),
-                        reader.GetString(2)
+                        reader.GetString(2),
+                        reader.GetString(3)
                     );
                 }
             }
@@ -135,7 +140,7 @@ namespace ParkingFatec.Views
                 MySqlConnection conexao = null;
 
                 try
-                { 
+                {
                     ConexaoDAO conn = new ConexaoDAO();
                     conexao = conn.GetConnection();
 
@@ -159,5 +164,61 @@ namespace ParkingFatec.Views
                 }
             }
         }
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txtPesquisar.Text))
+            {
+
+                CarregarTodos();
+            }
+        }
+
+        private void btnEditar_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (gridFuncionario.CurrentRow != null) // Verifica se há uma linha selecionada
+            {
+                try
+                {
+                    // Recupera os dados da linha selecionada
+                    int id = Convert.ToInt32(gridFuncionario.CurrentRow.Cells["colID"].Value);
+                    string novoNome = gridFuncionario.CurrentRow.Cells["colNome"].Value?.ToString() ?? string.Empty;
+                    string novoEmail = gridFuncionario.CurrentRow.Cells["colEmail"].Value?.ToString() ?? string.Empty;
+
+                    if (string.IsNullOrWhiteSpace(novoNome) || string.IsNullOrWhiteSpace(novoEmail))
+                    {
+                        MessageBox.Show("Nome e e-mail não podem estar vazios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Cria um objeto Usuarios com os dados editados
+                    Usuarios usuarioAtualizado = new Usuarios
+                    {
+                        Id = id,
+                        Nome = novoNome,
+                        Email = novoEmail,
+                    };
+
+                    // Chama o método alterarUsuario para atualizar no banco
+                    usuarioDAO.alterarUsuario(usuarioAtualizado);
+
+                    MessageBox.Show("Usuário atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Atualiza a lista no DataGridView
+                    CarregarTodos();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao editar o usuário: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione uma linha para editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }
+

@@ -32,7 +32,6 @@
             pictureBox1 = new PictureBox();
             btnPesquisar = new Util.BtnRedondo();
             btnEditar = new Util.BtnRedondo();
-            btnRelatorio = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
             txtPesquisar = new TextBox();
             gridMotorista = new DataGridView();
@@ -86,32 +85,14 @@
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(484, 535);
+            btnEditar.Location = new Point(416, 535);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(150, 55);
             btnEditar.TabIndex = 3;
             btnEditar.Text = "Editar";
             btnEditar.TextColor = Color.White;
             btnEditar.UseVisualStyleBackColor = false;
-            // 
-            // btnRelatorio
-            // 
-            btnRelatorio.BackColor = Color.FromArgb(73, 92, 102);
-            btnRelatorio.BackgroundColor = Color.FromArgb(73, 92, 102);
-            btnRelatorio.BorderColor = Color.White;
-            btnRelatorio.BorderRadius = 30;
-            btnRelatorio.BorderSize = 3;
-            btnRelatorio.FlatAppearance.BorderSize = 0;
-            btnRelatorio.FlatStyle = FlatStyle.Flat;
-            btnRelatorio.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            btnRelatorio.ForeColor = Color.White;
-            btnRelatorio.Location = new Point(269, 535);
-            btnRelatorio.Name = "btnRelatorio";
-            btnRelatorio.Size = new Size(150, 55);
-            btnRelatorio.TabIndex = 4;
-            btnRelatorio.Text = "Relatorio";
-            btnRelatorio.TextColor = Color.White;
-            btnRelatorio.UseVisualStyleBackColor = false;
+            btnEditar.MouseClick += btnEditar_MouseClick;
             // 
             // btnExcluir
             // 
@@ -124,7 +105,7 @@
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(53, 535);
+            btnExcluir.Location = new Point(119, 535);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(150, 55);
             btnExcluir.TabIndex = 5;
@@ -144,6 +125,7 @@
             txtPesquisar.Name = "txtPesquisar";
             txtPesquisar.Size = new Size(387, 32);
             txtPesquisar.TabIndex = 6;
+            txtPesquisar.TextChanged += txtPesquisar_TextChanged;
             txtPesquisar.KeyPress += txtPesquisar_KeyPress;
             // 
             // gridMotorista
@@ -161,8 +143,10 @@
             // 
             // colID
             // 
+            colID.FillWeight = 50F;
             colID.HeaderText = "ID";
             colID.Name = "colID";
+            colID.Visible = false;
             // 
             // colNome
             // 
@@ -197,7 +181,6 @@
             Controls.Add(gridMotorista);
             Controls.Add(txtPesquisar);
             Controls.Add(btnExcluir);
-            Controls.Add(btnRelatorio);
             Controls.Add(btnEditar);
             Controls.Add(btnPesquisar);
             Controls.Add(pictureBox1);
@@ -218,7 +201,6 @@
         private PictureBox pictureBox1;
         private Util.BtnRedondo btnPesquisar;
         private Util.BtnRedondo btnEditar;
-        private Util.BtnRedondo btnRelatorio;
         private Util.BtnRedondo btnExcluir;
         private TextBox txtPesquisar;
         private DataGridView gridMotorista;

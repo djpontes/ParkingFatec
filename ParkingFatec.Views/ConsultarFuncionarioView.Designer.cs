@@ -32,13 +32,13 @@
             pictureBox1 = new PictureBox();
             btnPesquisar = new Util.BtnRedondo();
             btnEditar = new Util.BtnRedondo();
-            btnRelatorio = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
             txtPesquisar = new TextBox();
             gridFuncionario = new DataGridView();
             colID = new DataGridViewTextBoxColumn();
             colNome = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
+            colNivelAcesso = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridFuncionario).BeginInit();
             SuspendLayout();
@@ -83,32 +83,14 @@
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(465, 542);
+            btnEditar.Location = new Point(428, 542);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(150, 55);
             btnEditar.TabIndex = 3;
             btnEditar.Text = "Editar";
             btnEditar.TextColor = Color.White;
             btnEditar.UseVisualStyleBackColor = false;
-            // 
-            // btnRelatorio
-            // 
-            btnRelatorio.BackColor = Color.FromArgb(73, 92, 102);
-            btnRelatorio.BackgroundColor = Color.FromArgb(73, 92, 102);
-            btnRelatorio.BorderColor = Color.White;
-            btnRelatorio.BorderRadius = 30;
-            btnRelatorio.BorderSize = 3;
-            btnRelatorio.FlatAppearance.BorderSize = 0;
-            btnRelatorio.FlatStyle = FlatStyle.Flat;
-            btnRelatorio.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRelatorio.ForeColor = Color.White;
-            btnRelatorio.Location = new Point(263, 542);
-            btnRelatorio.Name = "btnRelatorio";
-            btnRelatorio.Size = new Size(150, 55);
-            btnRelatorio.TabIndex = 4;
-            btnRelatorio.Text = "Relatorio";
-            btnRelatorio.TextColor = Color.White;
-            btnRelatorio.UseVisualStyleBackColor = false;
+            btnEditar.MouseClick += btnEditar_MouseClick;
             // 
             // btnExcluir
             // 
@@ -121,7 +103,7 @@
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(63, 542);
+            btnExcluir.Location = new Point(117, 542);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(150, 55);
             btnExcluir.TabIndex = 5;
@@ -141,6 +123,7 @@
             txtPesquisar.Name = "txtPesquisar";
             txtPesquisar.Size = new Size(389, 32);
             txtPesquisar.TabIndex = 6;
+            txtPesquisar.TextChanged += txtPesquisar_TextChanged;
             txtPesquisar.KeyPress += txtPesquisar_KeyPress;
             // 
             // gridFuncionario
@@ -150,7 +133,7 @@
             gridFuncionario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridFuncionario.BackgroundColor = SystemColors.ButtonHighlight;
             gridFuncionario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridFuncionario.Columns.AddRange(new DataGridViewColumn[] { colID, colNome, colEmail });
+            gridFuncionario.Columns.AddRange(new DataGridViewColumn[] { colID, colNome, colEmail, colNivelAcesso });
             gridFuncionario.Location = new Point(63, 107);
             gridFuncionario.Name = "gridFuncionario";
             gridFuncionario.Size = new Size(562, 411);
@@ -158,8 +141,11 @@
             // 
             // colID
             // 
+            colID.FillWeight = 25F;
             colID.HeaderText = "ID";
             colID.Name = "colID";
+            colID.ReadOnly = true;
+            colID.Visible = false;
             // 
             // colNome
             // 
@@ -171,6 +157,13 @@
             colEmail.HeaderText = "E-mail";
             colEmail.Name = "colEmail";
             // 
+            // colNivelAcesso
+            // 
+            colNivelAcesso.FillWeight = 75F;
+            colNivelAcesso.HeaderText = "Nivel de acesso";
+            colNivelAcesso.Name = "colNivelAcesso";
+            colNivelAcesso.ReadOnly = true;
+            // 
             // ConsultarFuncionarioView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -179,7 +172,6 @@
             Controls.Add(gridFuncionario);
             Controls.Add(txtPesquisar);
             Controls.Add(btnExcluir);
-            Controls.Add(btnRelatorio);
             Controls.Add(btnEditar);
             Controls.Add(btnPesquisar);
             Controls.Add(pictureBox1);
@@ -200,12 +192,12 @@
         private PictureBox pictureBox1;
         private Util.BtnRedondo btnPesquisar;
         private Util.BtnRedondo btnEditar;
-        private Util.BtnRedondo btnRelatorio;
         private Util.BtnRedondo btnExcluir;
         private TextBox txtPesquisar;
         private DataGridView gridFuncionario;
         private DataGridViewTextBoxColumn colID;
         private DataGridViewTextBoxColumn colNome;
         private DataGridViewTextBoxColumn colEmail;
+        private DataGridViewTextBoxColumn colNivelAcesso;
     }
 }

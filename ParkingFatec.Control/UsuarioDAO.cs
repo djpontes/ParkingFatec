@@ -33,28 +33,26 @@ namespace ParkingFatec.Control
 
         public void alterarUsuario(Usuarios usuarios)
         {
-            string sql = "UPDATE usuarios SET nome = @nome, email = @email, senha = @senha, nivel_acesso = @nivelAcesso";
+            string sql = "UPDATE usuarios SET nome = @nome, email = @email WHERE id = @id";
             try
             {
                 using (MySqlConnection conexao = conn.GetConnection())
                 {
                     MySqlCommand cmd = new MySqlCommand(sql, conexao);
+                    cmd.Parameters.AddWithValue("@id", usuarios.Id);
                     cmd.Parameters.AddWithValue("@nome", usuarios.Nome);
-                    cmd.Parameters.AddWithValue("@email", usuarios.Email);
                     cmd.Parameters.AddWithValue("@senha", usuarios.Senha);
-                    cmd.Parameters.AddWithValue("@nivelAcesso", usuarios.NivelAcesso);
-
+                    cmd.Parameters.AddWithValue("@email", usuarios.Email);
 
                     cmd.ExecuteNonQuery();
-                    conexao.Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao alterar: " + ex.Message + "\n" + ex.InnerException?.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Erro ao alterar usuário: " + ex.Message);
             }
-
         }
+
 
         public bool autenticarUsuario(Usuarios usuarios)
         {

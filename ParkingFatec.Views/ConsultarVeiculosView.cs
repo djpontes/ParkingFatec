@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ParkingFatec.Control;
+using ParkingFatec.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace ParkingFatec.Views
 {
     public partial class ConsultarVeiculosView : Form
     {
+            VeiculoDAO veiculoDAO = new VeiculoDAO();
         public ConsultarVeiculosView()
         {
             InitializeComponent();
@@ -53,20 +55,20 @@ namespace ParkingFatec.Views
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                listVeiculo.Items.Clear();
+                gridVeiculos.Rows.Clear();
 
                 while (reader.Read())
                 {
-                    string[] row =
-                    {
-                        reader.GetInt32(0).ToString(), 
-                        reader.GetString(1),          
-                        reader.GetString(2),           
+                    gridVeiculos.Rows.Add(
+                         reader.GetInt32(0).ToString(),
+                        reader.GetString(1),
+                        reader.GetString(2),
                         reader.GetString(3),
-                        reader.GetString(4)
-                    };
+                        reader.GetString(4),
+                        reader.IsDBNull(5) ? "Sem motorista" : reader.GetString(5)
+                    );
 
-                    listVeiculo.Items.Add(new ListViewItem(row));
+
                 }
             }
             catch (Exception ex)
@@ -88,7 +90,6 @@ namespace ParkingFatec.Views
                 ConexaoDAO conn = new ConexaoDAO();
                 conexao = conn.GetConnection();
 
-                // Consulta com JOIN para buscar o nome do motorista
                 string query = @"
             SELECT 
                 veiculos.id, 
@@ -115,12 +116,12 @@ namespace ParkingFatec.Views
                 while (reader.Read())
                 {
                     gridVeiculos.Rows.Add(
-                reader.GetInt32(0).ToString(), 
-                reader.GetString(1),          
-                reader.GetString(2),          
-                reader.GetString(3),          
-                reader.GetString(4),          
-                reader.IsDBNull(5) ? "Sem motorista" : reader.GetString(5) 
+                reader.GetInt32(0).ToString(),
+                reader.GetString(1),
+                reader.GetString(2),
+                reader.GetString(3),
+                reader.GetString(4),
+                reader.IsDBNull(5) ? "Sem motorista" : reader.GetString(5)
             );
 
                 }
@@ -138,18 +139,15 @@ namespace ParkingFatec.Views
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            /*
-            if (listVeiculo.SelectedItems.Count == 0)
+            if (gridVeiculos.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Por favor, selecione um item para excluir.");
                 return;
             }
 
-            // Obter o ID do item selecionado
-            var itemSelecionado = listVeiculo.SelectedItems[0];
-            int idSelecionado = int.Parse(itemSelecionado.SubItems[0].Text);
+            var itemSelecionado = gridVeiculos.SelectedRows[0];
+            int idSelecionado = Convert.ToInt32(itemSelecionado.Cells[0].Value);
 
-            // Confirmação do usuário
             DialogResult confirmacao = MessageBox.Show(
                 "Tem certeza que deseja excluir este registro?",
                 "Confirmação",
@@ -162,31 +160,17 @@ namespace ParkingFatec.Views
 
                 try
                 {
-                    // Conexão com o banco
                     ConexaoDAO conn = new ConexaoDAO();
                     conexao = conn.GetConnection();
 
-                    // Comando para excluir registros nas tabelas filhas
-                    string deleteQueryFilha1 = "DELETE FROM registros WHERE veiculo_id = @id";
-                    MySqlCommand cmdFilha1 = new MySqlCommand(deleteQueryFilha1, conexao);
-                    cmdFilha1.Parameters.AddWithValue("@id", idSelecionado);
-                    cmdFilha1.ExecuteNonQuery();
-
-                    
-                    string deleteQueryFilha2 = "DELETE FROM tabela_filha2 WHERE veiculo_id = @id";
-                    MySqlCommand cmdFilha2 = new MySqlCommand(deleteQueryFilha2, conexao);
-                    cmdFilha2.Parameters.AddWithValue("@id", idSelecionado);
-                    cmdFilha2.ExecuteNonQuery();
-
-                    // Agora excluindo o registro da tabela veiculos
                     string query = "DELETE FROM veiculos WHERE id = @id";
                     MySqlCommand cmd = new MySqlCommand(query, conexao);
                     cmd.Parameters.AddWithValue("@id", idSelecionado);
+
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Registro excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Recarregar o ListView
                     CarregarTodos();
                 }
                 catch (Exception ex)
@@ -197,8 +181,63 @@ namespace ParkingFatec.Views
                 {
                     conexao?.Close();
                 }
-            }*/
+            }
 
+        }
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPesquisar.Text))
+            {
+
+                CarregarTodos();
+            }
+        }
+
+        private void btnEditar_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (gridVeiculos.CurrentRow != null) // Verifica se há uma linha selecionada
+            {
+                try
+                {
+
+                    int id = Convert.ToInt32(gridVeiculos.CurrentRow.Cells["colID"].Value);
+                    string novaPlaca = gridVeiculos .CurrentRow.Cells["colPlaca"].Value?.ToString() ?? string.Empty;
+                    string novoModelo = gridVeiculos.CurrentRow.Cells["colModelo"].Value?.ToString() ?? string.Empty;
+                    string novaCor = gridVeiculos.CurrentRow.Cells["colCor"].Value?.ToString() ?? string.Empty;
+
+                    if (string.IsNullOrWhiteSpace(novaPlaca) || string.IsNullOrWhiteSpace(novoModelo) || string.IsNullOrWhiteSpace(novaCor))
+                    {
+                        MessageBox.Show("Ops! Há campos vazios", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+
+                    Veiculo veiculoAtualizado = new Veiculo
+                    {
+                        Id = id,
+                        Placa = novaPlaca,
+                        Modelo = novoModelo,
+                        Cor = novaCor,
+                    };
+
+
+                    veiculoDAO.alterarVeiculo(veiculoAtualizado);
+
+                    MessageBox.Show("Usuário atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    CarregarTodos();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao editar o usuário: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione uma linha para editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

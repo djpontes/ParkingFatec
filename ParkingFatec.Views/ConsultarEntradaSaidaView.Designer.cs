@@ -39,7 +39,7 @@
             colunaPlaca = new ColumnHeader();
             colunaDataSaida = new ColumnHeader();
             colunaHoraSaida = new ColumnHeader();
-            btnRelatorio = new Util.BtnRedondo();
+            btnEditar = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
             txtPesquisar = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -119,25 +119,25 @@
             colunaHoraSaida.Text = "Hora da saida";
             colunaHoraSaida.Width = 100;
             // 
-            // btnRelatorio
+            // btnEditar
             // 
-            btnRelatorio.BackColor = Color.FromArgb(73, 92, 102);
-            btnRelatorio.BackgroundColor = Color.FromArgb(73, 92, 102);
-            btnRelatorio.BorderColor = Color.White;
-            btnRelatorio.BorderRadius = 30;
-            btnRelatorio.BorderSize = 3;
-            btnRelatorio.Cursor = Cursors.Hand;
-            btnRelatorio.FlatAppearance.BorderSize = 0;
-            btnRelatorio.FlatStyle = FlatStyle.Flat;
-            btnRelatorio.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            btnRelatorio.ForeColor = Color.White;
-            btnRelatorio.Location = new Point(438, 535);
-            btnRelatorio.Name = "btnRelatorio";
-            btnRelatorio.Size = new Size(150, 55);
-            btnRelatorio.TabIndex = 4;
-            btnRelatorio.Text = "Relatorio";
-            btnRelatorio.TextColor = Color.White;
-            btnRelatorio.UseVisualStyleBackColor = false;
+            btnEditar.BackColor = Color.FromArgb(73, 92, 102);
+            btnEditar.BackgroundColor = Color.FromArgb(73, 92, 102);
+            btnEditar.BorderColor = Color.White;
+            btnEditar.BorderRadius = 30;
+            btnEditar.BorderSize = 3;
+            btnEditar.Cursor = Cursors.Hand;
+            btnEditar.FlatAppearance.BorderSize = 0;
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            btnEditar.ForeColor = Color.White;
+            btnEditar.Location = new Point(438, 535);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(150, 55);
+            btnEditar.TabIndex = 4;
+            btnEditar.Text = "Editar";
+            btnEditar.TextColor = Color.White;
+            btnEditar.UseVisualStyleBackColor = false;
             // 
             // btnExcluir
             // 
@@ -179,7 +179,7 @@
             ClientSize = new Size(700, 620);
             Controls.Add(txtPesquisar);
             Controls.Add(btnExcluir);
-            Controls.Add(btnRelatorio);
+            Controls.Add(btnEditar);
             Controls.Add(listView1);
             Controls.Add(btnPesquisar);
             Controls.Add(pictureBox1);
@@ -206,7 +206,7 @@
         private ColumnHeader colunaPlaca;
         private ColumnHeader colunaDataSaida;
         private ColumnHeader colunaHoraSaida;
-        private Util.BtnRedondo btnRelatorio;
+        private Util.BtnRedondo btnEditar;
         private Util.BtnRedondo btnExcluir;
         private TextBox txtPesquisar;
     }

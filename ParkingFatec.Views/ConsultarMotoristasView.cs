@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ParkingFatec.Control;
+using ParkingFatec.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,12 @@ namespace ParkingFatec.Views
 {
     public partial class ConsultarMotoristasView : Form
     {
+        MotoristasDAO motoristasDAO = new MotoristasDAO();
         public ConsultarMotoristasView()
         {
             InitializeComponent();
 
-         
+
             CarregarTodos();
         }
 
@@ -59,8 +61,8 @@ namespace ParkingFatec.Views
                 {
                     gridMotorista.Rows.Add(
                         reader.GetInt32(0).ToString(),
-                        reader.GetString(1),          
-                        reader.GetString(2),           
+                        reader.GetString(1),
+                        reader.GetString(2),
                         reader.GetString(3),
                         reader.GetString(4),
                         reader.GetString(5)
@@ -97,9 +99,9 @@ namespace ParkingFatec.Views
                 while (reader.Read())
                 {
                     gridMotorista.Rows.Add(
-                 reader.GetInt32(0).ToString(), 
-                reader.GetString(1),          
-                reader.GetString(2),           
+                 reader.GetInt32(0).ToString(),
+                reader.GetString(1),
+                reader.GetString(2),
                 reader.GetString(3),
                 reader.IsDBNull(4) ? "" : reader.GetString(4),
                 reader.GetString(5)
@@ -113,7 +115,7 @@ namespace ParkingFatec.Views
             }
             finally
             {
-                conexao?.Close(); 
+                conexao?.Close();
             }
         }
 
@@ -163,5 +165,64 @@ namespace ParkingFatec.Views
                 }
             }
         }
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPesquisar.Text))
+            {
+
+                CarregarTodos();
+            }
+        }
+
+        private void btnEditar_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (gridMotorista.CurrentRow != null) // Verifica se há uma linha selecionada
+            {
+                try
+                {
+                    
+                    int id = Convert.ToInt32(gridMotorista.CurrentRow.Cells["colID"].Value);
+                    string novoNome = gridMotorista.CurrentRow.Cells["colNome"].Value?.ToString() ?? string.Empty;
+                    string novoEmail = gridMotorista.CurrentRow.Cells["colEmail"].Value?.ToString() ?? string.Empty;
+                    string novaCNH = gridMotorista.CurrentRow.Cells["colCNH"].Value?.ToString() ?? string.Empty;
+                    string novoRa_rm = gridMotorista.CurrentRow.Cells["colRa_rm"].Value?.ToString() ?? string.Empty;
+                    string novoTelefone = gridMotorista.CurrentRow.Cells["colTelefone"].Value?.ToString() ?? string.Empty;
+
+                    if (string.IsNullOrWhiteSpace(novoNome) || string.IsNullOrWhiteSpace(novoEmail) || string.IsNullOrWhiteSpace(novaCNH) 
+                        || string.IsNullOrWhiteSpace(novoTelefone))
+                    {
+                        MessageBox.Show("Ops! Há campos vazios", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+          
+                    Motoristas motoristaAtualizado = new Motoristas
+                    {
+                        Id = id,
+                        Nome = novoNome,
+                        Email = novoEmail,
+                        Cnh = novaCNH,
+                        Ra_rm = novoRa_rm,
+                        Telefone = novoTelefone,
+                    };
+
+                   
+                    motoristasDAO.alterarMotorista(motoristaAtualizado);
+
+                    MessageBox.Show("Usuário atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    CarregarTodos();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao editar o usuário: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione uma linha para editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+    }
     }
 }
