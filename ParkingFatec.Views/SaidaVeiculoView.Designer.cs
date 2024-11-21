@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaidaVeiculoView));
-            btnRegistrar = new Util.BtnRedondo();
             txtVagasMoto = new TextBox();
             txtVagasCarro = new TextBox();
             txtVeiculo = new TextBox();
@@ -39,25 +38,6 @@
             txtHora = new TextBox();
             ((System.ComponentModel.ISupportInitialize)iconFundo).BeginInit();
             SuspendLayout();
-            // 
-            // btnRegistrar
-            // 
-            btnRegistrar.BackColor = Color.FromArgb(73, 92, 102);
-            btnRegistrar.BackgroundColor = Color.FromArgb(73, 92, 102);
-            btnRegistrar.BorderColor = Color.White;
-            btnRegistrar.BorderRadius = 30;
-            btnRegistrar.BorderSize = 3;
-            btnRegistrar.FlatAppearance.BorderSize = 0;
-            btnRegistrar.FlatStyle = FlatStyle.Flat;
-            btnRegistrar.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRegistrar.ForeColor = Color.White;
-            btnRegistrar.Location = new Point(208, 438);
-            btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(150, 60);
-            btnRegistrar.TabIndex = 15;
-            btnRegistrar.Text = "Registrar";
-            btnRegistrar.TextColor = Color.White;
-            btnRegistrar.UseVisualStyleBackColor = false;
             // 
             // txtVagasMoto
             // 
@@ -86,6 +66,7 @@
             txtVeiculo.Font = new Font("Segoe UI", 18F);
             txtVeiculo.ForeColor = Color.FromArgb(64, 64, 64);
             txtVeiculo.Location = new Point(68, 205);
+            txtVeiculo.MaxLength = 30;
             txtVeiculo.Name = "txtVeiculo";
             txtVeiculo.Size = new Size(449, 32);
             txtVeiculo.TabIndex = 10;
@@ -97,6 +78,7 @@
             txtPlaca.Font = new Font("Segoe UI", 18F);
             txtPlaca.ForeColor = Color.FromArgb(64, 64, 64);
             txtPlaca.Location = new Point(65, 88);
+            txtPlaca.MaxLength = 8;
             txtPlaca.Name = "txtPlaca";
             txtPlaca.Size = new Size(449, 32);
             txtPlaca.TabIndex = 9;
@@ -141,7 +123,6 @@
             ClientSize = new Size(573, 548);
             Controls.Add(txtHora);
             Controls.Add(txtData);
-            Controls.Add(btnRegistrar);
             Controls.Add(txtVagasMoto);
             Controls.Add(txtVagasCarro);
             Controls.Add(txtVeiculo);
@@ -153,6 +134,7 @@
             MinimizeBox = false;
             Name = "SaidaVeiculoView";
             Text = "Saida de veiculos";
+            Load += SaidaVeiculoView_Load;
             ((System.ComponentModel.ISupportInitialize)iconFundo).EndInit();
             ResumeLayout(false);
             PerformLayout();

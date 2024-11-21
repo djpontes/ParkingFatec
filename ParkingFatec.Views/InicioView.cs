@@ -128,7 +128,7 @@ namespace ParkingFatec.Views
         private void btnSaidas_MouseClick(object sender, MouseEventArgs e)
         {
             esconderPanel();
-            SaidaVeiculoView saidaVeiculoView = new SaidaVeiculoView();
+            SaidaVeiculoView saidaVeiculoView = new SaidaVeiculoView(usuarios, this);
             AbrirForms abrir = new AbrirForms();
             abrir.abrirForms(this, saidaVeiculoView, panelForms);
         }
