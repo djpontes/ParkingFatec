@@ -197,11 +197,6 @@ namespace ParkingFatec.Views
 
             }
         }
-
-        private void SaidaVeiculoView_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 

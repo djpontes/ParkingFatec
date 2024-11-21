@@ -36,6 +36,7 @@
             iconFundo = new PictureBox();
             txtData = new TextBox();
             txtHora = new TextBox();
+            btnRegistrar = new Util.BtnRedondo();
             ((System.ComponentModel.ISupportInitialize)iconFundo).BeginInit();
             SuspendLayout();
             // 
@@ -82,6 +83,7 @@
             txtPlaca.Name = "txtPlaca";
             txtPlaca.Size = new Size(449, 32);
             txtPlaca.TabIndex = 9;
+            txtPlaca.TextChanged += txtPlaca_TextChanged;
             // 
             // iconFundo
             // 
@@ -116,11 +118,32 @@
             txtHora.TabIndex = 17;
             txtHora.KeyPress += txtHora_KeyPress;
             // 
+            // btnRegistrar
+            // 
+            btnRegistrar.BackColor = Color.FromArgb(73, 92, 102);
+            btnRegistrar.BackgroundColor = Color.FromArgb(73, 92, 102);
+            btnRegistrar.BorderColor = Color.White;
+            btnRegistrar.BorderRadius = 30;
+            btnRegistrar.BorderSize = 3;
+            btnRegistrar.FlatAppearance.BorderSize = 0;
+            btnRegistrar.FlatStyle = FlatStyle.Flat;
+            btnRegistrar.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRegistrar.ForeColor = Color.White;
+            btnRegistrar.Location = new Point(204, 442);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(150, 60);
+            btnRegistrar.TabIndex = 24;
+            btnRegistrar.Text = "Registrar";
+            btnRegistrar.TextColor = Color.White;
+            btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.MouseClick += btnRegistrar_MouseClick;
+            // 
             // SaidaVeiculoView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(573, 548);
+            Controls.Add(btnRegistrar);
             Controls.Add(txtHora);
             Controls.Add(txtData);
             Controls.Add(txtVagasMoto);
@@ -134,7 +157,6 @@
             MinimizeBox = false;
             Name = "SaidaVeiculoView";
             Text = "Saida de veiculos";
-            Load += SaidaVeiculoView_Load;
             ((System.ComponentModel.ISupportInitialize)iconFundo).EndInit();
             ResumeLayout(false);
             PerformLayout();
