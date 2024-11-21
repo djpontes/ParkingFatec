@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ParkingFatec.Control;
+using ParkingFatec.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,16 +18,6 @@ namespace ParkingFatec.Views
         public ConsultarFuncionarioView()
         {
             InitializeComponent();
-
-            listFuncionario.View = View.Details;
-            listFuncionario.LabelEdit = true;
-            listFuncionario.AllowColumnReorder = true;
-            listFuncionario.FullRowSelect = true;
-            listFuncionario.GridLines = true;
-
-            listFuncionario.Columns.Add("ID", 30, HorizontalAlignment.Left);
-            listFuncionario.Columns.Add("Nome", 250, HorizontalAlignment.Left);
-            listFuncionario.Columns.Add("E-mail", 250, HorizontalAlignment.Left);
 
             CarregarTodos();
         }
@@ -64,18 +55,16 @@ namespace ParkingFatec.Views
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                listFuncionario.Items.Clear();
+                gridFuncionario.Rows.Clear();
 
                 while (reader.Read())
                 {
-                    string[] row =
-                    {
-                        reader.GetInt32(0).ToString(), 
-                        reader.GetString(1),          
-                        reader.GetString(2)           
-                    };
+                    gridFuncionario.Rows.Add(
+                        reader.GetInt32(0),
+                        reader.GetString(1),
+                        reader.GetString(2)
+                    );
 
-                    listFuncionario.Items.Add(new ListViewItem(row));
                 }
             }
             catch (Exception ex)
@@ -102,40 +91,38 @@ namespace ParkingFatec.Views
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                listFuncionario.Items.Clear();
+                gridFuncionario.Rows.Clear();
 
                 while (reader.Read())
                 {
-                    string[] row =
-                    {
-                reader.GetInt32(0).ToString(), 
-                reader.GetString(1),          
-                reader.GetString(2)           
-            };
-
-                    listFuncionario.Items.Add(new ListViewItem(row));
+                    
+                    gridFuncionario.Rows.Add(
+                        reader.GetInt32(0),
+                        reader.GetString(1),
+                        reader.GetString(2)
+                    );
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao carregar registros: " + ex.Message);
+                MessageBox.Show("Erro ao carregar registros: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                conexao?.Close(); 
+                conexao?.Close();
             }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (listFuncionario.SelectedItems.Count == 0)
+            if (gridFuncionario.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Por favor, selecione um item para excluir.");
                 return;
             }
 
-            var itemSelecionado = listFuncionario.SelectedItems[0];
-            int idSelecionado = int.Parse(itemSelecionado.SubItems[0].Text);
+            var itemSelecionado = gridFuncionario.SelectedRows[0];
+            int idSelecionado = Convert.ToInt32(itemSelecionado.Cells[0].Value);
 
             DialogResult confirmacao = MessageBox.Show(
                 "Tem certeza que deseja excluir este registro?",

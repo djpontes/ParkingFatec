@@ -31,12 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarFuncionarioView));
             pictureBox1 = new PictureBox();
             btnPesquisar = new Util.BtnRedondo();
-            listFuncionario = new ListView();
             btnEditar = new Util.BtnRedondo();
             btnRelatorio = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
             txtPesquisar = new TextBox();
+            gridFuncionario = new DataGridView();
+            colID = new DataGridViewTextBoxColumn();
+            colNome = new DataGridViewTextBoxColumn();
+            colEmail = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridFuncionario).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -67,18 +71,6 @@
             btnPesquisar.TextColor = Color.White;
             btnPesquisar.UseVisualStyleBackColor = false;
             btnPesquisar.Click += btnPesquisar_Click;
-            // 
-            // listFuncionario
-            // 
-            listFuncionario.FullRowSelect = true;
-            listFuncionario.LabelEdit = true;
-            listFuncionario.Location = new Point(62, 107);
-            listFuncionario.MultiSelect = false;
-            listFuncionario.Name = "listFuncionario";
-            listFuncionario.Size = new Size(563, 411);
-            listFuncionario.TabIndex = 2;
-            listFuncionario.UseCompatibleStateImageBehavior = false;
-            listFuncionario.View = View.Details;
             // 
             // btnEditar
             // 
@@ -151,16 +143,44 @@
             txtPesquisar.TabIndex = 6;
             txtPesquisar.KeyPress += txtPesquisar_KeyPress;
             // 
+            // gridFuncionario
+            // 
+            gridFuncionario.AllowUserToAddRows = false;
+            gridFuncionario.AllowUserToDeleteRows = false;
+            gridFuncionario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gridFuncionario.BackgroundColor = SystemColors.ButtonHighlight;
+            gridFuncionario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridFuncionario.Columns.AddRange(new DataGridViewColumn[] { colID, colNome, colEmail });
+            gridFuncionario.Location = new Point(63, 107);
+            gridFuncionario.Name = "gridFuncionario";
+            gridFuncionario.Size = new Size(562, 411);
+            gridFuncionario.TabIndex = 7;
+            // 
+            // colID
+            // 
+            colID.HeaderText = "ID";
+            colID.Name = "colID";
+            // 
+            // colNome
+            // 
+            colNome.HeaderText = "Nome";
+            colNome.Name = "colNome";
+            // 
+            // colEmail
+            // 
+            colEmail.HeaderText = "E-mail";
+            colEmail.Name = "colEmail";
+            // 
             // ConsultarFuncionarioView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 620);
+            Controls.Add(gridFuncionario);
             Controls.Add(txtPesquisar);
             Controls.Add(btnExcluir);
             Controls.Add(btnRelatorio);
             Controls.Add(btnEditar);
-            Controls.Add(listFuncionario);
             Controls.Add(btnPesquisar);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -170,6 +190,7 @@
             Name = "ConsultarFuncionarioView";
             Text = "Consultar Funcionários";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridFuncionario).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -178,10 +199,13 @@
 
         private PictureBox pictureBox1;
         private Util.BtnRedondo btnPesquisar;
-        private ListView listFuncionario;
         private Util.BtnRedondo btnEditar;
         private Util.BtnRedondo btnRelatorio;
         private Util.BtnRedondo btnExcluir;
         private TextBox txtPesquisar;
+        private DataGridView gridFuncionario;
+        private DataGridViewTextBoxColumn colID;
+        private DataGridViewTextBoxColumn colNome;
+        private DataGridViewTextBoxColumn colEmail;
     }
 }

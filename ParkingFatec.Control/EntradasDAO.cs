@@ -38,5 +38,31 @@ namespace ParkingFatec.Control
             }
         }
 
+        public bool verificarEntradaAtiva(string placa)
+        {
+            string sql = "SELECT COUNT(*) FROM registros r " +
+                         "JOIN veiculos v ON r.veiculos_id = v.id " +
+                         "WHERE v.placa = @placa AND r.data_saida IS NULL";
+
+            try
+            {
+                using (MySqlConnection conexao = conn.GetConnection())
+                {
+                    MySqlCommand cmd = new MySqlCommand(sql, conexao);
+                    cmd.Parameters.AddWithValue("@placa", placa);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0; // Retorna true se há uma entrada ativa
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao verificar entrada ativa: " + ex.Message + "\n" + ex.InnerException?.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+
+
     }
 }

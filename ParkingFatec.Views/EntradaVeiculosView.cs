@@ -29,7 +29,7 @@ namespace ParkingFatec.Views
             this.usuarios = usuarios;
             this.inicioView = inicioView;
 
-            this.estacionamento = estacionamentoDAO.obterDadosEstacionamento(1);
+            this.estacionamento = estacionamentoDAO.obterDadosEstacionamento();
 
             txtVagasMoto.Text = estacionamento.VagaMoto.ToString();
             txtVagasCarro.Text = estacionamento.VagaCarro.ToString();
@@ -113,60 +113,66 @@ namespace ParkingFatec.Views
                 || string.IsNullOrEmpty(txtVeiculo.Text))
             {
                 MessageBox.Show("Ops, há campo(s) vazio(s). Por favor, preencha-os e tente novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            // Verifica se já há uma entrada ativa para o veículo
+            if (entradasDAO.verificarEntradaAtiva(txtPlaca.Text))
             {
-                Veiculo veiculo = veiculoDAO.obterDadosVeiculos(txtPlaca.Text);
-                if (veiculo == null)
+                MessageBox.Show("Este veículo já está registrado no estacionamento.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Veiculo veiculo = veiculoDAO.obterDadosVeiculos(txtPlaca.Text);
+            if (veiculo == null)
+            {
+                MessageBox.Show("Veículo não encontrado. Verifique a placa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            entradas.Veiculos_id = veiculo.Id;
+            txtVeiculo.Text = veiculo.Modelo;
+            entradas.Usuarios_id = usuarios.Id;
+            entradas.Data_entrada = DateTime.Parse(txtData.Text);
+            entradas.Horario_entrada = DateTime.Parse(txtHora.Text);
+
+            if (veiculo.Tipo == "Moto")
+            {
+                if (estacionamento.VagaMoto > 0)
                 {
-                    MessageBox.Show("Veículo não encontrado. Verifique a placa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    estacionamento.VagaMoto--;
+                }
+                else
+                {
+                    MessageBox.Show("Não há vagas disponíveis para motos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-
-                entradas.Veiculos_id = veiculo.Id;
-                txtVeiculo.Text = veiculo.Modelo;
-                entradas.Usuarios_id = usuarios.Id;
-                entradas.Data_entrada = DateTime.Parse(txtData.Text);
-                entradas.Horario_entrada = DateTime.Parse(txtHora.Text);
-
-                if (veiculo.Tipo == "Moto")
-                {
-                    if (estacionamento.VagaMoto > 0)
-                    {
-                        estacionamento.VagaMoto--;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não há vagas disponíveis para motos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                else if (veiculo.Tipo == "Carro")
-                {
-                    if (estacionamento.VagaCarro > 0)
-                    {
-                        estacionamento.VagaCarro--;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não há vagas disponíveis para carros.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-
-                estacionamentoDAO.alterarEstacionamento(estacionamento);
-
-                entradasDAO.inserirEntradas(entradas);
-
-                MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                limparCampos();
-
-                txtVagasMoto.Text = estacionamento.VagaMoto.ToString();
-                txtVagasCarro.Text = estacionamento.VagaCarro.ToString();
             }
+            else if (veiculo.Tipo == "Carro")
+            {
+                if (estacionamento.VagaCarro > 0)
+                {
+                    estacionamento.VagaCarro--;
+                }
+                else
+                {
+                    MessageBox.Show("Não há vagas disponíveis para carros.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            estacionamentoDAO.alterarEstacionamento(estacionamento);
+
+            entradasDAO.inserirEntradas(entradas);
+
+            MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            limparCampos();
+
+            txtVagasMoto.Text = estacionamento.VagaMoto.ToString();
+            txtVagasCarro.Text = estacionamento.VagaCarro.ToString();
         }
+
 
         private void txtPlaca_TextChanged(object sender, EventArgs e)
         {

@@ -19,18 +19,6 @@ namespace ParkingFatec.Views
             InitializeComponent();
 
 
-            listVeiculo.View = View.Details;
-            listVeiculo.LabelEdit = true;
-            listVeiculo.AllowColumnReorder = true;
-            listVeiculo.FullRowSelect = true;
-            listVeiculo.GridLines = true;
-
-            listVeiculo.Columns.Add("ID", 30, HorizontalAlignment.Left);
-            listVeiculo.Columns.Add("Placa", 150, HorizontalAlignment.Left);
-            listVeiculo.Columns.Add("Tipo", 150, HorizontalAlignment.Left);
-            listVeiculo.Columns.Add("Modelo", 180, HorizontalAlignment.Left);
-            listVeiculo.Columns.Add("Cor", 180, HorizontalAlignment.Left);
-
             CarregarTodos();
         }
 
@@ -59,7 +47,7 @@ namespace ParkingFatec.Views
             {
                 conexao = conn.GetConnection();
 
-                string query = "SELECT id, placa, tipo, modelo, cor FROM veiculos WHERE placa LIKE @termo OR modelo LIKE @termo";
+                string query = "SELECT id, placa, tipo, modelo, cor, motorista_id FROM veiculos WHERE placa LIKE @termo OR modelo LIKE @termo";
                 MySqlCommand cmd = new MySqlCommand(query, conexao);
                 cmd.Parameters.AddWithValue("@termo", "%" + termoBusca + "%");
 
@@ -100,25 +88,41 @@ namespace ParkingFatec.Views
                 ConexaoDAO conn = new ConexaoDAO();
                 conexao = conn.GetConnection();
 
-                string query = "SELECT id, placa, tipo, modelo, cor FROM veiculos ORDER BY id ASC"; 
+                // Consulta com JOIN para buscar o nome do motorista
+                string query = @"
+            SELECT 
+                veiculos.id, 
+                veiculos.placa, 
+                veiculos.tipo, 
+                veiculos.modelo, 
+                veiculos.cor, 
+                motoristas.nome AS nome
+            FROM 
+                veiculos
+            LEFT JOIN 
+                motoristas 
+            ON 
+                veiculos.motoristas_id = motoristas.id
+            ORDER BY 
+                veiculos.id ASC";
+
                 MySqlCommand cmd = new MySqlCommand(query, conexao);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                listVeiculo.Items.Clear();
+                gridVeiculos.Rows.Clear();
 
                 while (reader.Read())
                 {
-                    string[] row =
-                    {
-                    reader.GetInt32(0).ToString(),
-                    reader.GetString(1),          
-                    reader.GetString(2),           
-                    reader.GetString(3),
-                    reader.GetString(4)
-            };
+                    gridVeiculos.Rows.Add(
+                reader.GetInt32(0).ToString(), 
+                reader.GetString(1),          
+                reader.GetString(2),          
+                reader.GetString(3),          
+                reader.GetString(4),          
+                reader.IsDBNull(5) ? "Sem motorista" : reader.GetString(5) 
+            );
 
-                    listVeiculo.Items.Add(new ListViewItem(row));
                 }
             }
             catch (Exception ex)
@@ -127,9 +131,10 @@ namespace ParkingFatec.Views
             }
             finally
             {
-                conexao?.Close(); 
+                conexao?.Close();
             }
         }
+
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {

@@ -39,7 +39,6 @@
             colunaPlaca = new ColumnHeader();
             colunaDataSaida = new ColumnHeader();
             colunaHoraSaida = new ColumnHeader();
-            btnEditar = new Util.BtnRedondo();
             btnRelatorio = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
             txtPesquisar = new TextBox();
@@ -120,26 +119,6 @@
             colunaHoraSaida.Text = "Hora da saida";
             colunaHoraSaida.Width = 100;
             // 
-            // btnEditar
-            // 
-            btnEditar.BackColor = Color.FromArgb(73, 92, 102);
-            btnEditar.BackgroundColor = Color.FromArgb(73, 92, 102);
-            btnEditar.BorderColor = Color.White;
-            btnEditar.BorderRadius = 30;
-            btnEditar.BorderSize = 3;
-            btnEditar.Cursor = Cursors.Hand;
-            btnEditar.FlatAppearance.BorderSize = 0;
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(487, 535);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(150, 55);
-            btnEditar.TabIndex = 3;
-            btnEditar.Text = "Editar";
-            btnEditar.TextColor = Color.White;
-            btnEditar.UseVisualStyleBackColor = false;
-            // 
             // btnRelatorio
             // 
             btnRelatorio.BackColor = Color.FromArgb(73, 92, 102);
@@ -152,7 +131,7 @@
             btnRelatorio.FlatStyle = FlatStyle.Flat;
             btnRelatorio.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             btnRelatorio.ForeColor = Color.White;
-            btnRelatorio.Location = new Point(271, 535);
+            btnRelatorio.Location = new Point(438, 535);
             btnRelatorio.Name = "btnRelatorio";
             btnRelatorio.Size = new Size(150, 55);
             btnRelatorio.TabIndex = 4;
@@ -172,7 +151,7 @@
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(56, 535);
+            btnExcluir.Location = new Point(110, 535);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(150, 55);
             btnExcluir.TabIndex = 5;
@@ -201,7 +180,6 @@
             Controls.Add(txtPesquisar);
             Controls.Add(btnExcluir);
             Controls.Add(btnRelatorio);
-            Controls.Add(btnEditar);
             Controls.Add(listView1);
             Controls.Add(btnPesquisar);
             Controls.Add(pictureBox1);
@@ -228,7 +206,6 @@
         private ColumnHeader colunaPlaca;
         private ColumnHeader colunaDataSaida;
         private ColumnHeader colunaHoraSaida;
-        private Util.BtnRedondo btnEditar;
         private Util.BtnRedondo btnRelatorio;
         private Util.BtnRedondo btnExcluir;
         private TextBox txtPesquisar;

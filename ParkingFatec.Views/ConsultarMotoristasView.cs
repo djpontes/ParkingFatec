@@ -18,19 +18,7 @@ namespace ParkingFatec.Views
         {
             InitializeComponent();
 
-            listMotorista.View = View.Details;
-            listMotorista.LabelEdit = true;
-            listMotorista.AllowColumnReorder = true;
-            listMotorista.FullRowSelect = true;
-            listMotorista.GridLines = true;
-
-            listMotorista.Columns.Add("ID", 30, HorizontalAlignment.Left);
-            listMotorista.Columns.Add("Nome", 150, HorizontalAlignment.Left);
-            listMotorista.Columns.Add("E-mail", 150, HorizontalAlignment.Left);
-            listMotorista.Columns.Add("CNH", 100, HorizontalAlignment.Left);
-            listMotorista.Columns.Add("CPF", 100, HorizontalAlignment.Left);
-            listMotorista.Columns.Add("Telefone", 100, HorizontalAlignment.Left);
-
+         
             CarregarTodos();
         }
 
@@ -65,21 +53,19 @@ namespace ParkingFatec.Views
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                listMotorista.Items.Clear();
+                gridMotorista.Rows.Clear();
 
                 while (reader.Read())
                 {
-                    string[] row =
-                    {
+                    gridMotorista.Rows.Add(
                         reader.GetInt32(0).ToString(),
                         reader.GetString(1),          
                         reader.GetString(2),           
                         reader.GetString(3),
                         reader.GetString(4),
                         reader.GetString(5)
-                    };
+                    );
 
-                    listMotorista.Items.Add(new ListViewItem(row));
                 }
             }
             catch (Exception ex)
@@ -106,21 +92,19 @@ namespace ParkingFatec.Views
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                listMotorista.Items.Clear();
+                gridMotorista.Rows.Clear();
 
                 while (reader.Read())
                 {
-                    string[] row =
-                    {
-                reader.GetInt32(0).ToString(), 
+                    gridMotorista.Rows.Add(
+                 reader.GetInt32(0).ToString(), 
                 reader.GetString(1),          
                 reader.GetString(2),           
                 reader.GetString(3),
-                reader.GetString(4),
+                reader.IsDBNull(4) ? "" : reader.GetString(4),
                 reader.GetString(5)
-            };
+            );
 
-                    listMotorista.Items.Add(new ListViewItem(row));
                 }
             }
             catch (Exception ex)
@@ -135,14 +119,14 @@ namespace ParkingFatec.Views
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (listMotorista.SelectedItems.Count == 0)
+            if (gridMotorista.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Por favor, selecione um item para excluir.");
                 return;
             }
 
-            var itemSelecionado = listMotorista.SelectedItems[0];
-            int idSelecionado = int.Parse(itemSelecionado.SubItems[0].Text);
+            var itemSelecionado = gridMotorista.SelectedRows[0];
+            int idSelecionado = Convert.ToInt32(itemSelecionado.Cells[0].Value);
 
             DialogResult confirmacao = MessageBox.Show(
                 "Tem certeza que deseja excluir este registro?",

@@ -31,12 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarMotoristasView));
             pictureBox1 = new PictureBox();
             btnPesquisar = new Util.BtnRedondo();
-            listMotorista = new ListView();
             btnEditar = new Util.BtnRedondo();
             btnRelatorio = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
             txtPesquisar = new TextBox();
+            gridMotorista = new DataGridView();
+            colID = new DataGridViewTextBoxColumn();
+            colNome = new DataGridViewTextBoxColumn();
+            colEmail = new DataGridViewTextBoxColumn();
+            colCNH = new DataGridViewTextBoxColumn();
+            colRa_rm = new DataGridViewTextBoxColumn();
+            colTelefone = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridMotorista).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -67,15 +74,6 @@
             btnPesquisar.TextColor = Color.White;
             btnPesquisar.UseVisualStyleBackColor = false;
             btnPesquisar.Click += btnPesquisar_Click;
-            // 
-            // listMotorista
-            // 
-            listMotorista.Location = new Point(32, 103);
-            listMotorista.Name = "listMotorista";
-            listMotorista.Size = new Size(634, 405);
-            listMotorista.TabIndex = 2;
-            listMotorista.UseCompatibleStateImageBehavior = false;
-            listMotorista.View = View.Details;
             // 
             // btnEditar
             // 
@@ -148,16 +146,59 @@
             txtPesquisar.TabIndex = 6;
             txtPesquisar.KeyPress += txtPesquisar_KeyPress;
             // 
+            // gridMotorista
+            // 
+            gridMotorista.AllowUserToAddRows = false;
+            gridMotorista.AllowUserToDeleteRows = false;
+            gridMotorista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gridMotorista.BackgroundColor = SystemColors.ButtonHighlight;
+            gridMotorista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridMotorista.Columns.AddRange(new DataGridViewColumn[] { colID, colNome, colEmail, colCNH, colRa_rm, colTelefone });
+            gridMotorista.Location = new Point(32, 103);
+            gridMotorista.Name = "gridMotorista";
+            gridMotorista.Size = new Size(634, 405);
+            gridMotorista.TabIndex = 7;
+            // 
+            // colID
+            // 
+            colID.HeaderText = "ID";
+            colID.Name = "colID";
+            // 
+            // colNome
+            // 
+            colNome.HeaderText = "Nome";
+            colNome.Name = "colNome";
+            // 
+            // colEmail
+            // 
+            colEmail.HeaderText = "E-mail";
+            colEmail.Name = "colEmail";
+            // 
+            // colCNH
+            // 
+            colCNH.HeaderText = "CNH";
+            colCNH.Name = "colCNH";
+            // 
+            // colRa_rm
+            // 
+            colRa_rm.HeaderText = "RA/RM";
+            colRa_rm.Name = "colRa_rm";
+            // 
+            // colTelefone
+            // 
+            colTelefone.HeaderText = "Telefone";
+            colTelefone.Name = "colTelefone";
+            // 
             // ConsultarMotoristasView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 620);
+            Controls.Add(gridMotorista);
             Controls.Add(txtPesquisar);
             Controls.Add(btnExcluir);
             Controls.Add(btnRelatorio);
             Controls.Add(btnEditar);
-            Controls.Add(listMotorista);
             Controls.Add(btnPesquisar);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -167,6 +208,7 @@
             Name = "ConsultarMotoristasView";
             Text = "ConsultarMotoristas";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridMotorista).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -175,10 +217,16 @@
 
         private PictureBox pictureBox1;
         private Util.BtnRedondo btnPesquisar;
-        private ListView listMotorista;
         private Util.BtnRedondo btnEditar;
         private Util.BtnRedondo btnRelatorio;
         private Util.BtnRedondo btnExcluir;
         private TextBox txtPesquisar;
+        private DataGridView gridMotorista;
+        private DataGridViewTextBoxColumn colID;
+        private DataGridViewTextBoxColumn colNome;
+        private DataGridViewTextBoxColumn colEmail;
+        private DataGridViewTextBoxColumn colCNH;
+        private DataGridViewTextBoxColumn colRa_rm;
+        private DataGridViewTextBoxColumn colTelefone;
     }
 }

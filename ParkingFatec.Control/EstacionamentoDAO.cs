@@ -37,16 +37,14 @@ namespace ParkingFatec.Control
 
         public void alterarEstacionamento(Estacionamento estacionamento)
         {
-            string sql = "UPDATE estacionamento SET qntd_vagas_moto = @vagaMoto, qntd_vagas_carro = @vagaCarro";
+            string sql = "UPDATE estacionamento SET qntd_vagas_moto = @vagaMoto, qntd_vagas_carro = @vagaCarro WHERE id = (SELECT id FROM estacionamento LIMIT 1)";
             try
             {
                 using (MySqlConnection conexao = conn.GetConnection())
                 {
                     MySqlCommand cmd = new MySqlCommand(sql, conexao);
-                    cmd.Parameters.AddWithValue("@id", estacionamento.Id);
                     cmd.Parameters.AddWithValue("@vagaMoto", estacionamento.VagaMoto);
                     cmd.Parameters.AddWithValue("@vagaCarro", estacionamento.VagaCarro);
-
 
                     cmd.ExecuteNonQuery();
                     conexao.Close();
@@ -56,8 +54,8 @@ namespace ParkingFatec.Control
             {
                 MessageBox.Show("Erro ao alterar: " + ex.Message + "\n" + ex.InnerException?.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
 
         public bool existeEstacionamento()
         {
@@ -79,39 +77,43 @@ namespace ParkingFatec.Control
             }
         }
 
-        public Estacionamento obterDadosEstacionamento(int id)
+        public Estacionamento obterDadosEstacionamento()
         {
             Estacionamento estacionamento = new Estacionamento();
-            string sql = "SELECT id, qntd_vagas_moto, qntd_vagas_carro FROM estacionamento WHERE id = @Id";
-
+            string sql = "SELECT id, qntd_vagas_moto, qntd_vagas_carro FROM estacionamento LIMIT 1";
 
             try
             {
                 using (MySqlConnection conexao = conn.GetConnection())
                 {
                     MySqlCommand cmd = new MySqlCommand(sql, conexao);
-                    cmd.Parameters.AddWithValue("@Id", id);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            estacionamento.Id = reader.GetInt32("id");
-                            estacionamento.VagaMoto = reader.GetInt32("qntd_vagas_moto");
-                            estacionamento.VagaCarro = reader.GetInt32("qntd_vagas_carro");
+                            estacionamento.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                            estacionamento.VagaMoto = reader.GetInt32(reader.GetOrdinal("qntd_vagas_moto"));
+                            estacionamento.VagaCarro = reader.GetInt32(reader.GetOrdinal("qntd_vagas_carro"));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nenhum estacionamento encontrado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao obter dados do usuário: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao obter dados do estacionamento: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return estacionamento;
         }
 
-        }
+
 
     }
+
+}
 

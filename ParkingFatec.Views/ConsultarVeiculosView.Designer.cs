@@ -36,7 +36,15 @@
             btnRelatorio = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
             txtPesquisar = new TextBox();
+            gridVeiculos = new DataGridView();
+            colID = new DataGridViewTextBoxColumn();
+            colPlaca = new DataGridViewTextBoxColumn();
+            colTipo = new DataGridViewTextBoxColumn();
+            colModelo = new DataGridViewTextBoxColumn();
+            colCor = new DataGridViewTextBoxColumn();
+            colMotorista = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridVeiculos).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -109,7 +117,7 @@
             btnRelatorio.FlatStyle = FlatStyle.Flat;
             btnRelatorio.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             btnRelatorio.ForeColor = Color.White;
-            btnRelatorio.Location = new Point(280, 529);
+            btnRelatorio.Location = new Point(275, 529);
             btnRelatorio.Name = "btnRelatorio";
             btnRelatorio.Size = new Size(150, 55);
             btnRelatorio.TabIndex = 4;
@@ -150,11 +158,55 @@
             txtPesquisar.TabIndex = 6;
             txtPesquisar.KeyPress += txtPesquisar_KeyPress;
             // 
+            // gridVeiculos
+            // 
+            gridVeiculos.AllowUserToAddRows = false;
+            gridVeiculos.AllowUserToDeleteRows = false;
+            gridVeiculos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gridVeiculos.BackgroundColor = SystemColors.ButtonHighlight;
+            gridVeiculos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridVeiculos.Columns.AddRange(new DataGridViewColumn[] { colID, colPlaca, colTipo, colModelo, colCor, colMotorista });
+            gridVeiculos.Location = new Point(53, 106);
+            gridVeiculos.Name = "gridVeiculos";
+            gridVeiculos.Size = new Size(595, 267);
+            gridVeiculos.TabIndex = 7;
+            // 
+            // colID
+            // 
+            colID.HeaderText = "ID";
+            colID.Name = "colID";
+            // 
+            // colPlaca
+            // 
+            colPlaca.HeaderText = "Placa";
+            colPlaca.Name = "colPlaca";
+            // 
+            // colTipo
+            // 
+            colTipo.HeaderText = "Tipo";
+            colTipo.Name = "colTipo";
+            // 
+            // colModelo
+            // 
+            colModelo.HeaderText = "Modelo";
+            colModelo.Name = "colModelo";
+            // 
+            // colCor
+            // 
+            colCor.HeaderText = "Cor";
+            colCor.Name = "colCor";
+            // 
+            // colMotorista
+            // 
+            colMotorista.HeaderText = "Motorista";
+            colMotorista.Name = "colMotorista";
+            // 
             // ConsultarVeiculosView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 620);
+            Controls.Add(gridVeiculos);
             Controls.Add(txtPesquisar);
             Controls.Add(btnExcluir);
             Controls.Add(btnRelatorio);
@@ -169,6 +221,7 @@
             Name = "ConsultarVeiculosView";
             Text = "Consultar Veiculos";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridVeiculos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -182,5 +235,12 @@
         private Util.BtnRedondo btnRelatorio;
         private Util.BtnRedondo btnExcluir;
         private TextBox txtPesquisar;
+        private DataGridView gridVeiculos;
+        private DataGridViewTextBoxColumn colID;
+        private DataGridViewTextBoxColumn colPlaca;
+        private DataGridViewTextBoxColumn colTipo;
+        private DataGridViewTextBoxColumn colModelo;
+        private DataGridViewTextBoxColumn colCor;
+        private DataGridViewTextBoxColumn colMotorista;
     }
 }

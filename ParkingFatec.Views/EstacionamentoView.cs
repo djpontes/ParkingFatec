@@ -20,10 +20,14 @@ namespace ParkingFatec.Views
         public EstacionamentoView()
         {
             InitializeComponent();
-            estacionamento = estacionamentoDAO.obterDadosEstacionamento(1);
-            txtMoto.Text = estacionamento.VagaMoto.ToString();
-            txtCarro.Text = estacionamento.VagaCarro.ToString();
-        
+            estacionamento = estacionamentoDAO.obterDadosEstacionamento();
+
+            if (estacionamento.Id != 0) // Verifica se o registro existe
+            {
+                txtMoto.Text = estacionamento.VagaMoto.ToString();
+                txtCarro.Text = estacionamento.VagaCarro.ToString();
+            }
+
         }
 
         private void txtMoto_KeyPress(object sender, KeyPressEventArgs e)
