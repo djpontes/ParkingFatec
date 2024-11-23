@@ -92,7 +92,7 @@
             MinimizeBox = false;
             Name = "EsqueceuSenhaView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "EsqueceuSenha";
+            Text = "Esqueceu Senha";
             ((System.ComponentModel.ISupportInitialize)iconFundo).EndInit();
             ResumeLayout(false);
             PerformLayout();

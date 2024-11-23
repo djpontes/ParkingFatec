@@ -201,7 +201,7 @@
             MaximizeBox = false;
             Name = "PrimeiroAcessoView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CadastroView";
+            Text = "Cadastro";
             ((System.ComponentModel.ISupportInitialize)iconFundo).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconOlho).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconOlhoOff).EndInit();

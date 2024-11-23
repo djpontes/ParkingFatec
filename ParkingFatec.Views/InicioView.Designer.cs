@@ -510,7 +510,7 @@
             MaximizeBox = false;
             Name = "InicioView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "InicioView";
+            Text = "Início";
             ((System.ComponentModel.ISupportInitialize)iconFundo).EndInit();
             panelFuncionario.ResumeLayout(false);
             panelFuncionario.PerformLayout();

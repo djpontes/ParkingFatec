@@ -54,7 +54,7 @@
             btnRegistrar.Location = new Point(208, 438);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(150, 60);
-            btnRegistrar.TabIndex = 23;
+            btnRegistrar.TabIndex = 5;
             btnRegistrar.Text = "Registrar";
             btnRegistrar.TextColor = Color.White;
             btnRegistrar.UseVisualStyleBackColor = false;
@@ -92,7 +92,7 @@
             txtVeiculo.MaxLength = 30;
             txtVeiculo.Name = "txtVeiculo";
             txtVeiculo.Size = new Size(449, 32);
-            txtVeiculo.TabIndex = 18;
+            txtVeiculo.TabIndex = 2;
             txtVeiculo.KeyPress += txtVeiculo_KeyPress;
             // 
             // txtPlaca
@@ -105,7 +105,7 @@
             txtPlaca.MaxLength = 8;
             txtPlaca.Name = "txtPlaca";
             txtPlaca.Size = new Size(449, 32);
-            txtPlaca.TabIndex = 17;
+            txtPlaca.TabIndex = 1;
             txtPlaca.TextChanged += txtPlaca_TextChanged;
             txtPlaca.KeyPress += txtPlaca_KeyPress;
             // 
@@ -127,7 +127,7 @@
             txtData.MaxLength = 10;
             txtData.Name = "txtData";
             txtData.Size = new Size(163, 32);
-            txtData.TabIndex = 24;
+            txtData.TabIndex = 3;
             txtData.KeyPress += txtData_KeyPress;
             // 
             // txtHora
@@ -139,7 +139,7 @@
             txtHora.MaxLength = 5;
             txtHora.Name = "txtHora";
             txtHora.Size = new Size(163, 32);
-            txtHora.TabIndex = 25;
+            txtHora.TabIndex = 4;
             txtHora.KeyPress += txtHora_KeyPress;
             // 
             // EntradaVeiculosView

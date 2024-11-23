@@ -83,7 +83,7 @@
             txtNome.MaxLength = 50;
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(436, 32);
-            txtNome.TabIndex = 3;
+            txtNome.TabIndex = 1;
             txtNome.KeyPress += txtNome_KeyPress;
             // 
             // txtEmail
@@ -96,7 +96,7 @@
             txtEmail.MaxLength = 50;
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(436, 32);
-            txtEmail.TabIndex = 4;
+            txtEmail.TabIndex = 2;
             txtEmail.KeyPress += txtEmail_KeyPress;
             // 
             // txtSenha
@@ -109,7 +109,7 @@
             txtSenha.MaxLength = 16;
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(436, 32);
-            txtSenha.TabIndex = 5;
+            txtSenha.TabIndex = 3;
             txtSenha.UseSystemPasswordChar = true;
             txtSenha.KeyPress += txtSenha_KeyPress;
             // 
@@ -127,7 +127,7 @@
             btnCadastrar.Location = new Point(208, 508);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(150, 60);
-            btnCadastrar.TabIndex = 7;
+            btnCadastrar.TabIndex = 5;
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.TextColor = Color.White;
             btnCadastrar.UseVisualStyleBackColor = false;
@@ -149,7 +149,7 @@
             boxNivelAcesso.MinimumSize = new Size(200, 30);
             boxNivelAcesso.Name = "boxNivelAcesso";
             boxNivelAcesso.Size = new Size(436, 30);
-            boxNivelAcesso.TabIndex = 8;
+            boxNivelAcesso.TabIndex = 4;
             boxNivelAcesso.Texts = "Selecione...";
             // 
             // CadastroFuncionarioView

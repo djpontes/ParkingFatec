@@ -97,6 +97,8 @@ namespace ParkingFatec.Views
                 MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LimparCampos();
+
+
             }
         }
 

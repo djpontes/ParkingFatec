@@ -28,29 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarEntradaSaidaView));
             pictureBox1 = new PictureBox();
             btnPesquisar = new Util.BtnRedondo();
-            listView1 = new ListView();
-            colunaID = new ColumnHeader();
-            colunaDataEntrada = new ColumnHeader();
-            colunaHoraEntrada = new ColumnHeader();
-            colunaMotorista = new ColumnHeader();
-            colunaPlaca = new ColumnHeader();
-            colunaDataSaida = new ColumnHeader();
-            colunaHoraSaida = new ColumnHeader();
-            btnEditar = new Util.BtnRedondo();
             btnExcluir = new Util.BtnRedondo();
             txtPesquisar = new TextBox();
+            gridEntradaSaida = new DataGridView();
+            colID = new DataGridViewTextBoxColumn();
+            colPlaca = new DataGridViewTextBoxColumn();
+            colTipo = new DataGridViewTextBoxColumn();
+            colModelo = new DataGridViewTextBoxColumn();
+            colMotorista = new DataGridViewTextBoxColumn();
+            colDentrada = new DataGridViewTextBoxColumn();
+            colHentrada = new DataGridViewTextBoxColumn();
+            ColDsaida = new DataGridViewTextBoxColumn();
+            colHsaida = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridEntradaSaida).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Consultar;
+            pictureBox1.Image = Properties.Resources.FundoConsEntradaSaida;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(700, 620);
+            pictureBox1.Size = new Size(824, 620);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -66,78 +72,14 @@
             btnPesquisar.FlatStyle = FlatStyle.Flat;
             btnPesquisar.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             btnPesquisar.ForeColor = Color.White;
-            btnPesquisar.Location = new Point(493, 19);
+            btnPesquisar.Location = new Point(624, 28);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(150, 50);
             btnPesquisar.TabIndex = 1;
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.TextColor = Color.White;
             btnPesquisar.UseVisualStyleBackColor = false;
-            // 
-            // listView1
-            // 
-            listView1.Columns.AddRange(new ColumnHeader[] { colunaID, colunaDataEntrada, colunaHoraEntrada, colunaMotorista, colunaPlaca, colunaDataSaida, colunaHoraSaida });
-            listView1.Location = new Point(13, 96);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(674, 410);
-            listView1.TabIndex = 2;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            // 
-            // colunaID
-            // 
-            colunaID.Text = "ID";
-            colunaID.Width = 30;
-            // 
-            // colunaDataEntrada
-            // 
-            colunaDataEntrada.Text = "Data de entrada";
-            colunaDataEntrada.Width = 100;
-            // 
-            // colunaHoraEntrada
-            // 
-            colunaHoraEntrada.Text = "Hora da entrada";
-            colunaHoraEntrada.Width = 100;
-            // 
-            // colunaMotorista
-            // 
-            colunaMotorista.Text = "Motorista";
-            colunaMotorista.Width = 140;
-            // 
-            // colunaPlaca
-            // 
-            colunaPlaca.Text = "Placa";
-            colunaPlaca.Width = 100;
-            // 
-            // colunaDataSaida
-            // 
-            colunaDataSaida.Text = "Data da saida";
-            colunaDataSaida.Width = 100;
-            // 
-            // colunaHoraSaida
-            // 
-            colunaHoraSaida.Text = "Hora da saida";
-            colunaHoraSaida.Width = 100;
-            // 
-            // btnEditar
-            // 
-            btnEditar.BackColor = Color.FromArgb(73, 92, 102);
-            btnEditar.BackgroundColor = Color.FromArgb(73, 92, 102);
-            btnEditar.BorderColor = Color.White;
-            btnEditar.BorderRadius = 30;
-            btnEditar.BorderSize = 3;
-            btnEditar.Cursor = Cursors.Hand;
-            btnEditar.FlatAppearance.BorderSize = 0;
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(438, 535);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(150, 55);
-            btnEditar.TabIndex = 4;
-            btnEditar.Text = "Editar";
-            btnEditar.TextColor = Color.White;
-            btnEditar.UseVisualStyleBackColor = false;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // btnExcluir
             // 
@@ -151,13 +93,14 @@
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(110, 535);
+            btnExcluir.Location = new Point(303, 532);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(150, 55);
             btnExcluir.TabIndex = 5;
             btnExcluir.Text = "Excluir";
             btnExcluir.TextColor = Color.White;
             btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // txtPesquisar
             // 
@@ -165,22 +108,110 @@
             txtPesquisar.BorderStyle = BorderStyle.None;
             txtPesquisar.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPesquisar.ForeColor = Color.FromArgb(64, 64, 64);
-            txtPesquisar.Location = new Point(66, 29);
+            txtPesquisar.Location = new Point(32, 40);
             txtPesquisar.MaxLength = 50;
             txtPesquisar.Name = "txtPesquisar";
-            txtPesquisar.Size = new Size(387, 32);
+            txtPesquisar.Size = new Size(512, 32);
             txtPesquisar.TabIndex = 6;
+            txtPesquisar.TextChanged += txtPesquisar_TextChanged;
             txtPesquisar.KeyPress += txtPesquisar_KeyPress;
+            // 
+            // gridEntradaSaida
+            // 
+            gridEntradaSaida.AllowUserToAddRows = false;
+            gridEntradaSaida.AllowUserToDeleteRows = false;
+            gridEntradaSaida.BackgroundColor = SystemColors.ButtonHighlight;
+            gridEntradaSaida.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridEntradaSaida.Columns.AddRange(new DataGridViewColumn[] { colID, colPlaca, colTipo, colModelo, colMotorista, colDentrada, colHentrada, ColDsaida, colHsaida });
+            gridEntradaSaida.Location = new Point(7, 95);
+            gridEntradaSaida.Name = "gridEntradaSaida";
+            gridEntradaSaida.Size = new Size(804, 411);
+            gridEntradaSaida.TabIndex = 8;
+            // 
+            // colID
+            // 
+            colID.HeaderText = "ID";
+            colID.Name = "colID";
+            colID.Visible = false;
+            // 
+            // colPlaca
+            // 
+            colPlaca.FillWeight = 60F;
+            colPlaca.HeaderText = "Placa";
+            colPlaca.Name = "colPlaca";
+            colPlaca.Width = 96;
+            // 
+            // colTipo
+            // 
+            colTipo.FillWeight = 50F;
+            colTipo.HeaderText = "Tipo";
+            colTipo.Name = "colTipo";
+            colTipo.ReadOnly = true;
+            colTipo.Width = 80;
+            // 
+            // colModelo
+            // 
+            colModelo.FillWeight = 80F;
+            colModelo.HeaderText = "Modelo";
+            colModelo.Name = "colModelo";
+            colModelo.Width = 127;
+            // 
+            // colMotorista
+            // 
+            colMotorista.FillWeight = 80F;
+            colMotorista.HeaderText = "Motorista";
+            colMotorista.Name = "colMotorista";
+            colMotorista.ReadOnly = true;
+            colMotorista.Width = 128;
+            // 
+            // colDentrada
+            // 
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            colDentrada.DefaultCellStyle = dataGridViewCellStyle1;
+            colDentrada.FillWeight = 50F;
+            colDentrada.HeaderText = "D. Entrada";
+            colDentrada.Name = "colDentrada";
+            colDentrada.Width = 90;
+            // 
+            // colHentrada
+            // 
+            dataGridViewCellStyle2.Format = "t";
+            dataGridViewCellStyle2.NullValue = null;
+            colHentrada.DefaultCellStyle = dataGridViewCellStyle2;
+            colHentrada.FillWeight = 50F;
+            colHentrada.HeaderText = "H. Entrada";
+            colHentrada.Name = "colHentrada";
+            colHentrada.Width = 90;
+            // 
+            // ColDsaida
+            // 
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            ColDsaida.DefaultCellStyle = dataGridViewCellStyle3;
+            ColDsaida.FillWeight = 50F;
+            ColDsaida.HeaderText = "D. Saída";
+            ColDsaida.Name = "ColDsaida";
+            ColDsaida.Width = 75;
+            // 
+            // colHsaida
+            // 
+            dataGridViewCellStyle4.Format = "t";
+            dataGridViewCellStyle4.NullValue = null;
+            colHsaida.DefaultCellStyle = dataGridViewCellStyle4;
+            colHsaida.FillWeight = 50F;
+            colHsaida.HeaderText = "H. Saída";
+            colHsaida.Name = "colHsaida";
+            colHsaida.Width = 75;
             // 
             // ConsultarEntradaSaidaView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 620);
+            ClientSize = new Size(823, 620);
+            Controls.Add(gridEntradaSaida);
             Controls.Add(txtPesquisar);
             Controls.Add(btnExcluir);
-            Controls.Add(btnEditar);
-            Controls.Add(listView1);
             Controls.Add(btnPesquisar);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -188,8 +219,9 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "ConsultarEntradaSaidaView";
-            Text = "ConsultarEntradaSaidaView";
+            Text = "Consultar Entrada e Saída de Veículos";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridEntradaSaida).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -198,16 +230,17 @@
 
         private PictureBox pictureBox1;
         private Util.BtnRedondo btnPesquisar;
-        private ListView listView1;
-        private ColumnHeader colunaID;
-        private ColumnHeader colunaDataEntrada;
-        private ColumnHeader colunaHoraEntrada;
-        private ColumnHeader colunaMotorista;
-        private ColumnHeader colunaPlaca;
-        private ColumnHeader colunaDataSaida;
-        private ColumnHeader colunaHoraSaida;
-        private Util.BtnRedondo btnEditar;
         private Util.BtnRedondo btnExcluir;
         private TextBox txtPesquisar;
+        private DataGridView gridEntradaSaida;
+        private DataGridViewTextBoxColumn colID;
+        private DataGridViewTextBoxColumn colPlaca;
+        private DataGridViewTextBoxColumn colTipo;
+        private DataGridViewTextBoxColumn colModelo;
+        private DataGridViewTextBoxColumn colMotorista;
+        private DataGridViewTextBoxColumn colDentrada;
+        private DataGridViewTextBoxColumn colHentrada;
+        private DataGridViewTextBoxColumn ColDsaida;
+        private DataGridViewTextBoxColumn colHsaida;
     }
 }

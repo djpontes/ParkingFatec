@@ -60,7 +60,7 @@
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome...";
             txtNome.Size = new Size(300, 32);
-            txtNome.TabIndex = 1;
+            txtNome.TabIndex = 3;
             txtNome.KeyPress += txtNome_KeyPress;
             // 
             // txtRa_rm
@@ -88,7 +88,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "E-mail...";
             txtEmail.Size = new Size(300, 32);
-            txtEmail.TabIndex = 3;
+            txtEmail.TabIndex = 5;
             txtEmail.KeyPress += txtEmail_KeyPress;
             // 
             // boxTipoMotorista
@@ -107,7 +107,7 @@
             boxTipoMotorista.MinimumSize = new Size(100, 30);
             boxTipoMotorista.Name = "boxTipoMotorista";
             boxTipoMotorista.Size = new Size(152, 30);
-            boxTipoMotorista.TabIndex = 7;
+            boxTipoMotorista.TabIndex = 1;
             boxTipoMotorista.Texts = "Escolha...";
             boxTipoMotorista.OnSelectedIndexChanged += boxTipoMotorista_OnSelectedIndexChanged;
             // 
@@ -122,7 +122,7 @@
             txtCNH.Name = "txtCNH";
             txtCNH.PlaceholderText = "CNH...";
             txtCNH.Size = new Size(200, 32);
-            txtCNH.TabIndex = 11;
+            txtCNH.TabIndex = 4;
             txtCNH.KeyPress += txtCNH_KeyPress;
             // 
             // btnCadastrar
@@ -156,7 +156,7 @@
             txtTelefone.Name = "txtTelefone";
             txtTelefone.PlaceholderText = "Telefone...";
             txtTelefone.Size = new Size(198, 32);
-            txtTelefone.TabIndex = 18;
+            txtTelefone.TabIndex = 6;
             txtTelefone.KeyPress += txtTelefone_KeyPress;
             // 
             // CadastroMotoristaView

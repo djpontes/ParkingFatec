@@ -189,7 +189,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "ConsultarMotoristasView";
-            Text = "ConsultarMotoristas";
+            Text = "Consultar Motoristas";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridMotorista).EndInit();
             ResumeLayout(false);

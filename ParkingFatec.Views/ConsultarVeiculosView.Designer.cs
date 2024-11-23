@@ -190,7 +190,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "ConsultarVeiculosView";
-            Text = "Consultar Veiculos";
+            Text = "Consultar Veículos";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridVeiculos).EndInit();
             ResumeLayout(false);

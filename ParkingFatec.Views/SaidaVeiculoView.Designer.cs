@@ -156,7 +156,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "SaidaVeiculoView";
-            Text = "Saida de veiculos";
+            Text = "Saida de veículos";
             ((System.ComponentModel.ISupportInitialize)iconFundo).EndInit();
             ResumeLayout(false);
             PerformLayout();

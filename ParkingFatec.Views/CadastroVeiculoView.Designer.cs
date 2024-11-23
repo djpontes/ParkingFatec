@@ -62,7 +62,7 @@
             txtModelo.MaxLength = 30;
             txtModelo.Name = "txtModelo";
             txtModelo.Size = new Size(257, 32);
-            txtModelo.TabIndex = 2;
+            txtModelo.TabIndex = 3;
             txtModelo.KeyPress += txtModelo_KeyPress;
             // 
             // txtCNH
@@ -75,7 +75,7 @@
             txtCNH.MaxLength = 11;
             txtCNH.Name = "txtCNH";
             txtCNH.Size = new Size(275, 32);
-            txtCNH.TabIndex = 3;
+            txtCNH.TabIndex = 5;
             txtCNH.KeyPress += txtCNH_KeyPress;
             // 
             // txtCor
@@ -107,7 +107,7 @@
             boxTipoVeiculo.MinimumSize = new Size(200, 30);
             boxTipoVeiculo.Name = "boxTipoVeiculo";
             boxTipoVeiculo.Size = new Size(200, 30);
-            boxTipoVeiculo.TabIndex = 5;
+            boxTipoVeiculo.TabIndex = 2;
             boxTipoVeiculo.Texts = "Selecione...";
             // 
             // btnCadastrar
