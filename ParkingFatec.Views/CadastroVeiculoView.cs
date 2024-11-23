@@ -14,6 +14,9 @@ namespace ParkingFatec.Views
 {
     public partial class CadastroVeiculoView : Form
     {
+        
+
+        
         Motoristas motoristas = new Motoristas();
         MotoristasDAO motoristasDAO = new MotoristasDAO();
         Usuarios usuarios = new Usuarios();
@@ -94,7 +97,10 @@ namespace ParkingFatec.Views
 
                 veiculoDAO.inserirVeiculo(veiculo);
 
-                MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FecharForm fechar = new FecharForm();
+                fechar.Fechar(this);
+
 
                 LimparCampos();
 

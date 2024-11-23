@@ -15,7 +15,9 @@ namespace ParkingFatec.Views
     public partial class ConsultarEntradaSaidaView : Form
     {
 
-        VeiculoDAO veiculoDAO = new VeiculoDAO();
+
+
+        VeiculoDAO veiculos = new VeiculoDAO();
         EntradasDAO entradas = new EntradasDAO();
         SaidasDAO saidas = new SaidasDAO();
         MotoristasDAO motoristas = new MotoristasDAO();

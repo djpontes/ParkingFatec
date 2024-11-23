@@ -181,6 +181,8 @@
             ((System.ComponentModel.ISupportInitialize)iconFundo).EndInit();
             ResumeLayout(false);
             PerformLayout();
+            
+
         }
 
         #endregion

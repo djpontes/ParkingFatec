@@ -160,8 +160,9 @@ namespace ParkingFatec.Views
 
                 saidasDAO.inserirSaidas(saidas);
 
-                MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                //MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FecharForm fechar = new FecharForm();
+                fechar.Fechar(this);
                 limparCampos();
 
                 txtVagasMoto.Text = estacionamento.VagaMoto.ToString();

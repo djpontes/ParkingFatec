@@ -14,8 +14,11 @@ namespace ParkingFatec.Views
 {
     public partial class CadastroFuncionarioView : Form
     {
+        
+        
         Usuarios usuarios = new Usuarios();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
+
         public CadastroFuncionarioView()
         {
             InitializeComponent();
@@ -115,10 +118,14 @@ namespace ParkingFatec.Views
 
             usuarioDAO.inserirUsuario(usuarios);
 
-            MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            FecharForm fechar = new FecharForm();
+            fechar.Fechar(this);
 
             LimparCampos();
         }
 
+        
     }
 }

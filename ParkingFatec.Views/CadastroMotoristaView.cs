@@ -14,6 +14,7 @@ namespace ParkingFatec.Views
 {
     public partial class CadastroMotoristaView : Form
     {
+
         Usuarios usuarios = new Usuarios();
         MotoristasDAO motoristasDAO = new MotoristasDAO();
         private InicioView inicioView;
@@ -25,6 +26,10 @@ namespace ParkingFatec.Views
 
             txtDesabilitado();
 
+        }
+
+        public CadastroMotoristaView()
+        {
         }
 
         private void txtDesabilitado()
@@ -145,7 +150,10 @@ namespace ParkingFatec.Views
 
                 motoristasDAO.inserirMotorista(motoristas);
 
-                MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Cadastro efetuado com sucesso", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FecharForm fechar = new FecharForm();
+                fechar.Fechar(this);
+
             }
             else if (boxTipoMotorista.SelectedIndex >= 2)
             {
@@ -178,6 +186,7 @@ namespace ParkingFatec.Views
 
             limparCampo();
             txtDesabilitado();
+            
         }
 
 
@@ -201,5 +210,8 @@ namespace ParkingFatec.Views
                 txtRa_rm.Enabled = false;
             }
         }
+
+        
+
     }
 }
