@@ -45,8 +45,9 @@
             colMotorista = new DataGridViewTextBoxColumn();
             colDentrada = new DataGridViewTextBoxColumn();
             colHentrada = new DataGridViewTextBoxColumn();
-            ColDsaida = new DataGridViewTextBoxColumn();
+            colDsaida = new DataGridViewTextBoxColumn();
             colHsaida = new DataGridViewTextBoxColumn();
+            btnRelatorio = new Util.BtnRedondo();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridEntradaSaida).BeginInit();
             SuspendLayout();
@@ -93,7 +94,7 @@
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(303, 532);
+            btnExcluir.Location = new Point(193, 533);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(150, 55);
             btnExcluir.TabIndex = 5;
@@ -122,7 +123,7 @@
             gridEntradaSaida.AllowUserToDeleteRows = false;
             gridEntradaSaida.BackgroundColor = SystemColors.ButtonHighlight;
             gridEntradaSaida.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridEntradaSaida.Columns.AddRange(new DataGridViewColumn[] { colID, colPlaca, colTipo, colModelo, colMotorista, colDentrada, colHentrada, ColDsaida, colHsaida });
+            gridEntradaSaida.Columns.AddRange(new DataGridViewColumn[] { colID, colPlaca, colTipo, colModelo, colMotorista, colDentrada, colHentrada, colDsaida, colHsaida });
             gridEntradaSaida.Location = new Point(7, 95);
             gridEntradaSaida.Name = "gridEntradaSaida";
             gridEntradaSaida.Size = new Size(804, 411);
@@ -130,9 +131,11 @@
             // 
             // colID
             // 
+            colID.FillWeight = 50F;
             colID.HeaderText = "ID";
             colID.Name = "colID";
             colID.Visible = false;
+            colID.Width = 50;
             // 
             // colPlaca
             // 
@@ -184,15 +187,15 @@
             colHentrada.Name = "colHentrada";
             colHentrada.Width = 90;
             // 
-            // ColDsaida
+            // colDsaida
             // 
             dataGridViewCellStyle3.Format = "d";
             dataGridViewCellStyle3.NullValue = null;
-            ColDsaida.DefaultCellStyle = dataGridViewCellStyle3;
-            ColDsaida.FillWeight = 50F;
-            ColDsaida.HeaderText = "D. Saída";
-            ColDsaida.Name = "ColDsaida";
-            ColDsaida.Width = 75;
+            colDsaida.DefaultCellStyle = dataGridViewCellStyle3;
+            colDsaida.FillWeight = 50F;
+            colDsaida.HeaderText = "D. Saída";
+            colDsaida.Name = "colDsaida";
+            colDsaida.Width = 75;
             // 
             // colHsaida
             // 
@@ -204,11 +207,32 @@
             colHsaida.Name = "colHsaida";
             colHsaida.Width = 75;
             // 
+            // btnRelatorio
+            // 
+            btnRelatorio.BackColor = Color.FromArgb(73, 92, 102);
+            btnRelatorio.BackgroundColor = Color.FromArgb(73, 92, 102);
+            btnRelatorio.BorderColor = Color.White;
+            btnRelatorio.BorderRadius = 30;
+            btnRelatorio.BorderSize = 3;
+            btnRelatorio.FlatAppearance.BorderSize = 0;
+            btnRelatorio.FlatStyle = FlatStyle.Flat;
+            btnRelatorio.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRelatorio.ForeColor = Color.White;
+            btnRelatorio.Location = new Point(462, 530);
+            btnRelatorio.Name = "btnRelatorio";
+            btnRelatorio.Size = new Size(150, 60);
+            btnRelatorio.TabIndex = 9;
+            btnRelatorio.Text = "Relatório";
+            btnRelatorio.TextColor = Color.White;
+            btnRelatorio.UseVisualStyleBackColor = false;
+            btnRelatorio.Click += btnRelatorio_Click;
+            // 
             // ConsultarEntradaSaidaView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(823, 620);
+            Controls.Add(btnRelatorio);
             Controls.Add(gridEntradaSaida);
             Controls.Add(txtPesquisar);
             Controls.Add(btnExcluir);
@@ -233,6 +257,7 @@
         private Util.BtnRedondo btnExcluir;
         private TextBox txtPesquisar;
         private DataGridView gridEntradaSaida;
+        private Util.BtnRedondo btnRelatorio;
         private DataGridViewTextBoxColumn colID;
         private DataGridViewTextBoxColumn colPlaca;
         private DataGridViewTextBoxColumn colTipo;
@@ -240,7 +265,7 @@
         private DataGridViewTextBoxColumn colMotorista;
         private DataGridViewTextBoxColumn colDentrada;
         private DataGridViewTextBoxColumn colHentrada;
-        private DataGridViewTextBoxColumn ColDsaida;
+        private DataGridViewTextBoxColumn colDsaida;
         private DataGridViewTextBoxColumn colHsaida;
     }
 }

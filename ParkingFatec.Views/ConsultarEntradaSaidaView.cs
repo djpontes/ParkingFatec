@@ -6,9 +6,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
+using System.IO;
+using GemBox.Document;
+using GemBox.Document.Tables;
+using System.Diagnostics;
 
 namespace ParkingFatec.Views
 {
@@ -32,7 +38,7 @@ namespace ParkingFatec.Views
         private void txtPesquisar_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar))
-            { 
+            {
                 e.Handled = true;
             }
         }
@@ -152,7 +158,7 @@ namespace ParkingFatec.Views
 
                     // Datas e horários com DateTime?
                     // Datas com DateTime
-                    DateTime? dataEntrada = reader.IsDBNull(1) ? (DateTime?) null : reader.GetDateTime(1);
+                    DateTime? dataEntrada = reader.IsDBNull(1) ? (DateTime?)null : reader.GetDateTime(1);
                     DateTime? dataSaida = reader.IsDBNull(3) ? (DateTime?)null : reader.GetDateTime(3);
 
                     // Horários com TimeSpan
@@ -218,7 +224,7 @@ namespace ParkingFatec.Views
                     ConexaoDAO conn = new ConexaoDAO();
                     conexao = conn.GetConnection();
 
-                    string query = "DELETE FROM veiculos WHERE id = @id";
+                    string query = "DELETE FROM registros WHERE id = @id";
                     MySqlCommand cmd = new MySqlCommand(query, conexao);
                     cmd.Parameters.AddWithValue("@id", idSelecionado);
 
@@ -239,6 +245,98 @@ namespace ParkingFatec.Views
             }
 
         }
+
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Exibe a caixa de diálogo para o usuário escolher o local de salvamento
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                saveFileDialog.Title = "Salvar Relatório";
+                saveFileDialog.FileName = "RelatorioEntradaSaida.pdf";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string caminhoArquivo = saveFileDialog.FileName;
+
+                    ComponentInfo.SetLicense("FREE-LIMITED-KEY");
+
+                    var documento = new DocumentModel();
+
+                    // Adicionando título
+                    var tituloParagrafo = new Paragraph(documento, new Run(documento, "Relatório Entrada e Saída de Veículos"));
+                    tituloParagrafo.ParagraphFormat.Alignment = GemBox.Document.HorizontalAlignment.Center;
+
+                    var run = tituloParagrafo.Inlines[0] as Run;
+                    run.CharacterFormat.Bold = true;
+                    run.CharacterFormat.Size = 16;
+
+                    documento.Sections.Add(new Section(documento, tituloParagrafo));
+
+                    // Adicionando data de geração
+                    documento.Sections.Add(new Section(documento,
+                        new Paragraph(documento, $"Data de geração: {DateTime.Now:dd/MM/yyyy}\n\n")));
+
+                    // Criando a tabela
+                    var tabela = new Table(documento);
+                    tabela.Rows.Add(
+                        new TableRow(documento,
+                            new TableCell(documento, "ID"),
+                            new TableCell(documento, "Placa"),
+                            new TableCell(documento, "Tipo"),
+                            new TableCell(documento, "Modelo"),
+                            new TableCell(documento, "Motorista"),
+                            new TableCell(documento, "D. Entrada"),
+                            new TableCell(documento, "H. Entrada"),
+                            new TableCell(documento, "D. Saída"),
+                            new TableCell(documento, "H. Saída")
+                        )
+                    );
+
+
+
+                    // Adicionando os dados do DataGridView à tabela
+                    foreach (DataGridViewRow row in gridEntradaSaida.Rows)
+                    {
+                        if (!row.IsNewRow)
+                        {
+                            // Verificando o conteúdo da linha
+                            for (int i = 0; i < row.Cells.Count; i++)
+                            {
+                                Debug.WriteLine($"Valor da célula {i}: {row.Cells[i].Value?.ToString() ?? "N/A"}");
+                            }
+
+                            tabela.Rows.Add(
+                                new TableRow(documento,
+                                    new TableCell(documento, row.Cells[0].Value?.ToString() ?? "N/A"),  // ID
+                                    new TableCell(documento, row.Cells[1].Value?.ToString() ?? "N/A"),  // Placa
+                                    new TableCell(documento, row.Cells[2].Value?.ToString() ?? "N/A"),  // Tipo
+                                    new TableCell(documento, row.Cells[3].Value?.ToString() ?? "N/A"),  // Modelo
+                                    new TableCell(documento, row.Cells[4].Value?.ToString() ?? "N/A"),  // Motorista
+                                    new TableCell(documento, row.Cells[5].Value?.ToString() ?? "N/A"),  // Data Entrada
+                                    new TableCell(documento, row.Cells[6].Value?.ToString() ?? "N/A"),  // Hora Entrada
+                                    new TableCell(documento, row.Cells[7].Value?.ToString() ?? "N/A"),  // Data Saída
+                                    new TableCell(documento, row.Cells[8].Value?.ToString() ?? "N/A")   // Horário Saída
+                                )
+                                        );
+                        }
+                    }
+                    //new TableCell(documento, row.Cells["ID"].Value?.ToString() ?? "N/A"),  // ID
+
+                    // Salva o documento no caminho escolhido pelo usuário
+                    documento.Save(caminhoArquivo);
+                    //MessageBox.Show($"Relatório gerado com sucesso: {caminhoArquivo}", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao gerar relatório: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
 
     }
 }
